@@ -70,6 +70,8 @@
      *  this method makes those conditions and their corresponding icon mapping
      *  available to the rest of the controller
      **/
+
+    //  *** couldn't load local .json file (conditions.json) via AJAX and did not find file on the Web so I included static local data above in variable definition above rather than pull from local file 
     var GetConditionMap = function() {
       var success = function(response) {
                       _this.conditions = response.data;
@@ -78,7 +80,7 @@
 
       };
 
-      $http.get('conditions.json').then(success, error);
+      $http.get('conditions.txt').then(success, error);
     }
 
     /***
@@ -103,17 +105,17 @@
      *  from the codeToCondition map file
      **/
     $scope.getIcon = function(code) {
-      var c = code || 48; // in conditiona array defined above, item 48 is 'not available';
-      return _this.conditions[c].icon;
+      var c = code || 3200; // in conditiona array defined above, item 48 is 'not available';
+      return _this.conditions.filter(condition => condition.code == c)[0].icon;
     };
 
     /***
      * load the condition code map
      * this maps the condition code returned from the api to the corresponding icon
      *
-     *  *** mimetype for .json not configured on my local server so I included data above in variable definition above
+     *  *** couldn't load local .json file via AJAX and did not find file on the Web so I included static local data above in variable definition above rather than pull from local file
      */ 
-     //GetConditionMap(); 
+     //setTimeout(GetConditionMap, 5000);
     
     /***
      * load weather for the default city
