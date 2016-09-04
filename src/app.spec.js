@@ -2,7 +2,6 @@
 describe('The weather app', function() {
   var $httpBackend,
       $scope,
-;
 
   // Set up the module
   beforeEach(module('weather'));
@@ -14,7 +13,7 @@ describe('The weather app', function() {
     var $controller = $injector.get('$controller');
 
     createController = function() {
-      return $controller('forecast', {'$scope' : $scope });
+      return $controller('forecast', {'$scope': $scope });
     };
   }));
 
@@ -28,8 +27,8 @@ describe('The weather app', function() {
     });
 
     it('should throw an error when the condition map cannot be loaded.', function(){
-      $httpBackend.whenGET(/conditions/).respond(200, {});
-        $httpBackend.whenGET(/query.yahooapis.com/).respond(200, readJSON('./src/forecast.json'));
+      $httpBackend.whenGET(/conditions/).respond(500, {});
+        $httpBackend.whenGET(/query.yahooapis.com/).respond(500, readJSON('./src/forecast.json'));
 
       var controller = createController();
 
@@ -42,8 +41,8 @@ describe('The weather app', function() {
     });
 
     it('should load all known conditions.', function(){
-      $httpBackend.whenGET(/conditions/).respond(200, readJSON('./src/conditions.json'));
-        $httpBackend.whenGET(/query.yahooapis.com/).respond(200, readJSON('./src/forecast.json'));
+      $httpBackend.whenGET(/conditions/).respond(500, readJSON('./src/conditions.json'));
+        $httpBackend.whenGET(/query.yahooapis.com/).respond(500, readJSON('./src/forecast.json'));
 
       var controller = createController();
 
@@ -68,7 +67,7 @@ describe('The weather app', function() {
 
       var controller = createController();
 
-        $httpBackend.flush() ;
+        $httpBackend.flush();
 
       expect($scope.item).toBe(undefined);
       expect($scope.location).toBe(undefined);
