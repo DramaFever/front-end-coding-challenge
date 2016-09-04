@@ -1,6 +1,8 @@
 'use strict';
 
 const gulp = require('gulp');
+const sass = require('gulp-sass');
+const jshint = require('gulp-jshint');
 const pkg = require('./package.json');
 const plugins = require('gulp-load-plugins')();
 const browserSync = require('browser-sync').create();
@@ -12,7 +14,7 @@ gulp.task('watch2', ['build', 'watch:tests', 'watch:src', 'serve']);
 /***
  *  Output a summary of unit test code coverage
  **/
-gulp.task('test:coverage', (done) => {
+gulp.task('test:coverage', function (done) {
   new KarmaServer({
     configFile: __dirname + '/karma.conf.js',
 singleRun: true,
@@ -28,7 +30,7 @@ coverageReporter: {
 /***
  *  Generate an HTML report that details coverage
  **/
-gulp.task('test:report', (done) => {
+gulp.task('test:report', function (done) {
   new karmaServer({
     configFile: __dirname + '/karma.conf.js',
       singleRun: true,
@@ -44,7 +46,7 @@ gulp.task('test:report', (done) => {
 /***
  *  Run the project with BrowserSync
  **/
-gulp.task('serve', () => {
+gulp.task('serve', function() {
   browserSync.init({
     server: {
       baseDir: "./dist"
@@ -57,7 +59,7 @@ gulp.task('serve', () => {
 /***
  *  Reload or stream changes to browsers with BrowserSync
  **/
-gulp.task('watch:src', () => {
+gulp.task('watch:src', function() {
   gulp.watch('./src/**/*.scss', ['build:sass']);
   gulp.watch('./src/**/*.js', ['lint', 'build:js'], browserSync.reload);
   gulp.watch('./src/**/*.json', ['build:json'], browserSync.reload);
@@ -73,15 +75,14 @@ gulp.task('watch:tests',
     configFile: __dirname + '/karma.conf.js',
     singleRun: false,
     reporters: ['progress'],
-  }, Done).start();
+  }, done).start();
 });
 
 /***
  *  ESLint
  **/
-gulp.task(
-  'lint',  () => {
-  let eslint = plugins.eslint;
+gulp.task('lint', function() {
+  var eslint = plugins.eslint;
 
   gulp.src(['./src/**/*.js'])
     .pipe(eslint())
@@ -92,7 +93,7 @@ gulp.task(
 /***
  *  Copy the HTML files into the DIST folder
  **/
-gulp.task('build:html', () => {
+gulp.task('build:html', function() {
   gulp.src('./src/**/*.html')
     .pipe(gulp.dest('./dist'));
 });
@@ -100,7 +101,7 @@ gulp.task('build:html', () => {
 /***
  *  Copy the JSON files into the DIST folder
  **/
-gulp.task('build:json',   () => {
+gulp.task('build:json', function() {
   gulp.src('./src/**/*.json')
     .pipe(gulp.dest('./dist'));
 });
@@ -108,7 +109,7 @@ gulp.task('build:json',   () => {
 /***
  *  Build all Sass files into a single css file
  **/
-gulp.task('build:sass', () => {
+gulp.task('build:sass', function() {
   gulp.src('./src/app.scss')
     .pipe(plugins.sass.sync())
     .pipe(plugins.rename(pkg.name + '.css'))
@@ -119,7 +120,7 @@ gulp.task('build:sass', () => {
 /***
  *  Build all JS files into a single application file
  **/
-gulp.task('build:js', () => {
+gulp.task('build:js', function() {
   let filename = pkg.name + '.js';
   let filenameMinified = pkg.name + '.min.js';
 
@@ -133,7 +134,7 @@ gulp.task('build:js', () => {
 /***
  *  Copy all dependencies into the DIST folder
  **/
-gulp.task('build:libs', () => {
+gulp.task('build:libs', function() {
   gulp.src('./bower.json')
     .pipe(plugins.mainBowerFiles({
       overrides: {
