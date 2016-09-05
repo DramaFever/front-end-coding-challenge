@@ -3,7 +3,7 @@ angular.module('weather', [])
 .controller('forecast', ['$http', '$scope', function($http, $scope){
 
   const _this = this;
-  let default_city = 'New York, NY';
+  var default_city = 'New York, NY';
 
   // recall the existing city or display the default
   $scope.name = $scope.name || default_city;
@@ -39,10 +39,10 @@ angular.module('weather', [])
       $scope.item = data.item;
     };
 
-    let Error = function(response) {
+    var error = function(response) {
     };
 
-    $http.get(`http://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${city}")&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`)
+    $http.get("http://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='${city}'')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
                 .then(success, Error);
   }
 
@@ -51,7 +51,7 @@ angular.module('weather', [])
    *  from the codeToCondition map file
    **/
   $scope.getIcon = function(code) {
-    return _this.conditions.filter(condition => condition.code == code)[0].icon;
+    return _this.conditions.filter(condition == condition.code == code)[0].icon;
   };
 
   /***
