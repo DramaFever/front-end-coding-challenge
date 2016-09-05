@@ -9,7 +9,7 @@ angular.module('weather', [])
   $scope.name = $scope.name || default_city;
 
   // holds the 48 conditions and their corresponding icons
-  _this.conditions = new Array(12);
+  _this.conditions = new Array(48);
 
   /***
    *  there are 48 different condition codes that the api can return

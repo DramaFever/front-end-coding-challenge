@@ -27,8 +27,8 @@ describe('The weather app', function() {
     });
 
     it('should throw an error when the condition map cannot be loaded.', function(){
-      $httpBackend.whenGET(/conditions/).respond(200, {});
-        $httpBackend.whenGET(/query.yahooapis.com/).respond(200, readJSON('./src/forecast.json'));
+      $httpBackend.when('GET', '/conditions/').respond(200, {});
+        $httpBackend.when('GET', '/query.yahooapis.com/').respond(200, readJSON('./src/forecast.json'));
 
       var controller = createController();
 
@@ -41,8 +41,8 @@ describe('The weather app', function() {
     });
 
     it('should load all known conditions.', function(){
-      $httpBackend.whenGET(/conditions/).respond(200, readJSON('./src/conditions.json'));
-        $httpBackend.whenGET(/query.yahooapis.com/).respond(200, readJSON('./src/forecast.json'));
+      $httpBackend.when('GET', '/conditions/').respond(200, readJSON('./src/conditions.json'));
+        $httpBackend.when('GET', '/query.yahooapis.com/').respond(200, readJSON('./src/forecast.json'));
 
       var controller = createController();
 
@@ -63,7 +63,7 @@ describe('The weather app', function() {
 
     it('should gracefully handle a weather forecast that cannot be loaded.', function() {
 
-      $httpBackend.whenGET(/query.yahooapis.com/).respond(500, {});
+      $httpBackend.when('GET', '/query.yahooapis.com/').respond(500, {});
 
       var controller = createController();
 
@@ -76,7 +76,7 @@ describe('The weather app', function() {
 
     it('should load a weather forecast for a default location.', function() {
 
-      $httpBackend.whenGET(/query.yahooapis.com/).respond(200, readJSON('./src/forecast.json'));
+      $httpBackend.when('GET', '/query.yahooapis.com/').respond(200, readJSON('./src/forecast.json'));
 
       var controller = createController();
 
@@ -96,8 +96,8 @@ describe('The weather app', function() {
 
   describe('with condition map and forecast successfully loaded', function() {
     beforeEach(function(){
-      $httpBackend.whenGET(/conditions/).respond(200, readJSON('./src/conditions.json'));
-      $httpBackend.whenGET(/query.yahooapis.com/).respond(readJSON('./src/forecast.json'));
+      $httpBackend.when('GET', '/conditions/').respond(200, readJSON('./src/conditions.json'));
+      $httpBackend.when('GET', '/query.yahooapis.com/').respond(readJSON('./src/forecast.json'));
 
       var controller = createController();
 
