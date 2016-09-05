@@ -41,7 +41,7 @@ describe('The weather app', function() {
     });
 
     it('should load all known conditions.', function(){
-      $httpBackend.when('GET', '/conditions/').respond(200, readJSON('./src/conditions.json'));
+      $httpBackend.when('GET', '/conditions').respond(200, readJSON('./src/conditions.json'));
         $httpBackend.when('GET', '/query.yahooapis.com/').respond(200, readJSON('./src/forecast.json'));
 
       var controller = createController();
