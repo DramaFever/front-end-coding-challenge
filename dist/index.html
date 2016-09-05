@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="weather">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Weather or Not</title>
+
+  <link rel="stylesheet" href="./libs/weather-icons/css/weather-icons.css">
+  <link rel="stylesheet" href="./libs/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="frontend-developer-challenge.css">
+
+  <script src="./libs/angular/angular.js"></script>
+  <script src="frontend-developer-challenge.js"></script>
+</head>
+
+<body ng-controller="forecast" ng-class="theme">
+
+<div class="menu" ng-class="{'open': showMenu}">
+  <div class="tab" ng-click="showMenu == !showMenu">
+    <i class="material-icons open">menu</i>
+    <i class="material-icons close">close</i>
+  </div>
+
+  <h1>Select a City</h2>
+  <form name="city" ng-submit="getWeather(name); showMenu = false;">
+    <input ng-model="name" autocomplete="off" onfocus="this.select();" ng-class="theme" required>
+    <div ng-messages="city.name.$error" ng-show="city.name.$dirty">
+      We can't find weather for you if you don't give us a city to lookup.
+    </div>
+  </form>
+
+  <h2>Theme</h1>
+  <ul class="theme">
+    <li class="Color mojo" ng-click="theme='mojo'">&nbsp;</li>
+    <li class="color governor-bay" ng-click="theme='governor-bay'"></li>
+    <li class="color bluewood" ng-click="theme='bluewood'"></li>
+    <li class="color fire-bush" ng-click="theme='fire-bush'"></li>
+    <li class="color thunder" ng-click="theme='thunder'"></li>
+    <li class="color burnt-sienna" ng-click="theme='burnt-sienna'"></li>
+    <li class="color wine-berry" ng-click="theme='wine-berries"></li>
+    <li class="color tom-thumb" ng-click="theme='tom-thumb'"></li>
+    <li class="color vistas" ng-click="theme='vista'"></li>
+  </ul>
+
+</div>
+
+<div class="weather">
+  <ul class="forecast">
+    <li class="day now">
+      <div class="icon">
+        <i class="wi" ng-class="getIcon(item.condition.code)"></i>
+      </div>
+      <div class="temp">{{item.condition.temp}}<i class="wi wi-celsius"></i></div>
+      <div class="name">Now</div>
+      <div class="text">{{ item.condition.text }}</div>
+    </li>
+
+    <li class="day future" ng-repeat="forecast in item.forecast | limitTo:4">
+      <div class="icon">
+        <i class="wi" ng-class="getIcon(forecast.code)"></i>      
+      </div>
+      <div class="temp">
+        <span class="high"><span ng-bind="forecast.high">{{ forecast.high }}</span><i class="wi wi-degrees"></i></span>
+        <span class="low"><span ng-bind="forecast.low"></span><i class="wi wi-degrees"></i></span>
+      </div>
+      <div class="name" ng-bind="forecast"></div>
+      <div class="text" ng-bind="forecast.text"></div>
+    </li>
+  </ul>
+
+  <div class="city">"{{ location.city }}, {{ location.region }}</div>  
+</div>
+
+</body>
+</html>
