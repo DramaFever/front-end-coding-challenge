@@ -1,19 +1,20 @@
 // testing controller
 describe('The weather app', function() {
   var $httpBackend,
-      $scope;
+      $rootScope,
+      createController;
 
   // Set up the module
   beforeEach(module('weather'));
 
   beforeEach(inject(function($injector) {
     $httpBackend = $injector.get('$httpBackend');
-    $scope = $injector.get('$rootScope');
+    $rootScope = $injector.get('$rootScope');
 
     var $controller = $injector.get('$controller');
 
     createController = function() {
-      return $controller('forecast', {'$scope' : $scope });
+      return $controller('forecast', {'$scope' : $rootScope });
     };
   }));
 

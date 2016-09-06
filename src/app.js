@@ -16,7 +16,7 @@ angular.module('weather', [])
    *  this method makes those conditions and their corresponding icon mapping
    *  available to the rest of the controller
    **/
-  var GetConditionMap = function() {
+  $scope.getConditionMap = function() {
     var success = function(response) {
                     _this.conditions = response.data;
     };
