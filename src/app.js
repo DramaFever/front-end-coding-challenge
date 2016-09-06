@@ -1,6 +1,6 @@
 angular.module('weather', [])
 
-.controller('forecast', ['$http', '$scope', function($http, $scope){
+.controller('forecast', ['$http', '$scope', function ($http, $scope){
 
   const _this = this;
   var default_city = 'New York, NY';
@@ -17,6 +17,18 @@ angular.module('weather', [])
    *  available to the rest of the controller
    **/
   $scope.getConditionMap = function() {
+    $http.get('/conditions.json').success(function(data) {
+      console.debug(data);
+      $scope.conditions = data;
+    }).error(function (data, status, headers, config) {
+      console.error(data, status, headers, config);
+        if(status == 404) {
+          window.alert('Not Found');
+        }else{
+          window.alert('unknown error');
+        }
+        });
+    };
     var success = function(response) {
                     _this.conditions = response.data;
     };
@@ -25,8 +37,8 @@ angular.module('weather', [])
 
     };
 
-    $http.get('conditions.json').then(success, error);
-  }
+    
+  });
 
   /***
    *  this method is expected to set the forecast objects
