@@ -1,7 +1,7 @@
 var app = angular.module('weather', [])
 
 .controller('forecast', ['$http', '$scope', function($http, $scope){
-$scope.hello = "testing";
+// $scope.hello = "testing";
   const _this = this;
   var default_city = 'New York, NY';
 
