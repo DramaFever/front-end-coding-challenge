@@ -1,48 +1,47 @@
-angular.module('weather', [])
+var app = angular.module('weather', [])
 
 .controller('forecast', ['$http', '$scope', function($http, $scope){
-
+$scope.hello = "testing";
   const _this = this;
-  let default_city = 'New York, NY';
+  var default_city = 'New York, NY';
 
   // recall the existing city or display the default
   $scope.name = $scope.name || default_city;
 
   // holds the 48 conditions and their corresponding icons
-  _this.conditions = new Array(12);
+  _this.conditions = new Array(48);
 
   /***
    *  there are 48 different condition codes that the api can return
    *  this method makes those conditions and their corresponding icon mapping
    *  available to the rest of the controller
    **/
-  var GetConditionMap = function() {
-    var success = function(response) {
-                    _this.conditions = response.data;
-    };
-
-    const error = function(response) {
-
-    };
-
+  var GetConditionMap = function(data) {
     $http.get('conditions.json').then(success, error);
+        $scope.condition = data;
+        console.debug(data)
+
+    
+
+    
   }
 
   /***
    *  this method is expected to set the forecast objects
    **/
-  $scope.getWeather = function(city) {
+  $scope.getWeather = function(data) {
     var success = function(response) {
       var data = response.data.query.results.channel;
 
       $scope.location = data.location;
       $scope.item = data.item;
+      console.log(data);
     };
 
-    let Error = function(response) {
+    var error = function(data) {
     };
 
-    $http.get(`http://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${city}")&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`)
+    $http.get("http://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='${city}'')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
                 .then(success, Error);
   }
 
@@ -50,8 +49,8 @@ angular.module('weather', [])
    *  this method is expected to return the icon for the corresponding condition code
    *  from the codeToCondition map file
    **/
-  $scope.getIcon = function(code) {
-    return _this.conditions.filter(condition => condition.code == code)[0].icon;
+  $scope.getIcon = function(data) {
+    return _this.conditions.filter(condition == condition.code == code)[0].icon;
   };
 
   /***
@@ -64,5 +63,5 @@ angular.module('weather', [])
   /***
    * load weather for the default city
    */
-  // $scope.getWeather(name);
+  $scope.getWeather(name);
 }]);

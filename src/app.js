@@ -1,7 +1,7 @@
-angular.module('weather', [])
+var app = angular.module('weather', [])
 
-.controller('forecast', function ($http, $scope){
-
+.controller('forecast', ['$http', '$scope', function($http, $scope){
+$scope.hello = "testing";
   const _this = this;
   var default_city = 'New York, NY';
 
@@ -16,22 +16,52 @@ angular.module('weather', [])
    *  this method makes those conditions and their corresponding icon mapping
    *  available to the rest of the controller
    **/
-  $scope.getConditionMap = function() {
-    $http.get('/conditions.json').success(function(data) {
-      console.debug(data);
-      $scope.conditions = data;
-    }).error(function (data, status, headers, config) {
-      console.error(data, status, headers, config);
-        if(status == 404) {
-          window.alert('Not Found');
-        }else{
-          window.alert('unknown error');
-        }
-        });
-    }; 
-  });
+  var GetConditionMap = function(data) {
+    $http.get('conditions.json').then(success, error);
+        $scope.condition = data;
+        console.debug(data)
+
+    
+
+    
+  }
 
   /***
    *  this method is expected to set the forecast objects
    **/
-  
+  $scope.getWeather = function(data) {
+    var success = function(response) {
+      var data = response.data.query.results.channel;
+
+      $scope.location = data.location;
+      $scope.item = data.item;
+      console.log(data);
+    };
+
+    var error = function(data) {
+    };
+
+    $http.get("http://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='${city}'')&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
+                .then(success, Error);
+  }
+
+  /***
+   *  this method is expected to return the icon for the corresponding condition code
+   *  from the codeToCondition map file
+   **/
+  $scope.getIcon = function(data) {
+    return _this.conditions.filter(condition == condition.code == code)[0].icon;
+  };
+
+  /***
+   * load the condition code map
+   * this maps the condition code returned from the api to the corresponding icon
+   */
+  setTimeout(GetConditionMap,         
+          5000);
+
+  /***
+   * load weather for the default city
+   */
+  $scope.getWeather(name);
+}]);
