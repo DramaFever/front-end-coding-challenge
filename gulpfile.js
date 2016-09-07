@@ -1,10 +1,17 @@
 'use strict';
 
-const gulp = require('gulp');
-const pkg = require('./package.json');
-const plugins = require('gulp-load-plugins')();
-const browserSync = require('browser-sync').create();
-const karmaServer = require('karma').Server;
+/***
+ *  gmlevit
+ Fixed syntax errors:
+ - changed const and let to var
+ - changed arrow functions to "traditional" syntax
+**/
+
+var gulp = require('gulp');
+var pkg = require('./package.json');
+var plugins = require('gulp-load-plugins')();
+var browserSync = require('browser-sync').create();
+var karmaServer = require('karma').Server;
 
 gulp.task('build', ['build:html', 'build:js', 'build:json', 'build:sass', 'build:libs']);
 gulp.task('watch2', ['build', 'watch:tests', 'watch:src', 'serve']);
@@ -12,13 +19,13 @@ gulp.task('watch2', ['build', 'watch:tests', 'watch:src', 'serve']);
 /***
  *  Output a summary of unit test code coverage
  **/
-gulp.task('test:coverage', (done) => {
-  new KarmaServer({
+gulp.task('test:coverage', function(done) {
+  new karmaServer({
     configFile: __dirname + '/karma.conf.js',
 singleRun: true,
 reporters: ['coverage'],
 coverageReporter: {
-        type: ['text-summary']
+        type: ['text-summary'],
       }
   }, done).start();
 
@@ -28,13 +35,13 @@ coverageReporter: {
 /***
  *  Generate an HTML report that details coverage
  **/
-gulp.task('test:report', (done) => {
+gulp.task('test:report', function(done) {
   new karmaServer({
     configFile: __dirname + '/karma.conf.js',
       singleRun: true,
       reporters: ['coverage'],
       coverageReporter: {
-        type: ['html']
+        type: ['html'],
       }
   }, done).start();
 
@@ -44,7 +51,7 @@ gulp.task('test:report', (done) => {
 /***
  *  Run the project with BrowserSync
  **/
-gulp.task('serve', () => {
+gulp.task('serve', function() {
   browserSync.init({
     server: {
       baseDir: "./dist"
@@ -57,7 +64,7 @@ gulp.task('serve', () => {
 /***
  *  Reload or stream changes to browsers with BrowserSync
  **/
-gulp.task('watch:src', () => {
+gulp.task('watch:src', function () {
   gulp.watch('./src/**/*.scss', ['build:sass']);
   gulp.watch('./src/**/*.js', ['lint', 'build:js'], browserSync.reload);
   gulp.watch('./src/**/*.json', ['build:json'], browserSync.reload);
@@ -73,15 +80,15 @@ gulp.task('watch:tests',
     configFile: __dirname + '/karma.conf.js',
     singleRun: false,
     reporters: ['progress'],
-  }, Done).start();
+  }, done).start();
 });
 
 /***
  *  ESLint
  **/
 gulp.task(
-  'lint',  () => {
-  let eslint = plugins.eslint;
+  'lint',  function() {
+  var eslint = plugins.eslint;
 
   gulp.src(['./src/**/*.js'])
     .pipe(eslint())
@@ -92,7 +99,7 @@ gulp.task(
 /***
  *  Copy the HTML files into the DIST folder
  **/
-gulp.task('build:html', () => {
+gulp.task('build:html', function() {
   gulp.src('./src/**/*.html')
     .pipe(gulp.dest('./dist'));
 });
@@ -100,7 +107,7 @@ gulp.task('build:html', () => {
 /***
  *  Copy the JSON files into the DIST folder
  **/
-gulp.task('build:json',   () => {
+gulp.task('build:json', function() {
   gulp.src('./src/**/*.json')
     .pipe(gulp.dest('./dist'));
 });
@@ -108,7 +115,7 @@ gulp.task('build:json',   () => {
 /***
  *  Build all Sass files into a single css file
  **/
-gulp.task('build:sass', () => {
+gulp.task('build:sass', function() {
   gulp.src('./src/app.scss')
     .pipe(plugins.sass.sync())
     .pipe(plugins.rename(pkg.name + '.css'))
@@ -119,9 +126,9 @@ gulp.task('build:sass', () => {
 /***
  *  Build all JS files into a single application file
  **/
-gulp.task('build:js', () => {
-  let filename = pkg.name + '.js';
-  let filenameMinified = pkg.name + '.min.js';
+gulp.task('build:js', function() {
+  var filename = pkg.name + '.js';
+  var filenameMinified = pkg.name + '.min.js';
 
   gulp.src(['!./src/**/*.spec.js', './src/**/*.js'])
     // .pipe(plugins.plumber())
@@ -133,7 +140,7 @@ gulp.task('build:js', () => {
 /***
  *  Copy all dependencies into the DIST folder
  **/
-gulp.task('build:libs', () => {
+gulp.task('build:libs', function() {
   gulp.src('./bower.json')
     .pipe(plugins.mainBowerFiles({
       overrides: {
@@ -142,3 +149,8 @@ gulp.task('build:libs', () => {
     }))
     .pipe(gulp.dest('./dist/libs'));
 });
+
+/***
+ *  gmlevit: Added default task
+ **/
+gulp.task('default', ['build','watch2']);
