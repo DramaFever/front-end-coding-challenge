@@ -4,7 +4,8 @@
   "description": "Sheesh. There's a lot wrong with this project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/rprovost/code-test-creation#readme",
   "devDependencies": {
+    "bower": "^1.7.7",
     "browser-sync": "^2.13.0",
     "express": "^4.14.0",
     "gulp": "^3.9.1",
