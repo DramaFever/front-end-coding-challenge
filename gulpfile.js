@@ -5,9 +5,10 @@ const pkg = require('./package.json');
 const plugins = require('gulp-load-plugins')();
 const browserSync = require('browser-sync').create();
 const karmaServer = require('karma').Server;
+const eslint = require('gulp-eslint');
 
 gulp.task('build', ['build:html', 'build:js', 'build:json', 'build:sass', 'build:libs']);
-gulp.task('watch2', ['build', 'watch:tests', 'watch:src', 'serve']);
+gulp.task('watch', ['build', 'watch:tests', 'watch:src', 'serve']);
 
 /***
  *  Output a summary of unit test code coverage
@@ -73,15 +74,13 @@ gulp.task('watch:tests',
     configFile: __dirname + '/karma.conf.js',
     singleRun: false,
     reporters: ['progress'],
-  }, Done).start();
+  }, done).start();
 });
 
 /***
  *  ESLint
  **/
-gulp.task(
-  'lint',  function() {
-  let eslint = plugins.eslint;
+gulp.task('lint', () => {
 
   gulp.src(['./src/**/*.js'])
     .pipe(eslint())
