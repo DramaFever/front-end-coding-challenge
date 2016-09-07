@@ -90,23 +90,23 @@ body {
     width: 250px;
     text-transform: capitalize;
     transition: border-bottom-color .6s ease; }
-    .menu input.mojo {
+    .menu input:active.mojo {
       border-bottom-color: rgba(195, 77, 64, 0.6); }
-    .menu input.governor-bay {
+    .menu input:active.governor-bay {
       border-bottom-color: rgba(66, 66, 186, 0.6); }
-    .menu input.bluewood {
+    .menu input:active.bluewood {
       border-bottom-color: rgba(46, 60, 86, 0.6); }
-    .menu input.fire-bush {
+    .menu input:active.fire-bush {
       border-bottom-color: rgba(229, 156, 47, 0.6); }
-    .menu input.burnt-sienna {
+    .menu input:active.burnt-sienna {
       border-bottom-color: rgba(234, 114, 76, 0.6); }
-    .menu input.wine-berry {
+    .menu input:active.wine-berry {
       border-bottom-color: rgba(92, 37, 51, 0.6); }
-    .menu input.tom-thumb {
+    .menu input:active.tom-thumb {
       border-bottom-color: rgba(45, 68, 47, 0.6); }
-    .menu input.thunder {
+    .menu input:active.thunder {
       border-bottom-color: rgba(65, 47, 63, 0.6); }
-    .menu input.vista {
+    .menu input:active.vista {
       border-bottom-color: rgba(141, 211, 151, 0.6); }
   .menu .theme {
     border-radius: 15px;
