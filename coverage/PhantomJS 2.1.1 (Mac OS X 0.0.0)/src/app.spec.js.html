@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/app.spec.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">src/</a> app.spec.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.03% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>47/58</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>15/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.03% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>47/58</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// testing controller
+describe('The weather app', function() {
+  var $httpBackend,
+      $rootScope,
+      createController;
+&nbsp;
+  // Set up the module
+  beforeEach(module('weather'));
+&nbsp;
+  beforeEach(inject(function($injector) {
+    $httpBackend = $injector.get('$httpBackend');
+    $rootScope = $injector.get('$rootScope');
+&nbsp;
+    var $controller = $injector.get('$controller');
+&nbsp;
+    createController = function() {
+      return $controller('forecast', {'$scope' : $rootScope });
+    };
+  }));
+&nbsp;
+  afterEach(function() {
+    $httpBackend.verifyNoOutstandingExpectation();
+    $httpBackend.verifyNoOutstandingRequest();
+  });
+&nbsp;
+  describe('condition map', function(){
+    beforeEach(function(){
+    });
+&nbsp;
+    it('should throw an error when the condition map cannot be loaded.', function(){
+      $httpBackend.when('GET', '/conditions/').respond(200, {});
+        $httpBackend.when('GET', '/query.yahooapis.com/').respond(200, readJSON('./src/forecast.json'));
+&nbsp;
+      var controller = createController();
+&nbsp;
+      expect(controller.conditions).not.toBe(undefined);
+      expect( controller.conditions.length ).toBe(0);
+&nbsp;
+&nbsp;
+      expect(controller.conditions.length).toBe(0);
+      expect(controller.conditions[1]).toBe(undefined);
+    });
+&nbsp;
+    it('should load all known conditions.', function(){
+      $httpBackend.when('GET', '/conditions').respond(200, readJSON('./src/conditions.json'));
+        $httpBackend.when('GET', '/query.yahooapis.com/').respond(200, readJSON('./src/forecast.json'));
+&nbsp;
+      var controller = createController();
+&nbsp;
+      expect(controller.conditions).not.toBe(undefined);
+      expect(controller.conditions.length).toBe(0);
+&nbsp;
+      $httpBackend.flush();
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      expect(controller.conditions.length).toBe(49);</span>
+<span class="cstat-no" title="statement not covered" >      expect(controller.conditions[1].code).toBe(1);</span>
+<span class="cstat-no" title="statement not covered" >      expect(controller.conditions[1].icon).toBe('wi-storm-showers');</span>
+    });
+  });
+&nbsp;
+  describe('with condition map successfully loaded', function() {
+    beforeEach(function(){
+    });
+&nbsp;
+    it('should gracefully handle a weather forecast that cannot be loaded.', function() {
+&nbsp;
+      $httpBackend.when('GET', '/query.yahooapis.com/').respond(500, {});
+&nbsp;
+      var controller = createController();
+&nbsp;
+        $httpBackend.flush() ;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      expect($scope.item).toBe(undefined);</span>
+<span class="cstat-no" title="statement not covered" >      expect($scope.location).toBe(undefined);</span>
+&nbsp;
+    });
+&nbsp;
+    it('should load a weather forecast for a default location.', function() {
+&nbsp;
+      $httpBackend.when('GET', '/query.yahooapis.com/').respond(200, readJSON('./src/forecast.json'));
+&nbsp;
+      var controller = createController();
+&nbsp;
+      expect($scope.item).toBe(undefined);
+<span class="cstat-no" title="statement not covered" >      expect($scope.location).toBe(undefined);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      $httpBackend.flush();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      expect( $scope.item ).not.toBe(undefined);</span>
+<span class="cstat-no" title="statement not covered" >      expect($scope.location).not.toBe(undefined);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      expect($scope.location.city).toBe('New York');</span>
+      // expect($scope.item.condition.code).toBe('29');
+&nbsp;
+    });
+  });
+&nbsp;
+  describe('with condition map and forecast successfully loaded', function() {
+    beforeEach(function(){
+      $httpBackend.when('GET', '/conditions/').respond(200, readJSON('./src/conditions.json'));
+      $httpBackend.when('GET', '/query.yahooapis.com/').respond(readJSON('./src/forecast.json'));
+&nbsp;
+      var controller = createController();
+&nbsp;
+      $httpBackend.flush();
+    });
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+    it('should provide an icon for the provided weather code.', function(){
+      var icon = $scope.getIcon('29');
+<span class="cstat-no" title="statement not covered" >      expect(icon).toBe('wi-night-partly-cloudy');</span>
+    });
+  });
+});</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Sep 06 2016 19:43:42 GMT-0400 (EDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
