@@ -2,14 +2,14 @@ angular.module('weather', [])
 
 .controller('forecast', ['$http', '$scope', function($http, $scope){
 
-  const _this = this;
-  let default_city = 'New York, NY';
+  var _this = this;
+  var default_city = 'New York, NY';
 
   // recall the existing city or display the default
   $scope.name = $scope.name || default_city;
-
+  $scope.error = { show: false };
   // holds the 48 conditions and their corresponding icons
-  _this.conditions = new Array(12);
+  _this.conditions = new Array();
 
   /***
    *  there are 48 different condition codes that the api can return
@@ -18,11 +18,11 @@ angular.module('weather', [])
    **/
   var GetConditionMap = function() {
     var success = function(response) {
-                    _this.conditions = response.data;
+      _this.conditions = response.data;
     };
 
-    const error = function(response) {
-
+    var error = function(response) {
+      console.log("Error loading conditions json.");
     };
 
     $http.get('conditions.json').then(success, error);
@@ -32,18 +32,28 @@ angular.module('weather', [])
    *  this method is expected to set the forecast objects
    **/
   $scope.getWeather = function(city) {
-    var success = function(response) {
-      var data = response.data.query.results.channel;
+    if (city && city != "")
+    {
+      $scope.error.show = false;
+      $scope.showMenu = false;
+      var success = function(response) {
+        var data = response.data.query.results.channel;
 
-      $scope.location = data.location;
-      $scope.item = data.item;
-    };
+        $scope.location = data.location;
+        $scope.item = data.item;
+      };
 
-    let Error = function(response) {
-    };
+      var error = function(response) {
+        console.log("Error loading weather data.");
+      };
 
-    $http.get(`http://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${city}")&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`)
-                .then(success, Error);
+      $http.get('http://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + city + '")&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')
+                  .then(success, error);
+    }
+    else
+    {
+      $scope.error.show = true;
+    }
   }
 
   /***
@@ -51,18 +61,26 @@ angular.module('weather', [])
    *  from the codeToCondition map file
    **/
   $scope.getIcon = function(code) {
-    return _this.conditions.filter(condition => condition.code == code)[0].icon;
+    try
+    {
+      var filtered = _this.conditions.filter(function(el) {
+        if (el.code == code) return true;
+      })[0].icon;
+
+      // If you want to see the result, just check the log
+      // console.log(filtered);
+      return filtered;
+    }
+    catch (error)
+    {
+      // console.log(error);
+    }
   };
 
   /***
    * load the condition code map
    * this maps the condition code returned from the api to the corresponding icon
    */
-  setTimeout(GetConditionMap,         
-          5000);
-
-  /***
-   * load weather for the default city
-   */
-  // $scope.getWeather(name);
+  
+  GetConditionMap();
 }]);

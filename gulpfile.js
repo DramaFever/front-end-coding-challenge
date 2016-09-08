@@ -8,6 +8,7 @@ const karmaServer = require('karma').Server;
 
 gulp.task('build', ['build:html', 'build:js', 'build:json', 'build:sass', 'build:libs']);
 gulp.task('watch2', ['build', 'watch:tests', 'watch:src', 'serve']);
+// gulp.task('watch2', ['build', 'watch:src', 'serve']);
 
 /***
  *  Output a summary of unit test code coverage
@@ -73,7 +74,7 @@ gulp.task('watch:tests',
     configFile: __dirname + '/karma.conf.js',
     singleRun: false,
     reporters: ['progress'],
-  }, Done).start();
+  }, done).start();
 });
 
 /***
@@ -88,6 +89,7 @@ gulp.task(
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
+
 
 /***
  *  Copy the HTML files into the DIST folder

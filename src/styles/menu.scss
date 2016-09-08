@@ -63,6 +63,13 @@
     &.vista {border-bottom-color: rgba($vista, .6);}
   }
 
+.error-msg {
+  width: 90%;
+  margin-top: 10px;
+  letter-spacing: .5pt;
+  color: #000;
+}
+
   // styles for the theme selector
   .theme{
     border-radius: 15px;
@@ -72,12 +79,12 @@
     padding: 0;
 
     .color {
-      width: 33%;
-      margin: 1px;
+      width: 33.333333%;
+      margin: 0;
       height: 60px;
       position: relative;
       float: left;
-      cursor: move;
+      cursor: pointer;
 
       &:after {content: "\00a0";}
 
@@ -96,10 +103,9 @@
   // styles when menu is open
   &.open {
     left: 0;
-    box-shadow: 0 0 20px 10px rgba(27, 255, 34, 0.3);
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.3);
 
     .tab {
-      top: 25px;
       right: 0px;
 
       .open {opacity: 0;}
