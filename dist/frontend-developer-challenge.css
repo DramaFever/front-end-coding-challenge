@@ -55,7 +55,17 @@ body {
   position: fixed;
   transition: all 0.6s cubic-bezier(0.9, 0, 0.33, 1) 0.2s;
   width: 20em;
-  z-index: 1; }
+  z-index: 1;
+  box-shadow: 0 5px 20px #2e2e2e; }
+  @media screen and (max-width: 90em) {
+    .menu {
+      width: 33%; } }
+  @media screen and (max-width: 75em) {
+    .menu {
+      width: 50%; } }
+  @media screen and (max-width: 42em) {
+    .menu {
+      width: 80%; } }
   .menu .tab {
     position: absolute;
     width: 50px;
@@ -113,14 +123,17 @@ body {
     overflow: hidden;
     width: 75%;
     margin: auto;
-    padding: 0; }
+    padding: 0;
+    display: table;
+    table-layout: fixed; }
     .menu .theme .color {
       width: 33%;
-      margin: 1px;
+      margin: 0;
       height: 60px;
       position: relative;
       float: left;
-      cursor: move; }
+      cursor: move;
+      display: table-cell; }
       .menu .theme .color:after {
         content: "\00a0"; }
       .menu .theme .color.mojo {

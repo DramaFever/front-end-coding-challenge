@@ -112,7 +112,7 @@ gulp.task('build:sass', function() {
     .pipe(plugins.sass.sync())
     .pipe(plugins.rename(pkg.name + '.css'))
     .pipe(gulp.dest('./dist'))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.stream())
 });
 
 /***

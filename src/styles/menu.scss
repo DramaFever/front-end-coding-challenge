@@ -7,6 +7,20 @@
   transition: all .6s cubic-bezier(.9,0,.33,1) .2s;
   width: 20em;
   z-index: 1;
+  box-shadow: 0 5px 20px #2e2e2e;
+  @media screen and (max-width: $large) {
+    width: 33%;
+  }
+
+  @media screen and (max-width: $medium) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: $small) {
+    width: 80%;
+  }
+
+  
 
   // styles for the hamburger
   .tab {
@@ -72,14 +86,17 @@
     width: 75%;
     margin: auto;
     padding: 0;
+    display: table;
+    table-layout: fixed;
 
     .color {
       width: 33%;
-      margin: 1px;
+      margin: 0;
       height: 60px;
       position: relative;
       float: left;
       cursor: move;
+      display: table-cell;
 
       &:after {content: "\00a0";}
 

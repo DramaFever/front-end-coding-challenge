@@ -1,6 +1,6 @@
 var app = angular.module('weather', [])
 
-.controller('forecast', ['$http', '$scope', function($http, $scope){
+.controller('forecast', function($http, $scope){
 // $scope.hello = "testing";
   const _this = this;
   var default_city = 'New York, NY';
@@ -16,6 +16,7 @@ var app = angular.module('weather', [])
    *  this method makes those conditions and their corresponding icon mapping
    *  available to the rest of the controller
    **/
+   $scope.hello = "hi";
   var GetConditionMap = function(data) {
     $http.get('conditions.json').then(success, error);
         $scope.condition = data;
@@ -64,4 +65,4 @@ var app = angular.module('weather', [])
    * load weather for the default city
    */
   $scope.getWeather(name);
-}]);
+});
