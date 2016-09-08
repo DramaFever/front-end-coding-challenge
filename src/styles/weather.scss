@@ -3,42 +3,50 @@
   position: relative;
 
   .city {
-    COLORS: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.4);
     font-weight: bold;
     font-size: .8em;
     width: 80%;
-    margin: 5% auto;
-    TEXT-align: center;
+    margin: 8% auto 0;
+    text-align: center;
   }
 
   .forecast {
+    position: relative;
     width: 80%;
     margin: auto;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    text-align: center;
 
     .day {
-      display: flex;
-      flex-wrap: nowrap;
+      position: relative;
+      display: inline-block; //flex;
       justify-content: center;
-      align-items: center;
       padding: 0;
       margin: 0;
-      width: 20%;
+      margin-top: 70px;
+      width: 19%;
       min-width: 150px;
       text-align: center;
+      vertical-align: top;
       color: rgba(255, 255, 255, 0.7);
+
+      &.now {
+        margin-top: 0;
+
+        .text {
+          width: 100%;
+        }
+      }
 
       div {
         width: 100%;
       }
 
       .icon {
-font-size: 3em;
-Padding-Bottom: 25px;
+        font-size: 3em;
+        padding-bottom: 25px;
       }
 
       .temp {
@@ -55,7 +63,10 @@ Padding-Bottom: 25px;
       }
 
       .text {
-        white-space: nowrap;
+        width: 80%;
+        margin: 0 auto;
+        line-height: 1em;
+        // white-space: nowrap;
       }
 
       &.now {
@@ -76,19 +87,27 @@ Padding-Bottom: 25px;
   @media screen and (max-width: $medium) {
     padding: 5vh;
 
+    .city {
+      margin-top: 70px;
+    }
+
     .forecast {
       width: 100%;
+      vertical-align: top;
 
       .day {
         line-height: 1.25;
+        vertical-align: top;
+        margin-top: 20px;
 
-        &:nth-child(4) {
-            padding-top: 15px;
+        .text {
+          width: 75%;
         }
 
         &.now {
           width: 100%;
           padding-bottom: 40px;
+          margin-top: 0;
 
           .icon{
             line-height: 1.5;
@@ -98,15 +117,16 @@ Padding-Bottom: 25px;
     }
   }
 
-  @media screen and (max-width: $small) and (max-width: 600px) {
+  // @media screen and (max-width: $small) and (max-width: 600px) {
+  @media screen and (max-width: $small) {
+    .city {
+      margin-top: 50px;
+    }
+
     .forecast {
       .day {
         padding-bottom: 40px;
-
-      line-height: 1.25;
-			        &:nth-child(3) {
-						            padding-bottom: 75px;
-			        		}
+        line-height: 1.25;
 
         &.future {
           width: 50%;
