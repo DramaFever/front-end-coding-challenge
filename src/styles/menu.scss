@@ -8,6 +8,8 @@
   width: 20em;
   z-index: 1;
   box-shadow: 0 5px 20px #2e2e2e;
+
+  /* Would usually create mixins using @include breakpoint($variable)*/
   @media screen and (max-width: $large) {
     width: 33%;
   }

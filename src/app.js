@@ -9,15 +9,18 @@ var app = angular.module('weather', [])
   $scope.name = $scope.name || default_city;
 
   // holds the 48 conditions and their corresponding icons
-  _this.conditions = new Array(48);
-
+  $scope.conditions = [];
+    $http.get('./dist/conditions.json').sucess(function(data, status, headers, config) {
+      $scope.conditons.push(data);
+    _this.conditions
+    });
   /***
    *  there are 48 different condition codes that the api can return
    *  this method makes those conditions and their corresponding icon mapping
    *  available to the rest of the controller
    **/
    // $scope.hello = "hi";
-  var GetConditionMap = function(data) {
+  $scope.getConditionMap = function(data) {
     $http.get('conditions.json').then(success, error);
         $scope.condition = data;
         console.debug(data)
@@ -51,7 +54,7 @@ var app = angular.module('weather', [])
    *  from the codeToCondition map file
    **/
   $scope.getIcon = function(data) {
-    return _this.conditions.filter(condition == condition.code == code)[0].icon;
+    return $scope.conditions.filter(conditions == conditions.code == conditions.code[0].icon);
   };
 
   /***

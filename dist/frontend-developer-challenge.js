@@ -16,7 +16,7 @@ var app = angular.module('weather', [])
    *  this method makes those conditions and their corresponding icon mapping
    *  available to the rest of the controller
    **/
-   $scope.hello = "hi";
+   // $scope.hello = "hi";
   var GetConditionMap = function(data) {
     $http.get('conditions.json').then(success, error);
         $scope.condition = data;
@@ -50,8 +50,8 @@ var app = angular.module('weather', [])
    *  this method is expected to return the icon for the corresponding condition code
    *  from the codeToCondition map file
    **/
-  $scope.getIcon = function(data) {
-    return _this.conditions.filter(condition == condition.code == code)[0].icon;
+  $scope.getIcon = function(conditions) {
+    return _this.conditions.filter(condition == condition.code == code[0].icon);
   };
 
   /***
