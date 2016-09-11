@@ -1,19 +1,30 @@
 var app = angular.module('weather', [])
 
-.controller('forecast', function($http, $scope){
+.controller('forecast', ["$scope", "$http", function($scope, $http){
 // $scope.hello = "testing";
-  const _this = this;
   var default_city = 'New York, NY';
 
   // recall the existing city or display the default
   $scope.name = $scope.name || default_city;
 
   // holds the 48 conditions and their corresponding icons
-  $scope.conditions = [];
-    $http.get('./dist/conditions.json').sucess(function(data, status, headers, config) {
-      $scope.conditons.push(data);
-    _this.conditions
-    });
+  function wtf() {
+    $http({
+      method: 'GET',
+      url: "http://localhost:3000/conditions.json"
+    }).then(function successfulCallback(response) {
+      console.debug(response);
+      $scope.conditions = response;
+    }, function errorCallback(response) {
+      console.log(response);
+      if (status === 404) {
+        window.alert('not found');
+      } else {
+        window.alert('unknown error');
+        }
+      });
+    }
+  wtf();
   /***
    *  there are 48 different condition codes that the api can return
    *  this method makes those conditions and their corresponding icon mapping
@@ -60,12 +71,11 @@ var app = angular.module('weather', [])
   /***
    * load the condition code map
    * this maps the condition code returned from the api to the corresponding icon
+ 
    */
-  setTimeout(GetConditionMap,         
-          5000);
 
   /***
    * load weather for the default city
    */
   $scope.getWeather(name);
-});
+}]);

@@ -1,23 +1,37 @@
 var app = angular.module('weather', [])
 
-.controller('forecast', function($http, $scope){
+.controller('forecast', ["$scope", "$http", function($scope, $http){
 // $scope.hello = "testing";
-  const _this = this;
   var default_city = 'New York, NY';
 
   // recall the existing city or display the default
   $scope.name = $scope.name || default_city;
 
   // holds the 48 conditions and their corresponding icons
-  _this.conditions = new Array(48);
-
+  function wtf() {
+    $http({
+      method: 'GET',
+      url: "http://localhost:3000/conditions.json"
+    }).then(function successfulCallback(response) {
+      console.debug(response);
+      $scope.conditions = response;
+    }, function errorCallback(response) {
+      console.log(response);
+      if (status === 404) {
+        window.alert('not found');
+      } else {
+        window.alert('unknown error');
+        }
+      });
+    }
+  wtf();
   /***
    *  there are 48 different condition codes that the api can return
    *  this method makes those conditions and their corresponding icon mapping
    *  available to the rest of the controller
    **/
    // $scope.hello = "hi";
-  var GetConditionMap = function(data) {
+  $scope.getConditionMap = function(data) {
     $http.get('conditions.json').then(success, error);
         $scope.condition = data;
         console.debug(data)
@@ -50,19 +64,18 @@ var app = angular.module('weather', [])
    *  this method is expected to return the icon for the corresponding condition code
    *  from the codeToCondition map file
    **/
-  $scope.getIcon = function(conditions) {
-    return _this.conditions.filter(condition == condition.code == code[0].icon);
+  $scope.getIcon = function(data) {
+    return $scope.conditions.filter(conditions == conditions.code == conditions.code[0].icon);
   };
 
   /***
    * load the condition code map
    * this maps the condition code returned from the api to the corresponding icon
+ 
    */
-  setTimeout(GetConditionMap,         
-          5000);
 
   /***
    * load weather for the default city
    */
   $scope.getWeather(name);
-});
+}]);

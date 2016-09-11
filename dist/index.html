@@ -15,7 +15,7 @@
 </head>
 
 <body ng-controller="forecast" ng-class="theme">
-<!-- <h1>{{hello}}</h1> -->
+<h1>{{hello}}</h1>
 <i class="material-icons " ng-hide="showMenu" ng-click="showMenu=!showMenu">menu</i>
 <div class="menu" ng-show="showMenu">
   <div class="tab" ng-click="showMenu == !showMenu">
@@ -38,7 +38,7 @@
     <li class="color fire-bush" ng-click="theme='fire-bush'"></li>
     <li class="color thunder" ng-click="theme='thunder'"></li>
     <li class="color burnt-sienna" ng-click="theme='burnt-sienna'"></li>
-    <li class="color wine-berry" ng-click="theme='wine-berries'"></li>
+    <li class="color wine-berry" ng-click="theme='wine-berry'"></li>
     <li class="color tom-thumb" ng-click="theme='tom-thumb'"></li>
     <li class="color vista" ng-click="theme='vista'"></li>
   </ul>
@@ -71,6 +71,6 @@
 
   <div class="city">{{name}}</div>  
 </div>
-<h1>{{conditions}}</h1>
+<!-- <h1>{{conditions}}</h1> -->
 </body>
 </html>
