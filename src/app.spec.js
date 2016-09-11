@@ -13,7 +13,7 @@ describe('The weather app', function() {
 
     var $controller = $injector.get('$controller');
 
-  var createController = function() {
+    createController = function() {
       return $controller('forecast', {'$scope' : $rootScope });
     };
   }));

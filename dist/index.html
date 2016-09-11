@@ -15,7 +15,6 @@
 </head>
 
 <body ng-controller="forecast" ng-class="theme">
-<h1>{{hello}}</h1>
 <i class="material-icons " ng-hide="showMenu" ng-click="showMenu=!showMenu">menu</i>
 <div class="menu" ng-show="showMenu">
   <div class="tab" ng-click="showMenu == !showMenu">
@@ -56,21 +55,22 @@
       <div class="text">{{ item.condition.text }}</div>
     </li>
 
-    <li class="day future" ng-repeat="forecast in item.forecast | limitTo:4">
+    <li class="day future" ng-repeat="forecast in forecasts | limitTo:4">
       <div class="icon">
         <i class="wi" ng-class="getIcon(forecast.code)"></i>      
       </div>
       <div class="temp">
-        <span class="high"><span ng-bind="forecast.high">{{ forecast.high }}</span><i class="wi wi-degrees"></i></span>
+        <span class="high"><span ng-bind="forecast.high"></span><i class="wi wi-degrees"></i></span>
         <span class="low"><span ng-bind="forecast.low"></span><i class="wi wi-degrees"></i></span>
       </div>
-      <div class="name" ng-bind="forecast"></div>
+      <div class="name" ng-bind="forecast.day"></div>
       <div class="text" ng-bind="forecast.text"></div>
     </li>
   </ul>
 
   <div class="city">{{name}}</div>  
 </div>
-<!-- <h1>{{conditions}}</h1> -->
+<!-- <h1>{{forecasts}}</h1> -->
+
 </body>
 </html>

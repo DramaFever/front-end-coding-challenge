@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">19.05% </span>
+        <span class="strong">7.41% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/21</span>
+        <span class='fraction'>2/27</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>0/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>0/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">19.05% </span>
+        <span class="strong">7.41% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/21</span>
+        <span class='fraction'>2/27</span>
       </div>
     </div>
   </div>
@@ -113,22 +113,44 @@
 68
 69
 70
-71</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -185,20 +207,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var app = angular.module('weather', [])
 &nbsp;
-.controller('forecast', function($scope, $http){
+.controller('forecast', ["$scope", "$http", <span class="fstat-no" title="function not covered" >function($scope, $http){</span>
 // $scope.hello = "testing";
-  var default_city = 'New York, NY';
+<span class="cstat-no" title="statement not covered" >  var default_city = 'New York, NY';</span>
 &nbsp;
   // recall the existing city or display the default
-  $scope.name = $scope.name || default_city;
+<span class="cstat-no" title="statement not covered" >  $scope.name = $scope.name || default_city;</span>
 &nbsp;
   // holds the 48 conditions and their corresponding icons
-    $http.get('/conditions.json').sucess(<span class="fstat-no" title="function not covered" >function(data, status, headers, config) {</span>
-<span class="cstat-no" title="statement not covered" >      console.debug(data);</span>
-<span class="cstat-no" title="statement not covered" >      $scope.conditions = data;</span>
-    }).error(<span class="fstat-no" title="function not covered" >function(data, status, headers, config){</span>
-&nbsp;
-    });
+<span class="fstat-no" title="function not covered" >  function wtf() {</span>
+<span class="cstat-no" title="statement not covered" >    $http({</span>
+      method: 'GET',
+      url: "http://localhost:3000/conditions.json"
+    }).then(<span class="fstat-no" title="function not covered" >function successfulCallback(response) {</span>
+<span class="cstat-no" title="statement not covered" >      console.debug(response);</span>
+<span class="cstat-no" title="statement not covered" >      $scope.conditions = response;</span>
+    }, <span class="fstat-no" title="function not covered" >function errorCallback(response) {</span>
+<span class="cstat-no" title="statement not covered" >      console.log(response);</span>
+<span class="cstat-no" title="statement not covered" >      if (status === 404) {</span>
+<span class="cstat-no" title="statement not covered" >        window.alert('not found');</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        window.alert('unknown error');</span>
+        }
+      });
+    }
+<span class="cstat-no" title="statement not covered" >  wtf();</span>
   /***
    *  there are 48 different condition codes that the api can return
    *  this method makes those conditions and their corresponding icon mapping
@@ -252,14 +285,14 @@
    * load weather for the default city
    */
 <span class="cstat-no" title="statement not covered" >  $scope.getWeather(name);</span>
-});
+}]);
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Sep 10 2016 19:47:17 GMT-0400 (EDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Sep 11 2016 00:32:14 GMT-0400 (EDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
