@@ -7,13 +7,12 @@ $xlarge: 120em;
 
 html {
   height: 100%;
+  width: 100%;
 }
 
 *:focus {outline: none;}
 
-*,::after,::before {
-    box-sizing: inherit
-}
+
 
 li {list-style-type: none;}
 
@@ -23,8 +22,8 @@ html {
 }
 
 body {
+  width: 100%;
   background: $mojo;
-  box-sizing: border-box;
   font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', 'Open-Light', sans-serif;
   font-weight: 400;
   line-height: 1.5;
@@ -39,7 +38,7 @@ body {
 
   &.mojo {background: $mojo;}
   &.governor-bay {background: $governor-bay;}
-  &.bluewood {background: $mojo;}
+  &.bluewood {background: $bluewood;}
   &.fire-bush {background: $fire-bush;}
   &.burnt-sienna {background: $burnt-sienna;}
   &.wine-berry {background: $wine-berry;}

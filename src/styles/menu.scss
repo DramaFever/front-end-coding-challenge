@@ -1,20 +1,43 @@
+.open {
+  color: #edcac6;
+  opacity: 1;
+  margin: 5px 0 0 5px;
+}
+
 .menu {
   background-color: rgba(255, 255, 255, 0.8);
   height: 100%;
-  left: -20em;
-  min-width: 200px;
   padding: 0 1em;
   position: fixed;
   transition: all .6s cubic-bezier(.9,0,.33,1) .2s;
-  width: 20em;
   z-index: 1;
+  box-shadow: 0 5px 20px #2e2e2e;
+
+  /* Would usually create mixins using @include breakpoint($variable)*/
+  @media screen and (max-width: $large) {
+    width: 22%;
+  }
+
+  @media screen and (max-width: $medium) {
+    width: 35%;
+  }
+
+  @media screen and (max-width: $small) {
+    width: 48%;
+  }
+
+  @media screen and (max-width: $tiny) {
+    width: 80%;
+  }
+
+  
 
   // styles for the hamburger
   .tab {
     position: absolute;
     width: 50px;
     height: 50px;
-    right: -50px;
+    right: 0;
     cursor: pointer;
     padding: 7px 9px;
     border-left: 0;
@@ -29,14 +52,12 @@
       font-size: 36px;
     }
 
-    .open {
-      color: rgba(255, 255, 255, 0.4);
-      opacity: 1;
-    }
-
     .close {
       color: rgba(0, 0, 0, 0.4);
-      opacity: 0;
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
 
@@ -52,15 +73,15 @@
 
     transition: border-bottom-color .6s ease;
 
-    &.mojo {border-bottom-color: rgba($mojo, .6);}
-    &.governor-bay {border-bottom-color: rgba($governor-bay, .6);}
-    &.bluewood {border-bottom-color: rgba($bluewood, .6);}
-    &.fire-bush {border-bottom-color: rgba($fire-bush, .6);}
-    &.burnt-sienna {border-bottom-color: rgba($burnt-sienna, .6);}
-    &.wine-berry {border-bottom-color: rgba($wine-berry, .6);}
-    &.tom-thumb {border-bottom-color: rgba($tom-thumb, .6);}
-    &.thunder {border-bottom-color: rgba($thunder, .6);}
-    &.vista {border-bottom-color: rgba($vista, .6);}
+    &:active.mojo {border-bottom-color: rgba($mojo, .6);}
+    &:active.governor-bay {border-bottom-color: rgba($governor-bay, .6);}
+    &:active.bluewood {border-bottom-color: rgba($bluewood, .6);}
+    &:active.fire-bush {border-bottom-color: rgba($fire-bush, .6);}
+    &:active.burnt-sienna {border-bottom-color: rgba($burnt-sienna, .6);}
+    &:active.wine-berry {border-bottom-color: rgba($wine-berry, .6);}
+    &:active.tom-thumb {border-bottom-color: rgba($tom-thumb, .6);}
+    &:active.thunder {border-bottom-color: rgba($thunder, .6);}
+    &:active.vista {border-bottom-color: rgba($vista, .6);}
   }
 
   // styles for the theme selector
@@ -70,14 +91,17 @@
     width: 75%;
     margin: auto;
     padding: 0;
+    display: table;
+    table-layout: fixed;
 
     .color {
       width: 33%;
-      margin: 1px;
+      margin: 0;
       height: 60px;
       position: relative;
       float: left;
       cursor: move;
+      display: table-cell;
 
       &:after {content: "\00a0";}
 

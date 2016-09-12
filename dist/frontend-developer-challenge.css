@@ -1,0 +1,244 @@
+html {
+  height: 100%;
+  width: 100%; }
+
+*:focus {
+  outline: none; }
+
+li {
+  list-style-type: none; }
+
+html {
+  font-size: 100%;
+  height: 100%; }
+
+body {
+  width: 100%;
+  background: #c34d40;
+  font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', 'Open-Light', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 100vh;
+  position: relative;
+  transition: background-color .6s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+  body.mojo {
+    background: #c34d40; }
+  body.governor-bay {
+    background: #4242ba; }
+  body.bluewood {
+    background: #2e3c56; }
+  body.fire-bush {
+    background: #e59c2f; }
+  body.burnt-sienna {
+    background: #ea724c; }
+  body.wine-berry {
+    background: #5c2533; }
+  body.tom-thumb {
+    background: #2d442f; }
+  body.thunder {
+    background: #412f3f; }
+  body.vista {
+    background: #8dd397; }
+
+.open {
+  color: #edcac6;
+  opacity: 1;
+  margin: 5px 0 0 5px; }
+
+.menu {
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 100%;
+  padding: 0 1em;
+  position: fixed;
+  transition: all 0.6s cubic-bezier(0.9, 0, 0.33, 1) 0.2s;
+  z-index: 1;
+  box-shadow: 0 5px 20px #2e2e2e;
+  /* Would usually create mixins using @include breakpoint($variable)*/ }
+  @media screen and (max-width: 90em) {
+    .menu {
+      width: 22%; } }
+  @media screen and (max-width: 75em) {
+    .menu {
+      width: 35%; } }
+  @media screen and (max-width: 42em) {
+    .menu {
+      width: 48%; } }
+  @media screen and (max-width: 25em) {
+    .menu {
+      width: 80%; } }
+  .menu .tab {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 0;
+    cursor: pointer;
+    padding: 7px 9px;
+    border-left: 0;
+    border-radius: 10px 10px 10px 10px;
+    transition: right 0.6s cubic-bezier(0.9, 0, 0.33, 1) 0.2s; }
+    .menu .tab i {
+      position: absolute;
+      top: 7px;
+      left: 9px;
+      transition: opacity 0.6s cubic-bezier(0.9, 0, 0.33, 1) 0.2s;
+      font-size: 36px; }
+    .menu .tab .close {
+      color: rgba(0, 0, 0, 0.4);
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      right: 0; }
+  .menu input {
+    background-color: transparent;
+    border-bottom-color: rgba(195, 77, 64, 0.6);
+    border-width: 0 0 2px 0;
+    font-size: 1.25em;
+    font-style: italic;
+    width: 250px;
+    text-transform: capitalize;
+    transition: border-bottom-color .6s ease; }
+    .menu input:active.mojo {
+      border-bottom-color: rgba(195, 77, 64, 0.6); }
+    .menu input:active.governor-bay {
+      border-bottom-color: rgba(66, 66, 186, 0.6); }
+    .menu input:active.bluewood {
+      border-bottom-color: rgba(46, 60, 86, 0.6); }
+    .menu input:active.fire-bush {
+      border-bottom-color: rgba(229, 156, 47, 0.6); }
+    .menu input:active.burnt-sienna {
+      border-bottom-color: rgba(234, 114, 76, 0.6); }
+    .menu input:active.wine-berry {
+      border-bottom-color: rgba(92, 37, 51, 0.6); }
+    .menu input:active.tom-thumb {
+      border-bottom-color: rgba(45, 68, 47, 0.6); }
+    .menu input:active.thunder {
+      border-bottom-color: rgba(65, 47, 63, 0.6); }
+    .menu input:active.vista {
+      border-bottom-color: rgba(141, 211, 151, 0.6); }
+  .menu .theme {
+    border-radius: 15px;
+    overflow: hidden;
+    width: 75%;
+    margin: auto;
+    padding: 0;
+    display: table;
+    table-layout: fixed; }
+    .menu .theme .color {
+      width: 33%;
+      margin: 0;
+      height: 60px;
+      position: relative;
+      float: left;
+      cursor: move;
+      display: table-cell; }
+      .menu .theme .color:after {
+        content: "\00a0"; }
+      .menu .theme .color.mojo {
+        background: #c34d40; }
+      .menu .theme .color.governor-bay {
+        background: #4242ba; }
+      .menu .theme .color.bluewood {
+        background: #2e3c56; }
+      .menu .theme .color.fire-bush {
+        background: #e59c2f; }
+      .menu .theme .color.burnt-sienna {
+        background: #ea724c; }
+      .menu .theme .color.wine-berry {
+        background: #5c2533; }
+      .menu .theme .color.tom-thumb {
+        background: #2d442f; }
+      .menu .theme .color.thunder {
+        background: #412f3f; }
+      .menu .theme .color.vista {
+        background: #8dd397; }
+  .menu.open {
+    left: 0;
+    box-shadow: 0 0 20px 10px rgba(27, 255, 34, 0.3); }
+    .menu.open .tab {
+      top: 25px;
+      right: 0px; }
+      .menu.open .tab .open {
+        opacity: 0; }
+      .menu.open .tab .close {
+        opacity: 1; }
+
+.weather {
+  padding: 15% 10% 0;
+  position: relative;
+  top: 50%; }
+  .weather .city {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: bold;
+    font-size: .8em;
+    width: 80%;
+    margin: 5% auto;
+    text-align: center; }
+  .weather .forecast {
+    width: 80%;
+    margin: auto;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; }
+    .weather .forecast .day {
+      display: table;
+      table-layout: fixed;
+      padding: 0;
+      margin: 0;
+      width: 20%;
+      min-width: 150px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7); }
+      .weather .forecast .day div {
+        width: 100%; }
+      .weather .forecast .day .icon {
+        font-size: 3em;
+        padding-bottom: 25px; }
+      .weather .forecast .day .temp {
+        font-size: 2em;
+        font-weight: bold; }
+        .weather .forecast .day .temp .low {
+          opacity: .4;
+          font-size: .8em; }
+      .weather .forecast .day .name {
+        font-size: 1.5em; }
+      .weather .forecast .day .text {
+        white-space: nowrap; }
+      .weather .forecast .day.now .icon {
+        font-size: 8em;
+        padding-bottom: 0; }
+      .weather .forecast .day.now .name {
+        font-size: 2.5em; }
+      .weather .forecast .day.now .text {
+        font-size: 1.5em; }
+  @media screen and (max-width: 75em) {
+    .weather {
+      padding: 5vh; }
+      .weather .forecast {
+        width: 100%; }
+        .weather .forecast .day {
+          line-height: 1.25; }
+          .weather .forecast .day:nth-child(4) {
+            padding-top: 15px; }
+          .weather .forecast .day.now {
+            width: 100%;
+            padding-bottom: 40px; }
+            .weather .forecast .day.now .icon {
+              line-height: 1.5; } }
+  @media screen and (max-width: 42em) and (max-width: 600px) {
+    .weather .forecast .day {
+      padding-bottom: 40px;
+      line-height: 1.25; }
+      .weather .forecast .day:nth-child(3) {
+        padding-bottom: 75px; }
+      .weather .forecast .day.future {
+        width: 50%; } }
+  @media screen and (max-width: 25em) {
+    .weather .forecast .day.future {
+      width: 100%; } }
