@@ -28,7 +28,7 @@ describe('The weather app', function() {
     });
 
     it('should throw an error when the condition map cannot be loaded.', function(){
-      $httpBackend.when('GET', '/conditions.json').respond(200, {});
+      $httpBackend.when('GET', 'http://localhost:3000/conditions.json').respond(200, {});
         $httpBackend.when('GET', '/query.yahooapis.com/').respond(200, readJSON('./src/forecast.json'));
 
       var controller = createController();

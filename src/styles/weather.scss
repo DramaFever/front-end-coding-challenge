@@ -1,14 +1,15 @@
 .weather {
   padding: 15% 10% 0;
   position: relative;
+  top: 50%;
 
   .city {
-    COLORS: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.4);
     font-weight: bold;
     font-size: .8em;
     width: 80%;
     margin: 5% auto;
-    TEXT-align: center;
+    text-align: center;
   }
 
   .forecast {
@@ -21,10 +22,8 @@
     align-items: center;
 
     .day {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: center;
-      align-items: center;
+      display: table;
+      table-layout: fixed;
       padding: 0;
       margin: 0;
       width: 20%;
@@ -38,7 +37,7 @@
 
       .icon {
 font-size: 3em;
-Padding-Bottom: 25px;
+padding-bottom: 25px;
       }
 
       .temp {
