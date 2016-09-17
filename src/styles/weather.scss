@@ -3,12 +3,12 @@
   position: relative;
 
   .city {
-    COLORS: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.4);
     font-weight: bold;
     font-size: .8em;
     width: 80%;
     margin: 5% auto;
-    TEXT-align: center;
+    text-align: center;
   }
 
   .forecast {
@@ -22,7 +22,7 @@
 
     .day {
       display: flex;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: center;
       padding: 0;
@@ -74,7 +74,7 @@ Padding-Bottom: 25px;
   }
 
   @media screen and (max-width: $medium) {
-    padding: 5vh;
+    padding: 0vh;
 
     .forecast {
       width: 100%;
@@ -82,9 +82,7 @@ Padding-Bottom: 25px;
       .day {
         line-height: 1.25;
 
-        &:nth-child(4) {
-            padding-top: 15px;
-        }
+
 
         &.now {
           width: 100%;
@@ -105,7 +103,7 @@ Padding-Bottom: 25px;
 
       line-height: 1.25;
 			        &:nth-child(3) {
-						            padding-bottom: 75px;
+						            padding-bottom: 40px;
 			        		}
 
         &.future {

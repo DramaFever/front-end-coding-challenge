@@ -1,9 +1,9 @@
-angular.module('weather', [])
+var weatherApp = angular.module('weather', []);
 
-.controller('forecast', ['$http', '$scope', function($http, $scope){
+weatherApp.controller('forecast', ['$http', '$scope', function($http, $scope){
 
   const _this = this;
-  let default_city = 'New York, NY';
+  var default_city = 'New York, NY';
 
   // recall the existing city or display the default
   $scope.name = $scope.name || default_city;
@@ -25,7 +25,8 @@ angular.module('weather', [])
 
     };
 
-    $http.get('conditions.json').then(success, error);
+    //$http.get('C:/Users/desti/Downloads/front-end-coding-challenge-master/src/conditions.json').then(success, error);
+    $http.get('http://localhost:8080/src/conditions.json').then(success, error);
   }
 
   /***
@@ -39,7 +40,7 @@ angular.module('weather', [])
       $scope.item = data.item;
     };
 
-    let Error = function(response) {
+    var Error = function(response) {
     };
 
     $http.get(`http://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${city}")&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`)
@@ -51,7 +52,8 @@ angular.module('weather', [])
    *  from the codeToCondition map file
    **/
   $scope.getIcon = function(code) {
-    return _this.conditions.filter(condition => condition.code == code)[0].icon;
+    if(_this.conditions[0])
+     return _this.conditions.filter(condition => condition.code == code)[0].icon;
   };
 
   /***
@@ -59,10 +61,10 @@ angular.module('weather', [])
    * this maps the condition code returned from the api to the corresponding icon
    */
   setTimeout(GetConditionMap,         
-          5000);
+          500);
 
   /***
    * load weather for the default city
    */
-  // $scope.getWeather(name);
+   $scope.getWeather($scope.name);
 }]);

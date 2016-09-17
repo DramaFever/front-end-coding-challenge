@@ -1,6 +1,6 @@
 // breakpoints
 $tiny: 25em;
-$small: 42em;
+$small: 43em;
 $medium: 75em;
 $large: 90em;
 $xlarge: 120em;
@@ -39,7 +39,7 @@ body {
 
   &.mojo {background: $mojo;}
   &.governor-bay {background: $governor-bay;}
-  &.bluewood {background: $mojo;}
+  &.bluewood {background: $bluewood;}
   &.fire-bush {background: $fire-bush;}
   &.burnt-sienna {background: $burnt-sienna;}
   &.wine-berry {background: $wine-berry;}
