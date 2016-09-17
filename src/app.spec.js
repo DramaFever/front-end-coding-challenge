@@ -1,7 +1,7 @@
 // testing controller
 describe('The weather app', function() {
   var $httpBackend,
-      $scope,
+      $scope
 ;
 
   // Set up the module
