@@ -7,6 +7,11 @@ Setup
 - Run `npm start` to start the static server
 - Open `http://localhost:8080`
 
+Instructions
+---
+
+- The full specifications and an example video of a finished test are on the page when you launch your browser.
+
 Submit
 ---
 

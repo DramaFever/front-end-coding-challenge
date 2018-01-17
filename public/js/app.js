@@ -130,5 +130,4 @@ export default class TagBrowserWidget {
     this.selectSeries(null);
     this.selectTag(null);
   }
-
 }

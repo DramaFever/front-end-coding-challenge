@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/static-server ./public -p 9000"
+    "start": "node ./node_modules/node-static/bin/cli.js ./public"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "static-server": "^3.0.0"
+    "node-static": "^0.7.10"
   }
 }
