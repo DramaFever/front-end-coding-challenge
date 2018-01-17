@@ -19,35 +19,30 @@
         </a>
         <div class="columns">
           <div class="column is-one-fifth">
-            <h3 class="subtitle">Tag List</h3>
+            <div class="content">
+              <h3 class="subtitle">Tag List</h3>
+            </div>
             <ul class="tag-list">
-              <li><span class="tag is-link">drama</span></li>
-              <li><span class="tag is-link active">selected-tag</span></li>
-              <li><span class="tag is-link">comedy</span></li>
-              <li><span class="tag is-link">fantasy</span></li>
             </ul>
           </div>
           <div class="column content">
-            <h3 class="subtitle">Series with <span>[SELECTED TAG]</span></h3>
+            <h3 class="subtitle selected-tag">No Tag Selected</span></h3>
             <ul class="matching-items-list">
-              <li>A Series Title that has the selected tag</li>
-              <li>Another Title</li>
-              <li class="active">Example style of the selected Title!</li>
-              <li>Some other Title</li>
             </ul>
           </div>
           <div class="column is-half selected-item">
-            <h3 class="subtitle">SELECTED SERIES title</h3>
-            <img src="http://via.placeholder.com/350x350" />
-            <p class="content">
-              The description for the series goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper, nunc viverra aliquam ultricies, lacus lorem semper mi, mattis convallis risus nisi id nunc. Pellentesque ultrices quis urna nec malesuada. In hac habitasse platea dictumst. Maecenas vitae lacus bibendum, lobortis mauris eget, lobortis ligula.
-            </p>
+            <div class="content">
+              <h3 class="subtitle" data-title>No Series Selected</h3>
+              <img src="http://via.placeholder.com/350x350" data-thumbnail />
+              <p data-description>
+              </p>
+            </div>
             <ul>
-              <li><strong>Rating:</strong> <span>TV-14</span></li>
-              <li><strong>Native Language Title:</strong> <span>원라인</span></li>
-              <li><strong>Source Country:</strong> <span>Korea</span></li>
-              <li><strong>Type:</strong> <span>Series</span></li>
-              <li><strong>Episodes:</strong> <span>10</span></li>
+              <li><strong>Rating:</strong> <span data-rating></span></li>
+              <li><strong>Native Language Title:</strong> <span data-native-title></span></li>
+              <li><strong>Source Country:</strong> <span data-source-country></span></li>
+              <li><strong>Type:</strong> <span data-type></span></li>
+              <li><strong>Episodes:</strong> <span data-episodes></span></li>
             </ul>
           </div>
         </div>
@@ -105,7 +100,7 @@
 
         <h3 class="subtitle">Some Tips</h3>
         <ol>
-          <li>There is at least two titles with the same name.  You will want to base your event handling on the IDs to diferentiate between these. (perhaps using something like a data- attribute)</li>
+          <li>There are two titles with the same name (<strong>The Bride of the Water God (Habaek)</strong>).  You will want to base your event handling on the IDs to diferentiate between these. (perhaps using something like a data- attribute)</li>
           <li>It will probably create more complexity to try to break this into multiple sub-components.  I wouldn't recommend it unless you are very ambitious.</li>
           <li>Do not worry about browser support outside of the latest version of chrome.</li>
         </ol>
