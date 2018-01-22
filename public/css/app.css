@@ -1,18 +1,84 @@
+@keyframes expand {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+    background: #5470b0
+  }
+}
+
 #tag-browser {
   width: 75%;
   padding: 1em;
   margin: 1em auto;
-  border: 1px solid black;
+  border-radius: .2em;
+  border: 0 solid #000;
   position: relative;
+  background: linear-gradient(183deg,#8cc8d4 6%,#17b9da 14%,#ddecec 75%)
+}
+
+.content .matching-items-list {
+  font-size: .75rem
 }
 
 #tag-browser .clear-button {
   position: absolute;
-  top: 1em;;
-  right: 1em;
+  top: 1em;
+  right: 1em
 }
 
-#tag-browser .active {
-  background: purple;
-  color: white;
+#tag-browser h2.title {
+  text-transform: capitalize;
+  font-weight: 400
+}
+
+#tag-browser .active,#tag-browser .matching-items-list .active p {
+  background: #ea11d8;
+  color: #fff
+}
+
+.tag:not(body).is-link {
+  display: inline-block;
+  width: 100%
+}
+
+#tag-browser .matching-items-list .active {
+  color: #ea11d8;
+  box-shadow: 1px 1px 6px 1px #ea11d8
+}
+
+.tag:not(body).is-link:hover {
+  cursor: pointer;
+  background: #ea11d8;
+  color: #fff
+}
+
+#tag-browser .content .matching-items-list li:hover {
+  cursor: pointer;
+  color: #ea11d8;
+  box-shadow: 1px 1px 6px 1px #ea11d8
+}
+
+#tag-browser .matching-items-list li {
+  color: #fff;
+  padding: 2px 55px 12px 14px;
+  list-style: none;
+  background-color: #333030;
+  background-size: 63px 50px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: right 5px;
+  display: inline-block;
+  width: 100%;
+  min-height: 63px;
+  border-radius: .2rem;
+  animation: expand .5s ease-in-out
+}
+
+#tag-browser .selected-item p {
+  font-size: .75rem;
+  text-align: justify
+}
+
+#selectedTags{
+  text-transform: capitalize;
 }
