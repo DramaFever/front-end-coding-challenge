@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/node-static/bin/cli.js ./public"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
