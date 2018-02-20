@@ -16,3 +16,41 @@
   background: purple;
   color: white;
 }
+ul.tag-list li {
+  cursor: pointer;
+}
+ul.matching-items-list li{
+  list-style: none;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  -webkit-animation: slide-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.title:not(:last-child), .subtitle:not(:last-child) {
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+.content ul{
+  margin-left: 0;
+}
+
+@-webkit-keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(40px);
+            transform: translateY(40px);
+  }
+}
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(40px);
+            transform: translateY(40px);
+  }
+}
