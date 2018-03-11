@@ -139,50 +139,77 @@ export default class TagBrowserWidget {
 
   initData() {
     this.data = {};
-    this.selected = {};
     this.tags = {};
   }
 
   setData(data) {
+    let id;
+    let saveTag = (tag) => {
+      if (typeof this.tags[tag] === 'undefined') {
+        this.tags[tag] = {};
+      }
+      this.tags[tag][id] = true;
+    };
+    let saveItem = (item) => {
+      id = item.id;
+      this.data[id] = item;
+      item.tags.forEach(saveTag);
+    };
+  
     this.initData();
-
-    data.forEach((item) => {
-      this.data[item.id] = item;
-      item.tags.forEach((tag) => {
-        if (typeof this.tags[tag] === 'undefined') {
-          this.tags[tag] = {};
-        }
-        this.tags[tag][item.id] = true;
-      })
-    });
+    data.forEach(saveItem);
     console.log('Data fetched', this.data);
   }
 
   getElements() {
     this.clearButton = this.config.element.querySelectorAll('.clear-button')[0];
-    this.tagList = this.config.element.querySelectorAll('.tag-list')[0];
     this.matchingItemsTitle = this.config.element.querySelectorAll('.tag-browser-matching-items__selected')[0];
-    this.matchingItemsList = this.config.element.querySelectorAll('.matching-items-list')[0];
     this.selectedItem = this.config.element.querySelectorAll('.selected-item')[0];
+    this.list = {
+      series: this.config.element.querySelectorAll('.matching-items-list')[0],
+      tag: this.config.element.querySelectorAll('.tag-list')[0]
+    }
 
     //find and store other elements you need
   }
 
   bindEventListeners() {
-    this.tagList.addEventListener('click', this.tagListClicked.bind(this));
-    this.matchingItemsList.addEventListener('click', this.matchingItemListClicked.bind(this));
-    this.clearButton.addEventListener('click', this.clearButtonClicked.bind(this));
+
+    //check to see if it was a tag that was clicked and render
+    //the list of series that have the matching tags
+    this.list[SELECTED_NAMES.TAG].addEventListener(
+      'click',
+      this.listClickedLambda({
+        renderChildView: this.renderMatchingItemsList.bind(this),
+        selectionKey: SELECTED_NAMES.TAG
+      })
+    );
 
     //bind the additional event listener for clicking on a series title
+    this.list[SELECTED_NAMES.SERIES].addEventListener(
+      'click',
+      this.listClickedLambda({
+        renderChildView: this.renderSelectedItem.bind(this),
+        selectionKey: SELECTED_NAMES.SERIES
+      })
+    );
+    this.clearButton.addEventListener('click', this.clearButtonClicked.bind(this));
   }
 
   clearButtonClicked() {
-    this.selected = {};
-    this.render();
+    this.clearSelection(SELECTED_NAMES.TAG);
+    this.reset();
   }
 
-  getMatchingItem(id) {
-    return this.data[id];
+  clearSelection(selectionKey) {
+    let listObject = this.list[selectionKey];
+
+    const hasOldSelection = typeof this.selected[selectionKey] !== 'undefined';
+
+    if (hasOldSelection) {
+      listObject.querySelectorAll('[data-item="' + this.selected[selectionKey] + '"]')[0]
+        .classList.remove('active');
+    }
   }
 
   getSortedIds(a, b) {
@@ -201,45 +228,34 @@ export default class TagBrowserWidget {
     return 0;
   }
 
-  listClicked({ event, listObject, renderChildView, selectionKey }) {
-    let target = event.target;
-    let id = target.attributes['data-item'];
-
-    const hasOldSelection = typeof this.selected[selectionKey] !== 'undefined';
-    const hasNewSelection = typeof id !== 'undefined' && (
-      !hasOldSelection || id.value !== this.selected[selectionKey]
-    );
-
-    if (hasNewSelection) {
-      this.clearButton.removeAttribute('disabled');
-      if (hasOldSelection) {
-        listObject.querySelectorAll('[data-item="' + this.selected[selectionKey] + '"]')[0]
-          .classList.remove('active');
+  listClickedLambda({ renderChildView, selectionKey }) {
+    return (event) => {
+      let listObject = this.list[selectionKey];
+      let target = event.target;
+      let id = target.attributes['data-item'];
+  
+      const hasOldSelection = typeof this.selected[selectionKey] !== 'undefined';
+      const hasNewSelection = typeof id !== 'undefined' && (
+        !hasOldSelection || id.value !== this.selected[selectionKey]
+      );
+  
+      if (hasNewSelection) {
+        this.clearButton.removeAttribute('disabled');
+        this.renderSelection(selectionKey, target);
+        this.selected[selectionKey] = id.value;
+        renderChildView(id.value);
       }
-      target.classList.add('active');
-      this.selected[selectionKey] = id.value;
-      renderChildView(id.value);
-    }
-  }
-
-  matchingItemListClicked(event) {
-    return this.listClicked({
-      event: event,
-      listObject: this.matchingItemsList,
-      renderChildView: this.renderSelectedItem.bind(this),
-      selectionKey: SELECTED_NAMES.SERIES
-    });
+    };
   }
 
   render() {
-    this.clearButton.setAttribute('disabled', 'disabled');
-    this.tagList.innerHTML = Object.keys(this.tags).sort().map(this.renderTag.bind(this)).join(' ');
-    this.renderMatchingItemsList();
+    this.reset();
+    this.list[SELECTED_NAMES.TAG].innerHTML = Object.keys(this.tags).sort().map(this.renderTag.bind(this)).join(' ');
     //render the list of tags from this.data into this.tagList
   }
 
   renderMatchingItem(id) {
-    return this.TagBrowserView.matchingItem({ item: this.getMatchingItem(id) });
+    return this.TagBrowserView.matchingItem({ item: this.data[id] });
   }
 
   renderMatchingItemsList(tag) {
@@ -252,9 +268,9 @@ export default class TagBrowserWidget {
       if (hasOldSeriesSelection) {
         delete this.selected[SELECTED_NAMES.SERIES];
       }
-      this.matchingItemsList.innerHTML = sortedIds.map(this.renderMatchingItem.bind(this)).join(' ');
+      this.list[SELECTED_NAMES.SERIES].innerHTML = sortedIds.map(this.renderMatchingItem.bind(this)).join(' ');
     } else {
-      this.matchingItemsList.innerHTML = '';
+      this.list[SELECTED_NAMES.SERIES].innerHTML = '';
     }
     this.matchingItemsTitle.innerHTML = this.TagBrowserView.matchingItemsTitle({ tag: tag });
     this.renderSelectedItem();
@@ -266,19 +282,22 @@ export default class TagBrowserWidget {
     });
   }
 
+  renderSelection(selectionKey, target) {
+    const hasTarget = typeof target !== 'undefined';
+
+    this.clearSelection(selectionKey);
+    if (hasTarget) {
+      target.classList.add('active');
+    }
+  }
+
   renderTag(tag) {
     return this.TagBrowserView.tag({ tag: tag });
   }
 
-  tagListClicked(event) {
-    console.log('tag list (or child) clicked', event);
-    return this.listClicked({
-      event: event,
-      listObject: this.tagList,
-      renderChildView: this.renderMatchingItemsList.bind(this),
-      selectionKey: SELECTED_NAMES.TAG
-    });
-    //check to see if it was a tag that was clicked and render
-    //the list of series that have the matching tags
+  reset() {
+    this.clearButton.setAttribute('disabled', 'disabled');
+    this.selected = {};
+    this.renderMatchingItemsList();
   }
 }
