@@ -1,9 +1,20 @@
+@font-face {
+  font-family: "Noto Sans Display";
+  src: url("NotoSansDisplay-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Noto Sans CJK KR";
+  src: url("NotoSansCJKkr-Regular-Alphabetic.woff") format("woff"), url("NotoSansCJKkr-Regular-Alphabetic.ttf") format("truetype");
+}
+
 #tag-browser {
   width: 75%;
   padding: 1em;
   margin: 1em auto;
   border: 1px solid black;
   position: relative;
+  font-family: "Noto Sans Display";
 }
 
 #tag-browser .clear-button {
@@ -15,4 +26,56 @@
 #tag-browser .active {
   background: purple;
   color: white;
+}
+
+#tag-browser .is-link {
+  cursor: pointer;
+}
+
+#tag-browser .is-link.active {
+  cursor: auto;
+  transition: background-color 1s ease;
+}
+
+#tag-browser .tag.is-link:hover {
+  text-decoration: underline;
+}
+
+#tag-browser .tag.is-link.active:hover {
+  text-decoration: none;
+}
+
+#tag-browser .tag-browser-matching-item {
+  color: #3273dc;
+}
+
+#tag-browser .tag-browser-matching-item:hover {
+  transition: color 0.5s ease;
+  transition: font-size 0.5s ease;
+  color: black;
+  font-size: 1.25rem;
+}
+
+#tag-browser .tag-browser-matching-item.active {
+  transition: background-color 1s ease;
+  margin-left: -32px;
+  padding-left: 32px;
+}
+
+#tag-browser .tag-browser-matching-item.active,
+#tag-browser .tag-browser-matching-item.active:hover {
+  color: white;
+}
+
+body .tag-browser__i18n {
+  font-family: "Noto Sans CJK KR";
+}
+
+.tag:hover {
+  transition: margin 0.5s ease;
+  transition: font-size 0.5s ease;
+  transition: height 0.5s ease;
+  margin-top: 0.25rem;
+  font-size: 1rem;
+  height: 2.5rem;
 }
