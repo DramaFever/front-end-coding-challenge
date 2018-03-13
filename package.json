@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/node-static/bin/cli.js ./public"
+    "start": "node ./node_modules/node-static/bin/cli.js ./public",
+    "dev": "http-server ./public"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "http-server": "^0.11.1",
     "node-static": "^0.7.10"
   },
   "engines": {
