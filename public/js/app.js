@@ -53,7 +53,7 @@ export default class TagBrowserWidget {
   }
 
 
-  // Methods for getting Data
+  // Methods for mutating the Data
 
   compileTagArray(data) {
     let tagArray = [];
@@ -172,3 +172,4 @@ export default class TagBrowserWidget {
 //          off of changes to state instead of existence of params,
 //        - Style series column
 //        - Add Error handling for data loading
+//        - Deep linking since we're using Anchor tags?
