@@ -32,3 +32,7 @@
   .matching-items-list li:hover {
     color: darkblue;
   }
+
+.clear-button {
+  display: none;
+}
