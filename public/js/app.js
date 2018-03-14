@@ -60,6 +60,9 @@ export default class TagBrowserWidget {
     //render the list of tags from this.data into this.tagList
     this.tags = dataHandler.extractTags(this.data)
     this.tagList.innerHTML = templating.generateTagsMarkup(this.tags)
+    
+    // grab the first `active` and pretend it was clicked on
+    this.tagWasClicked(this.tags[0])
   }
 
   tagListClicked(event) {
@@ -73,15 +76,11 @@ export default class TagBrowserWidget {
     $target.toggleClass('active', true)
 
     const targetTag = $target.text().trim()
-    console.log('tag list item clicked ->', $target);
-    
-    const matchedSeries = dataHandler.findByTag(this.data, targetTag)
-    //check to see if it was a tag that was clicked and render
-    //the list of series that have the matching tags
+    this.tagWasClicked(targetTag)
   }
 
-  setSelectedTag($tagItem) {
-    const tagTitle = $tagItem.text()
-
+  tagWasClicked(tag) {
+    const matchedSeries = dataHandler.findByTag(this.data, tag)
+    this.titlesList.innerHTML = templating.generateTitlesMarkup(matchedSeries)
   }
 }

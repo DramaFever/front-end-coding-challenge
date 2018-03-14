@@ -24,8 +24,8 @@ const tagMarkup = (tag, index) => {
     </span>
   </li>`
 }
-const titleMarkup = (title, index) => {
-  return `<li class="${index === 0 ? 'active': ''}">${title}</li>`
+const titleMarkup = (item, index) => {
+  return `<li class="${index === 0 ? 'active': ''}">${item.title}</li>`
 }
 
 export default {
