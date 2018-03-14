@@ -12,7 +12,23 @@
   right: 1em;
 }
 
+#tag-browser .tag {
+  text-decoration: none;
+}
+  #tag-browser .tag:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
 #tag-browser .active {
   background: purple;
   color: white;
 }
+
+.matching-items-list li {
+  cursor: pointer;
+  color: steelblue;
+}
+  .matching-items-list li:hover {
+    color: darkblue;
+  }
