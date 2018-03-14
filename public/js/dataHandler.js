@@ -15,6 +15,7 @@ const extractTags = items => {
 
 const findByTag = (items, tag) => {
   return items.filter(item => item.tags.indexOf(tag) !== -1)
+              .sort((a,b) => a.title > b.title)
 }
 
 export default {

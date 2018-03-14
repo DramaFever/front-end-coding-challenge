@@ -41,6 +41,7 @@ export default class TagBrowserWidget {
   getElements() {
     this.tagList = this.config.element.querySelectorAll('.tag-list')[0];
     this.titlesList = this.config.element.querySelectorAll('.matching-items-list')[0];
+    this.selectedTag = this.config.element.querySelectorAll('.content .subtitle')[1];
   }
 
   reloadElements() {
@@ -48,21 +49,23 @@ export default class TagBrowserWidget {
 
     // Cached jquery objects.
     this.$tagListItems = $(this.tagListItems)
+
+    this.titlesList.innerHTML = ''
+    this.selectedTag.innerText = 'No Tag Selected'
+    // grab the first `active` and pretend it was clicked on
+    // this.tagWasClicked(this.tags[0])
   }
 
   bindEventListeners() {
     this.tagList.addEventListener('click', this.tagListClicked.bind(this));
-
+    this.titlesList.addEventListener('click', this.titleListClicked.bind(this))
     //bind the additional event listener for clicking on a series title
   }
 
   render() {
     //render the list of tags from this.data into this.tagList
     this.tags = dataHandler.extractTags(this.data)
-    this.tagList.innerHTML = templating.generateTagsMarkup(this.tags)
-    
-    // grab the first `active` and pretend it was clicked on
-    this.tagWasClicked(this.tags[0])
+    this.tagList.innerHTML = templating.generateTagsMarkup(this.tags, false)
   }
 
   tagListClicked(event) {
@@ -72,15 +75,25 @@ export default class TagBrowserWidget {
     }
 
     // Deactivate everything, toggle active on target.
-    this.$tagListItems.toggleClass('active', false)
-    $target.toggleClass('active', true)
+    this.toggleActive(this.$tagListItems, $target)
 
     const targetTag = $target.text().trim()
     this.tagWasClicked(targetTag)
   }
 
+  toggleActive(deactivateItems, target) {
+    deactivateItems.toggleClass('active', false)
+    target.toggleClass('active', true)
+  }
+
   tagWasClicked(tag) {
     const matchedSeries = dataHandler.findByTag(this.data, tag)
-    this.titlesList.innerHTML = templating.generateTitlesMarkup(matchedSeries)
+    this.selectedTag.innerText = `"${tag}"`
+    this.titlesList.innerHTML = templating.generateTitlesMarkup(matchedSeries, false)
+  }
+
+  titleListClicked(event) {
+    const $matchingItems = $('.matching-items-list li')
+    this.toggleActive($matchingItems, $(event.target))
   }
 }

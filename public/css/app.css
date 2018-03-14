@@ -8,8 +8,9 @@
 
 #tag-browser .clear-button {
   position: absolute;
-  top: 1em;;
+  top: 1em;
   right: 1em;
+  display: none;
 }
 
 #tag-browser .tag {
@@ -22,17 +23,13 @@
 
 #tag-browser .active {
   background: purple;
-  color: white;
 }
 
 .matching-items-list li {
   cursor: pointer;
   color: steelblue;
+  font-size: 0.75rem;
 }
   .matching-items-list li:hover {
     color: darkblue;
   }
-
-.clear-button {
-  display: none;
-}

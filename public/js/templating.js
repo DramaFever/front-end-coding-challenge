@@ -19,7 +19,7 @@ const elementRepeater = (items, renderMethod) => {
 // Individual elements.
 const tagMarkup = (tag, index) => {
   return `<li>
-    <span class="tag is-link ${index === 0 ? 'active' : ''}">
+    <span class="tag is-link">
       ${tag}
     </span>
   </li>`
