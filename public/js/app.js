@@ -1,4 +1,5 @@
-import templateRender from '/js/templateRender.js'
+import templating from '/js/templating.js'
+import dataHandler from '/js/dataHandler.js'
 
 export default class TagBrowserWidget {
   constructor(config) {
@@ -56,21 +57,8 @@ export default class TagBrowserWidget {
 
   render() {
     //render the list of tags from this.data into this.tagList
-    this.tags = this.extractTags(this.data)
-    this.tagList.innerHTML = templateRender.tagsMarkup(this.tags)
-  }
-
-  /**
-   * Remove tags
-   * @param {Object} array of items.
-   * @return {Object} array of sorted, unique tags pulled from items.
-   */
-  extractTags(items) {
-    let tags = []
-    items.forEach(item => {
-      tags = tags.concat(item.tags)
-    })
-    return tags.unique().sort()
+    this.tags = dataHandler.extractTags(this.data)
+    this.tagList.innerHTML = templating.generateTagsMarkup(this.tags)
   }
 
   tagListClicked(event) {
