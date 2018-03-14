@@ -13,6 +13,11 @@ const extractTags = items => {
   return tags.unique().sort()
 }
 
+const findByTag = (items, tag) => {
+  return items.filter(item => item.tags.indexOf(tag) !== -1)
+}
+
 export default {
-  extractTags
+  extractTags,
+  findByTag
 }

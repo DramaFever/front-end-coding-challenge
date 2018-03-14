@@ -1,14 +1,14 @@
 'use strict'
 
 const generateTagsMarkup = tags => {
-  return buildElementsMarkup(tags, tagMarkup)
+  return elementRepeater(tags, tagMarkup)
 }
 
 const generateTitlesMarkup = titles => {
-  return buildElementsMarkup(titles, titleMarkup)
+  return elementRepeater(titles, titleMarkup)
 }
 
-const buildElementsMarkup = (items, renderMethod) => {
+const elementRepeater = (items, renderMethod) => {
   let html = ''
   items.forEach((item, index) => {
     html += renderMethod(item, index)
@@ -17,8 +17,6 @@ const buildElementsMarkup = (items, renderMethod) => {
 }
 
 // Individual elements.
-
-
 const tagMarkup = (tag, index) => {
   return `<li>
     <span class="tag is-link ${index === 0 ? 'active' : ''}">

@@ -40,6 +40,7 @@ export default class TagBrowserWidget {
 
   getElements() {
     this.tagList = this.config.element.querySelectorAll('.tag-list')[0];
+    this.titlesList = this.config.element.querySelectorAll('.matching-items-list')[0];
   }
 
   reloadElements() {
@@ -70,9 +71,11 @@ export default class TagBrowserWidget {
     // Deactivate everything, toggle active on target.
     this.$tagListItems.toggleClass('active', false)
     $target.toggleClass('active', true)
-    
+
+    const targetTag = $target.text().trim()
     console.log('tag list item clicked ->', $target);
     
+    const matchedSeries = dataHandler.findByTag(this.data, targetTag)
     //check to see if it was a tag that was clicked and render
     //the list of series that have the matching tags
   }
