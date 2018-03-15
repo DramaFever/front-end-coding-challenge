@@ -13,6 +13,10 @@
   display: none;
 }
 
+#tag-browser.tag-browser-active .clear-button {
+  display: block;
+}
+
 #tag-browser .tag {
   text-decoration: none;
 }

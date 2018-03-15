@@ -13,12 +13,18 @@ const extractTags = items => {
   return tags.unique().sort()
 }
 
+// Filter by matching tags and sort by the title field.
 const findByTag = (items, tag) => {
   return items.filter(item => item.tags.indexOf(tag) !== -1)
               .sort((a,b) => a.title > b.title)
 }
 
+const findById = (items, id) => {
+  return items.filter(item => item.id === id)[0] || {}
+}
+
 export default {
   extractTags,
-  findByTag
+  findByTag,
+  findById
 }

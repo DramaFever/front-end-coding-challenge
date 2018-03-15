@@ -41,7 +41,10 @@ export default class TagBrowserWidget {
   getElements() {
     this.tagList = this.config.element.querySelectorAll('.tag-list')[0];
     this.titlesList = this.config.element.querySelectorAll('.matching-items-list')[0];
-    this.selectedTag = this.config.element.querySelectorAll('.content .subtitle')[1];
+    this.selectedTagTitle = this.config.element.querySelectorAll('.content .subtitle')[1];
+    this.selectedSeriesTitle = this.config.element.querySelectorAll('.content .subtitle')[2];
+    this.selectedSeriesContainer = this.config.element.querySelectorAll('.selected-item')[0];
+    this.clearButton = this.config.element.querySelectorAll('.clear-button')[0];
   }
 
   reloadElements() {
@@ -51,7 +54,8 @@ export default class TagBrowserWidget {
     this.$tagListItems = $(this.tagListItems)
 
     this.titlesList.innerHTML = ''
-    this.selectedTag.innerText = 'No Tag Selected'
+    this.selectedTagTitle.innerText = 'No Tag Selected'
+    this.selectedSeriesTitle.innerText = 'No Series Selected'
     // grab the first `active` and pretend it was clicked on
     // this.tagWasClicked(this.tags[0])
   }
@@ -59,7 +63,7 @@ export default class TagBrowserWidget {
   bindEventListeners() {
     this.tagList.addEventListener('click', this.tagListClicked.bind(this));
     this.titlesList.addEventListener('click', this.titleListClicked.bind(this))
-    //bind the additional event listener for clicking on a series title
+    this.clearButton.addEventListener('click', this.clearButtonClicked.bind(this))
   }
 
   render() {
@@ -68,6 +72,7 @@ export default class TagBrowserWidget {
     this.tagList.innerHTML = templating.generateTagsMarkup(this.tags, false)
   }
 
+  // Handlers for click events.
   tagListClicked(event) {
     const $target = $(event.target)
     if ($target[0].nodeName !== 'SPAN' || $target.hasClass('active')) {
@@ -81,19 +86,53 @@ export default class TagBrowserWidget {
     this.tagWasClicked(targetTag)
   }
 
+  titleListClicked(event) {
+    const $target = $(event.target)
+    if ($target[0].nodeName !== 'LI' || $target.hasClass('active')) {
+      return false
+    }
+
+    const $matchingItems = $('.matching-items-list li')
+    this.toggleActive($matchingItems, $target)
+
+    this.titleListWasClicked(event)
+  }
+
+  // Templating after click events.
+  tagWasClicked(tag) {
+    const matchedSeries = dataHandler.findByTag(this.data, tag)
+    this.selectedTagTitle.innerText = `"${tag}"`
+    this.titlesList.innerHTML = templating.generateTitlesMarkup(matchedSeries, false)
+
+    this.setBrowserActive(true)
+  }
+
+  titleListWasClicked(event) {
+    const $target = $(event.target)
+    const seriesId = $target.data('id')
+    const seriesData = dataHandler.findById(this.data, seriesId)
+    this.selectedSeriesContainer.innerHTML = templating.generateSeriesMarkup(seriesData)
+  }
+
   toggleActive(deactivateItems, target) {
     deactivateItems.toggleClass('active', false)
     target.toggleClass('active', true)
   }
 
-  tagWasClicked(tag) {
-    const matchedSeries = dataHandler.findByTag(this.data, tag)
-    this.selectedTag.innerText = `"${tag}"`
-    this.titlesList.innerHTML = templating.generateTitlesMarkup(matchedSeries, false)
+  setBrowserActive(active) {
+    if (active) {
+      this.config.element.classList.add('tag-browser-active')
+    } else {
+      this.config.element.classList.remove('tag-browser-active')
+    }
   }
-
-  titleListClicked(event) {
-    const $matchingItems = $('.matching-items-list li')
-    this.toggleActive($matchingItems, $(event.target))
+  
+  // TODO : uhh make this work ?
+  clearButtonClicked() {
+    // Re-render the list
+    this.render()
+    this.reloadElements()
+    this.selectedSeriesContainer.innerHTML = templating.generateSeriesMarkup()
+    this.setBrowserActive(false)
   }
 }
