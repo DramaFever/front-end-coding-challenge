@@ -56,6 +56,7 @@ export default class TagBrowserWidget {
     this.titlesList.innerHTML = ''
     this.selectedTagTitle.innerText = 'No Tag Selected'
     this.selectedSeriesTitle.innerText = 'No Series Selected'
+    this.selectedSeriesContainer.innerHTML = templating.generateSeriesMarkup()
     // grab the first `active` and pretend it was clicked on
     // this.tagWasClicked(this.tags[0])
   }
@@ -88,13 +89,12 @@ export default class TagBrowserWidget {
 
   titleListClicked(event) {
     const $target = $(event.target)
-    if ($target[0].nodeName !== 'LI' || $target.hasClass('active')) {
+    if ($target[0].nodeName !== 'A' || $target.hasClass('active')) {
       return false
     }
 
-    const $matchingItems = $('.matching-items-list li')
+    const $matchingItems = $('.matching-items-list a')
     this.toggleActive($matchingItems, $target)
-
     this.titleListWasClicked(event)
   }
 
@@ -103,14 +103,12 @@ export default class TagBrowserWidget {
     const matchedSeries = dataHandler.findByTag(this.data, tag)
     this.selectedTagTitle.innerText = `"${tag}"`
     this.titlesList.innerHTML = templating.generateTitlesMarkup(matchedSeries, false)
-
     this.setBrowserActive(true)
   }
 
   titleListWasClicked(event) {
     const $target = $(event.target)
-    const seriesId = $target.data('id')
-    const seriesData = dataHandler.findById(this.data, seriesId)
+    const seriesData = dataHandler.findById(this.data, $target.data('id'))
     this.selectedSeriesContainer.innerHTML = templating.generateSeriesMarkup(seriesData)
   }
 

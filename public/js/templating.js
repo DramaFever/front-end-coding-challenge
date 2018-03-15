@@ -54,7 +54,7 @@ const tagMarkup = (tag, index) => {
   </li>`
 }
 const titleMarkup = (item, index) => {
-  return `<li data-id="${item.id}" class="${item.index === 0 ? 'active': ''}">${item.title}</li>`
+  return `<li class="${item.index === 0 ? 'active': ''}"><a data-id="${item.id}" class="tag is-link">${item.title}</span></li>`
 }
 
 export default {

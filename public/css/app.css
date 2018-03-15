@@ -37,3 +37,10 @@
   .matching-items-list li:hover {
     color: darkblue;
   }
+  .matching-items-list li a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+    max-width: 12rem;
+  }
