@@ -8,11 +8,39 @@
 
 #tag-browser .clear-button {
   position: absolute;
-  top: 1em;;
+  top: 1em;
   right: 1em;
+  display: none;
 }
+
+#tag-browser.tag-browser-active .clear-button {
+  display: block;
+}
+
+#tag-browser .tag {
+  text-decoration: none;
+}
+  #tag-browser .tag:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 
 #tag-browser .active {
   background: purple;
-  color: white;
 }
+
+.matching-items-list li {
+  cursor: pointer;
+  color: steelblue;
+  font-size: 0.75rem;
+}
+  .matching-items-list li:hover {
+    color: darkblue;
+  }
+  .matching-items-list li a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+    max-width: 12rem;
+  }
