@@ -16,3 +16,27 @@
   background: purple;
   color: white;
 }
+
+.description {
+  background: purple;
+  color: #fff;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.meta-details {
+  background: #3273dc;
+  color: #fff;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.meta-details li strong {
+  color: #fff;
+}
+
+.tag-list-item:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
