@@ -12,7 +12,11 @@
   right: 1em;
 }
 
-#tag-browser .active {
+#tag-browser .is-active {
   background: purple;
   color: white;
+}
+
+#tag-browser .tag-list .tag {
+	margin-bottom: 0.5em;
 }
