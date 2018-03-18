@@ -1,13 +1,16 @@
-import {bindAll} from '/js/util/helpers.js';
+import {bindAll, emptyAll} from '/js/util/helpers.js';
+import Tag from '/js/components/tag.js';
+import Show from '/js/components/show.js';
 
 export default class TagBrowserWidget {
   constructor(config) {
     this.config = config;
     this.shows = [];
     this.tags = new Map();
+    this.selectedShow = 'NA';
+    this.selectedTag = 'NA';
 
-
-    bindAll(this,[
+    bindAll(this, [
       'renderShowList',
       'renderShow',
       'tagListClicked',
@@ -16,6 +19,7 @@ export default class TagBrowserWidget {
       'getElements',
       'bindEventListeners',
       'renderTags',
+      'clear',
     ]);
 
     this.fetchData()
@@ -71,34 +75,76 @@ export default class TagBrowserWidget {
     this.showTitleElem = $(this.config.element).find('.show__title');
     this.tagTitleElem = $(this.config.element).find('.tag-title');
     this.showInfoElem = $(this.config.element).find('.show');
-    // this.tagListElem =
+    this.clearBtn = $(this.config.element).find('.clear-button');
+  }
 
-    // console.log(this.tagListElem)
-    //find and store other elements you need
+  clear() {
+    this.selectedShow = 'NA';
+    this.selectedTag = 'NA';
+
+    //remove toggled states
+    $('.tag.active').toggleClass('active');
+    $('.tag--show.active').toggleClass('active');
+
+    //empty state
+    emptyAll([
+      this.showListElem,
+      this.showInfoElem,
+      this.tagTitleElem,
+    ]);
+
+    //set placeholders
+    this.showListElem.append($('<li>No Tag Selected</li>'));
+    this.showInfoElem.append($('<li>No Show Selected</li>'));
+    this.clearBtn.attr("disabled",true);
+
   }
 
   bindEventListeners() {
-    this.tagListElem.on('click', this.tagListClicked);
-    this.showListElem.on('click', this.showListClicked);
+    //tag events are bound on component level
+    this.clearBtn.on('click', this.clear);
   }
 
+  //todo: combine tagListClicked + showListClicked into one function that takes
+  //config as a param.
   tagListClicked({target}) {
     target = $(target);
     const name = target.attr('data-name');
+
+    //prevent clicking outside of spans
+    if(!name){
+      return
+    }
+
     this.tagTitleElem.text(name);
+    const currItems = this.tags.get(name);
 
     //remove previous active item
-    $('.tag.active').toggleClass('active');
+    this.tagListElem.find('.tag.active').toggleClass('active');
     //add current active item
     target.toggleClass('active');
-    const currItems = this.tags.get(name);
+
+    this.selectedTag = name;
+    this.clearBtn.attr("disabled",false);
     this.renderShowList(currItems);
   }
 
+
   showListClicked({target}) {
-    const name = $(target).attr('data-name');
+    target = $(target);
+    const name = target.attr('data-name');
+
+    //prevent clicking outside of spans
+    if(!name){
+      return
+    }
+
     const currShow = this.shows[name];
     this.showTitleElem.text(currShow.title);
+    this.selectedShow = name;
+
+    this.showListElem.find('.tag.active').toggleClass('active');
+    target.toggleClass('active');
     this.renderShow(currShow);
   }
 
@@ -106,50 +152,40 @@ export default class TagBrowserWidget {
     //render the list of tags from this.data into this.tagList
     const tagElems = [];
     for (const [key] of this.tags) {
-      tagElems.push($(`<li><span class='tag' data-name="${key}" class="tag is-link">${key}</span></li>`))
+      tagElems.push(new Tag({
+        name: key,
+        id: key,
+        onClick: this.tagListClicked,
+        clickConfig: {
+
+        },
+        className: 'tag tag--genre'
+      }))
     }
     this.tagListElem.append(tagElems)
   }
 
   renderShowList(items) {
-
     this.showListElem.empty();
     const showElems = [];
     for (const id of items) {
       const {title} = this.shows[id];
-      showElems.push($(`<li data-name="${id}" >${title}</li>`))
+      showElems.push(new Tag({
+          name: title,
+          id,
+          onClick: this.showListClicked,
+          className: 'tag tag--show'
+        })
+      )
     }
-    this.showListElem.append(showElems)
+    this.showListElem.append(showElems);
+    //todo: animation here
+
   }
 
-  renderShow(show) {
+  renderShow(showData) {
     this.showInfoElem.empty();
-    const {
-      type,
-      rating,
-      episodes,
-      sourceCountry,
-      description,
-      title,
-      nativeLanguageTitle,
-      thumbnail
-    } = show;
-    const showTmpl = `<div class="content">
-              <h3 class="subtitle show__title">${title}</h3>
-              <img class='show__img' src="${thumbnail}" />
-              <p class='show__desc'>
-              ${description}
-              </p>
-            </div>
-            <ul class='show__details'>
-              <li><strong>Rating:</strong> <span>${rating}</span></li>
-              <li><strong>Native Language Title:</strong> <span>${nativeLanguageTitle}</span></li>
-              <li><strong>Source Country:</strong> <span>${sourceCountry}</span></li>
-              <li><strong>Type:</strong> <span>${type}</span></li>
-              <li><strong>Episodes:</strong> <span>${episodes}</span></li>
-            </ul>
-          `;
-    this.showInfoElem.append(showTmpl)
+    this.showInfoElem.append(new Show(showData));
   }
 
 }

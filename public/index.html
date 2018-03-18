@@ -2,8 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css">
     <link rel="stylesheet" type="text/css" href="/css/app.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css">
+
     <title>WBDL Front-End Coding Challenge</title>
   </head>
   <body>
@@ -14,24 +15,26 @@
 
       <div id="tag-browser">
         <h2 class="title">tag browser</h2>
-        <a class="button clear-button">
+        <a class="button primary clear-button" disabled>
           Clear
         </a>
         <div class="columns">
           <div class="column is-one-fifth">
             <div class="content">
-              <h3 class="subtitle">Tag List</h3>
+              <h3 class="subtitle">Genre Tags</h3>
             </div>
             <ul class="tag-list">
-
             </ul>
           </div>
           <div class="column content">
-            <h3 class="subtitle tag-title">[SELECTED TAG]</h3>
+            <h3 class="subtitle tag-title"></h3>
             <ul class="matching-items-list">
+              <li>No Tag Selected</li>
             </ul>
           </div>
-          <div class="column show is-half selected-item"></div>
+          <div class="column show is-half selected-item">
+            <li>No Show Selected</li>
+          </div>
         </div>
       </div>
 

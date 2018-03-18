@@ -10,3 +10,9 @@ export function bindAll(context, funcArr){
     context[func] = context[func].bind(context);
   }
 }
+
+export function emptyAll(elemArr){
+  for (const elem of elemArr){
+    elem.empty();
+  }
+}
