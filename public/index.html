@@ -7,117 +7,71 @@
     <title>WBDL Front-End Coding Challenge</title>
   </head>
   <body>
-    <div class="container">
-      <h1 class="title">
-        WBDL Front-End Coding Challenge
-      </h1>
-
-      <div id="tag-browser">
-				<h2 class="title">tag browser</h2>
-				<button class="button clear-button js-clear-button" disabled>
-          Clear
-        </button>
-        <div class="columns">
-          <div class="column is-one-fifth">
-            <div class="content">
-              <h3 class="subtitle">Tag List</h3>
+    <section class="hero is-light">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            WBDL Front-End Coding Challenge
+          </h1>
+          <h2 class="subtitle">
+            Brad Dougherty’s Solution
+          </h2>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div id="tag-browser">
+          <h2 class="title">Tag Browser</h2>
+          <button class="button clear-button js-clear-button" disabled>
+            Clear
+          </button>
+          <div class="columns">
+            <div id="tag-list" class="column is-one-fifth">
+              <div class="content">
+                <h3 class="subtitle">Tag List</h3>
+              </div>
+              <ul class="tag-list"></ul>
             </div>
-            <ul class="tag-list"></ul>
-          </div>
-          <div class="column content">
-            <h3 class="subtitle items-list-title">No Tag Selected</h3>
-            <ul class="matching-items-list"></ul>
-          </div>
-          <div class="column is-half selected-item">
-            <div class="content">
-              <h3 class="subtitle js-series-title">No Title Selected</h3>
-              <img src="https://via.placeholder.com/350x350" class="js-series-image" />
-              <p class="js-series-description"></p>
+            <div id="item-list" class="column content">
+              <h3 class="subtitle items-list-title">No Tag Selected</h3>
+              <ul class="matching-items-list"></ul>
             </div>
-            <ul>
-              <li><strong>Rating:</strong> <span class="js-series-rating"></span></li>
-              <li><strong>Native Language Title:</strong> <span class="js-series-native-language-title"></span></li>
-              <li><strong>Source Country:</strong> <span class="js-series-source-country"></span></li>
-              <li><strong>Type:</strong> <span class="js-series-type"></span></li>
-              <li><strong>Episodes:</strong> <span class="js-series-number-of-episodes"></span></li>
-            </ul>
+            <div id="item" class="column is-half selected-item">
+              <div class="box">
+                <div class="content">
+                  <h3 class="subtitle js-series-title">No Title Selected</h3>
+                  <img src="https://via.placeholder.com/350x350" alt="" class="js-series-image" />
+                  <p class="js-series-description"></p>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Rating:</strong>
+                    <span class="js-series-rating"></span>
+                  </li>
+                  <li>
+                    <strong>Native Language Title:</strong>
+                    <span class="js-series-native-language-title"></span>
+                  </li>
+                  <li>
+                    <strong>Source Country:</strong>
+                    <span class="js-series-source-country"></span>
+                  </li>
+                  <li>
+                    <strong>Type:</strong>
+                    <span class="js-series-type"></span>
+                  </li>
+                  <li>
+                    <strong>Episodes:</strong>
+                    <span class="js-series-number-of-episodes"></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-
-      <hr />
-
-
-      <div class="content">
-        <h3 class="subtitle">Specification</h3>
-        <p>
-          Create a series/movie tag browser using the provided data.
-        </p>
-        <hr />
-        The tag list
-        <ol>
-          <li>Render a list of all the tags from all the series into the '.tag-list' ul.</li>
-          <li>There should not be duplicate tags</li>
-          <li>The list should be alphabetized</li>
-        </ol>
-
-        The Series List
-        <ol>
-          <li>When a tag is selected (clicked), render the list of series with the matching tag into the '.matching-items-list' ul</li>
-        </ol>
-
-        The Selected Series Data
-        <ol>
-          <li>When a series is selected (clicked), render the data for that series into the '.selected-item' div</li>
-        </ol>
-
-        The Clear Button
-        <ol>
-          <li>When the clear button is clicked, clear the selected tag, clear the series list, and clear all series data.  Essentially, reset the widget.</li>
-        </ol>
-      </div>
-      <hr />
-      <div class="content">
-        <h3 class="subtitle">Dependencies</h3>
-        <ol>
-          <li><a href="http://bulma.io" target="_new">Bulma</a> is included on the page and provides basic styling.  You may add any new styles you need or remove this dependency if desired.</li>
-          <li><a href="http://jquery.com" target="_new">jQuery</a> is included on the page.  While we typically use Angular or Vue.js here at WBDL, it is important to be familiar with plain vanilla javascript (in this case, with jquery for convenience).  Please <strong>do not</strong> add additional libraries to the page (react, angular, vue, etc).</li>
-        </ol>
-      </div>
-      <hr />
-      <div class="content">
-        <h3 class="subtitle">What are we looking for?</h3>
-        <ol>
-          <li>How do you work with a dataset?</li>
-          <li>How do you handle templating/dom manipulation without a framework?</li>
-          <li>What strategies do you employ for event binding?</li>
-          <li>How do you organize a class containing the different methods for performing these tasks?</li>
-        </ol>
-
-        <h3 class="subtitle">Some Tips</h3>
-        <ol>
-          <li>There are two titles with the same name: <strong>The Bride of the Water God (Habaek)</strong>.  You will want to base your event handling on the IDs to diferentiate between these. (perhaps using something like a data- attribute)</li>
-          <li>It will probably create more complexity to try to break this into multiple sub-components.  I wouldn't recommend it unless you are very ambitious.</li>
-          <li>Do not worry about browser support outside of the latest version of chrome.</li>
-        </ol>
-
-        <h3>Bonus</h3>
-        <ol>
-          <li>It doesn't have to be pretty, but bonus points for doing some interesting styling or animations</li>
-          <li>Bonus for rendering semantically correct markup (anchors, etc)</li>
-          <li>Bonus: Render "No Tag Selected" and "No Series Selected" text when there is not a selected tag/series.</li>
-          <li>Bonus: Disable the "clear" button when there is not a selected tag/series</li>
-        </ol>
-
-        <h3>Completed Sample Video</h3>
-        <video preload="auto" controls>
-          <source src="/sample.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <hr />
-    </div>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script type="module">

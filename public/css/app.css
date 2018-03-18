@@ -1,15 +1,11 @@
 #tag-browser {
-  width: 75%;
-  padding: 1em;
-  margin: 1em auto;
-  border: 1px solid black;
   position: relative;
 }
 
 #tag-browser .clear-button {
   position: absolute;
-  top: 1em;;
-  right: 1em;
+  top: 0;
+  right: 0;
 }
 
 #tag-browser .is-active {
