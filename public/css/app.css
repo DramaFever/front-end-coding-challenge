@@ -16,3 +16,22 @@
   background: purple;
   color: white;
 }
+
+.tag-title{
+  text-transform: capitalize;
+}
+
+#tag-browser .tag{
+  text-transform: capitalize;
+  cursor: pointer;
+  height: auto ;
+  white-space: initial ;
+}
+
+#tag-browser .tag-list,
+#tag-browser .selected-item,
+#tag-browser .matching-items-list{
+  list-style-type: none ;
+   margin-left: 0em ;
+   margin-top: 0px ;
+}
