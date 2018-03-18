@@ -16,3 +16,15 @@
   background: purple;
   color: white;
 }
+
+/* Following 2 styles are to stop bullet from turning white when li highlighted making it impossible to see */
+#tag-browser .matching-items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#tag-browser .matching-items-list li::before {
+  content: "• ";
+  color: black;
+}
