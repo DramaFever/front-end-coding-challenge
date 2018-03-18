@@ -23,115 +23,22 @@
               <h3 class="subtitle">Tag List</h3>
             </div>
             <ul class="tag-list">
-              <li><span class="tag is-link">drama</span></li>
-              <li><span class="tag is-link active">selected-tag</span></li>
-              <li><span class="tag is-link">comedy</span></li>
-              <li><span class="tag is-link">fantasy</span></li>
+
             </ul>
           </div>
           <div class="column content">
-            <h3 class="subtitle">[SELECTED TAG]</h3>
+            <h3 class="subtitle tag-title">[SELECTED TAG]</h3>
             <ul class="matching-items-list">
-              <li>A Series Title</li>
-              <li>Another Title</li>
-              <li class="active">Example style of the selected Title!</li>
-              <li>Some other Title</li>
             </ul>
           </div>
-          <div class="column is-half selected-item">
-            <div class="content">
-              <h3 class="subtitle">[SELECTED SERIES TITLE]</h3>
-              <img src="http://via.placeholder.com/350x350" />
-              <p>
-                The description for the series goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper, nunc viverra aliquam ultricies, lacus lorem semper mi, mattis convallis risus nisi id nunc. Pellentesque ultrices quis urna nec malesuada. In hac habitasse platea dictumst. Maecenas vitae lacus bibendum, lobortis mauris eget, lobortis ligula.
-              </p>
-            </div>
-            <ul>
-              <li><strong>Rating:</strong> <span>TV-14</span></li>
-              <li><strong>Native Language Title:</strong> <span>원라인</span></li>
-              <li><strong>Source Country:</strong> <span>Korea</span></li>
-              <li><strong>Type:</strong> <span>Series</span></li>
-              <li><strong>Episodes:</strong> <span>10</span></li>
-            </ul>
-          </div>
+          <div class="column show is-half selected-item"></div>
         </div>
       </div>
- 
- 
-      <hr />
- 
 
-      <div class="content">
-        <h3 class="subtitle">Specification</h3>
-        <p>
-          Create a series/movie tag browser using the provided data.
-        </p>
-        <hr />
-        The tag list
-        <ol>
-          <li>Render a list of all the tags from all the series into the '.tag-list' ul.</li>
-          <li>There should not be duplicate tags</li>
-          <li>The list should be alphabetized</li>
-        </ol>
-
-        The Series List
-        <ol>
-          <li>When a tag is selected (clicked), render the list of series with the matching tag into the '.matching-items-list' ul</li>
-        </ol>
-
-        The Selected Series Data
-        <ol>
-          <li>When a series is selected (clicked), render the data for that series into the '.selected-item' div</li>
-        </ol>
-
-        The Clear Button
-        <ol>
-          <li>When the clear button is clicked, clear the selected tag, clear the series list, and clear all series data.  Essentially, reset the widget.</li>
-        </ol>
-      </div>
-      <hr />
-      <div class="content">
-        <h3 class="subtitle">Dependencies</h3>
-        <ol>
-          <li><a href="http://bulma.io" target="_new">Bulma</a> is included on the page and provides basic styling.  You may add any new styles you need or remove this dependency if desired.</li>
-          <li><a href="http://jquery.com" target="_new">jQuery</a> is included on the page.  While we typically use Angular or Vue.js here at WBDL, it is important to be familiar with plain vanilla javascript (in this case, with jquery for convenience).  Please <strong>do not</strong> add additional libraries to the page (react, angular, vue, etc).</li>
-        </ol>
-      </div>
-      <hr />
-      <div class="content">
-        <h3 class="subtitle">What are we looking for?</h3>
-        <ol>
-          <li>How do you work with a dataset?</li>
-          <li>How do you handle templating/dom manipulation without a framework?</li>
-          <li>What strategies do you employ for event binding?</li>
-          <li>How do you organize a class containing the different methods for performing these tasks?</li>
-        </ol>
-
-        <h3 class="subtitle">Some Tips</h3>
-        <ol>
-          <li>There are two titles with the same name: <strong>The Bride of the Water God (Habaek)</strong>.  You will want to base your event handling on the IDs to diferentiate between these. (perhaps using something like a data- attribute)</li>
-          <li>It will probably create more complexity to try to break this into multiple sub-components.  I wouldn't recommend it unless you are very ambitious.</li>
-          <li>Do not worry about browser support outside of the latest version of chrome.</li>
-        </ol>
-
-        <h3>Bonus</h3>
-        <ol>
-          <li>It doesn't have to be pretty, but bonus points for doing some interesting styling or animations</li>
-          <li>Bonus for rendering semantically correct markup (anchors, etc)</li>
-          <li>Bonus: Render "No Tag Selected" and "No Series Selected" text when there is not a selected tag/series.</li>
-          <li>Bonus: Disable the "clear" button when there is not a selected tag/series</li>
-        </ol>
-
-        <h3>Completed Sample Video</h3>
-        <video preload="auto" controls>
-          <source src="/sample.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <hr />
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <!--<script type="module" src="./js/util/helpers.js"></script>-->
     <script type="module">
       import TagBrowserWidget from '/js/app.js';
 
@@ -139,5 +46,9 @@
         element: document.getElementById('tag-browser')
       });
     </script>
+
+    <!--<script type="module">-->
+      <!--export default from '/js/util.js';-->
+    <!--</script>-->
   </body>
 </html>
