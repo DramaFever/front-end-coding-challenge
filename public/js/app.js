@@ -23,7 +23,7 @@ export default class TagBrowserWidget {
 
     const tags = this.data.reduce((tags, item) => tags.concat(item.tags), []);
     this.tags = [...new Set(tags)];
-    this.tags.sort();
+    this.tags.sort((a, b) => a.localeCompare(b));
 
     this.items = new Map();
     this.data.forEach((item) => this.items.set(item.id, item));
