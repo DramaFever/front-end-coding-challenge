@@ -7,13 +7,11 @@ export default class TagBrowserWidget {
       .then(() => this.getElements())
       .then(() => this.bindEventListeners())
       .then(() => this.render())
-      .catch((err) => console.error(error));
+      .catch((err) => console.error(err));
   }
 
   fetchData() {
-    return new Promise((resolve, reject) => {
-      $.get('/js/data.json', resolve);
-    });
+    return $.get('/js/data.json');
   }
 
   setData(data) {
@@ -28,7 +26,7 @@ export default class TagBrowserWidget {
   }
 
   getElements() {
-    const element = this.config.element;
+    const {element} = this.config;
 
     this.tagList = element.querySelector('.tag-list');
     this.itemsListTitle = element.querySelector('.items-list-title');
@@ -56,7 +54,7 @@ export default class TagBrowserWidget {
       return false;
     });
 
-    $(this.clearButton).on('click', (event) => {
+    $(this.clearButton).on('click', () => {
       this.clearSelection();
     });
   }
@@ -111,7 +109,7 @@ export default class TagBrowserWidget {
     let itemsListHtml = '';
 
     for (const [index, item] of items.entries()) {
-      const active = this.selectedItem == item.id ? ' is-active' : '';
+      const active = this.selectedItem === item.id ? ' is-active' : '';
       itemsListHtml += `<li style="--delay: ${index * 20}ms" class="trans-slide-in"><a data-id="${item.id}" class="item js-item${active}">${item.title}</a></li>`;
     }
 
@@ -160,7 +158,7 @@ export default class TagBrowserWidget {
 
   renderItem(item) {
     const fadeOut = (element) => {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         if (!element.classList.contains('in')) {
           resolve();
           return;
@@ -183,10 +181,10 @@ export default class TagBrowserWidget {
         }
 
         const img = new Image();
-        img.onload = () => resolve(src);
+        img.addEventListener('load', () => resolve(src));
         img.src = src;
       });
-    }
+    };
 
     fadeOut(this.seriesBox)
       .then(() => {
@@ -207,7 +205,7 @@ export default class TagBrowserWidget {
         this.seriesBox.classList.add('in');
       })
       .catch(() => {
-        // no image, do nothing
+        // No image, do nothing
       });
   }
 

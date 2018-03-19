@@ -4,14 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/node-static/bin/cli.js ./public"
+    "start": "node ./node_modules/node-static/bin/cli.js ./public",
+    "test": "xo"
   },
-  "author": "",
+  "author": "Brad Dougherty <me@brad.is>",
   "license": "ISC",
   "devDependencies": {
-    "node-static": "^0.7.10"
+    "node-static": "^0.7.10",
+    "xo": "^0.20.3"
   },
   "engines": {
     "node": ">= 6.2.0"
+  },
+  "xo": {
+    "space": true,
+    "envs": ["browser"],
+    "globals": ["$"],
+    "rules": {
+      "arrow-parens": "off"
+    }
   }
 }
