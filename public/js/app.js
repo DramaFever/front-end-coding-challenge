@@ -37,6 +37,7 @@ export default class TagBrowserWidget {
     this.matchingItemsList = element.querySelector('.matching-items-list');
     this.clearButton = element.querySelector('.js-clear-button');
 
+    this.seriesBox = element.querySelector('.js-series-box');
     this.seriesTitle = element.querySelector('.js-series-title');
     this.seriesImage = element.querySelector('.js-series-image');
     this.description = element.querySelector('.js-series-description');
@@ -65,8 +66,8 @@ export default class TagBrowserWidget {
   render() {
     let tagListHtml = '';
 
-    for (const tag of this.tags) {
-      tagListHtml += `<li><button class="js-tag tag button is-small is-link" data-tag="${tag}">${tag}</button></li>`;
+    for (const [index, tag] of this.tags.entries()) {
+      tagListHtml += `<li style="--delay: ${index * 20}ms" class="anim-slide-in"><button class="js-tag tag button is-small is-link" data-tag="${tag}">${tag}</button></li>`;
     }
 
     this.tagList.innerHTML = tagListHtml;
@@ -111,12 +112,31 @@ export default class TagBrowserWidget {
 
     let itemsListHtml = '';
 
-    for (const item of items) {
+    for (const [index, item] of items.entries()) {
       const active = this.selectedItem == item.id ? ' is-active' : '';
-      itemsListHtml += `<li><a data-id="${item.id}" class="js-item${active}">${item.title}</a></li>`;
+      itemsListHtml += `<li style="--delay: ${index * 20}ms" class="trans-slide-in"><a data-id="${item.id}" class="item js-item${active}">${item.title}</a></li>`;
     }
 
-    this.matchingItemsList.innerHTML = itemsListHtml;
+    const updateHtml = () => {
+      this.matchingItemsList.innerHTML = itemsListHtml;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          $(this.matchingItemsList).children().addClass('in');
+        });
+      });
+    };
+
+    const existingListItems = this.matchingItemsList.querySelectorAll('li');
+    if (existingListItems.length > 0) {
+      existingListItems[existingListItems.length - 1].addEventListener('transitionend', () => {
+        updateHtml();
+      });
+
+      $(existingListItems).removeClass('in');
+      return;
+    }
+
+    updateHtml();
   }
 
   onItemSelected(id) {
@@ -131,14 +151,7 @@ export default class TagBrowserWidget {
     window.location.hash = '';
     this.setSelectedItem(null);
     this.renderItem({
-      title: 'No Series Selected',
-      description: '',
-      thumbnail: 'https://via.placeholder.com/350x350',
-      rating: '',
-      nativeLanguageTitle: '',
-      sourceCountry: '',
-      type: '',
-      episodes: ''
+      title: 'No Series Selected'
     });
   }
 
@@ -148,14 +161,57 @@ export default class TagBrowserWidget {
   }
 
   renderItem(item) {
-    this.seriesTitle.innerText = item.title;
-    this.description.innerText = item.description;
-    this.seriesImage.src = item.thumbnail;
-    this.ratingLabel.innerText = item.rating;
-    this.nativeLanguageTitleLabel.innerText = item.nativeLanguageTitle;
-    this.sourceCountryLabel.innerText = item.sourceCountry;
-    this.typeLabel.innerText = item.type;
-    this.numberOfEpisodesLabel.innerText = item.episodes;
+    const fadeOut = (element) => {
+      return new Promise((resolve, reject) => {
+        if (!element.classList.contains('in')) {
+          resolve();
+          return;
+        }
+
+        const handler = () => {
+          console.log('transition ended');
+          element.removeEventListener('transitionend', handler, false);
+          resolve();
+        };
+
+        element.addEventListener('transitionend', handler, false);
+        element.classList.remove('in');
+      });
+    };
+
+    const preloadImage = (src) => {
+      return new Promise((resolve, reject) => {
+        if (!src) {
+          reject(new Error('Invalid url'));
+        }
+
+        const img = new Image();
+        img.onload = () => resolve(src);
+        img.src = src;
+      });
+    }
+
+    fadeOut(this.seriesBox)
+      .then(() => {
+        this.seriesTitle.innerText = item.title;
+      })
+      .then(() => {
+        return preloadImage(item.thumbnail);
+      })
+      .then(() => {
+        this.description.innerText = item.description;
+        this.seriesImage.src = item.thumbnail;
+        this.ratingLabel.innerText = item.rating;
+        this.nativeLanguageTitleLabel.innerText = item.nativeLanguageTitle;
+        this.sourceCountryLabel.innerText = item.sourceCountry;
+        this.typeLabel.innerText = item.type;
+        this.numberOfEpisodesLabel.innerText = item.episodes;
+
+        this.seriesBox.classList.add('in');
+      })
+      .catch(() => {
+        // no image, do nothing
+      });
   }
 
   toggleClearButton(enabled) {
