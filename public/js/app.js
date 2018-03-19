@@ -8,8 +8,6 @@ export default class TagBrowserWidget {
       .then(() => this.bindEventListeners())
       .then(() => this.render())
       .catch((err) => console.error(error));
-
-    console.log('Widget Instance Created');
   }
 
   fetchData() {
@@ -169,7 +167,6 @@ export default class TagBrowserWidget {
         }
 
         const handler = () => {
-          console.log('transition ended');
           element.removeEventListener('transitionend', handler, false);
           resolve();
         };
