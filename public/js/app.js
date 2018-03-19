@@ -101,6 +101,7 @@ export default class TagBrowserWidget {
 
   setSelectedTag(tag) {
     this.setSelected(this.tagList, `[data-tag="${tag}"]`);
+    window.location.hash = 'item-list';
   }
 
   renderItemsList(tag, items) {
@@ -154,6 +155,7 @@ export default class TagBrowserWidget {
   setSelectedItem(id) {
     this.selectedItem = id;
     this.setSelected(this.matchingItemsList, `[data-id="${id}"]`);
+    window.location.hash = 'item';
   }
 
   renderItem(item) {
