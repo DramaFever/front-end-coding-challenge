@@ -16,3 +16,11 @@
   background: purple;
   color: white;
 }
+.tag.is-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.matching-items-list li span {
+  cursor: pointer;
+}
