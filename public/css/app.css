@@ -8,8 +8,22 @@
 
 #tag-browser .clear-button {
   position: absolute;
-  top: 1em;;
+  top: 1em;
   right: 1em;
+}
+
+.disabled {
+  opacity: 0.5;
+  background-color: lightgrey;
+  cursor: not-allowed;
+}
+
+.disabled.button:active {
+  border: 1px solid #dbdbdb;
+}
+
+.disabled.button:hover {
+  border-color: #dbdbdb;
 }
 
 #tag-browser .active {
