@@ -12,6 +12,12 @@
   right: 1em;
 }
 
+#tag-browser .clear-button {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
 .disabled {
   opacity: 0.5;
   background-color: lightgrey;
@@ -24,6 +30,14 @@
 
 .disabled.button:hover {
   border-color: #dbdbdb;
+}
+
+.matching-items-list {
+  cursor: pointer;
+}
+
+.tag-list {
+  cursor: pointer;
 }
 
 #tag-browser .active {
