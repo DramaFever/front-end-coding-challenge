@@ -26,7 +26,6 @@ export default class TagBrowserWidget {
 
   getElements() {
     this.tagList = this.config.element.querySelectorAll('.tag-list')[0];
-    //find and store other elements you need
     this.seriesList = this.config.element.querySelectorAll('.matching-items-list')[0]
     this.seriesListSubtitle = this.seriesList.previousElementSibling
     this.selectedItem = this.config.element.querySelectorAll('.selected-item')[0]
@@ -39,18 +38,96 @@ export default class TagBrowserWidget {
 
   bindEventListeners() {
     this.tagList.addEventListener('click', this.tagListClicked.bind(this));
-    //bind the additional event listener for clicking on a series title
+    this.seriesList.addEventListener('click', this.seriesListClicked.bind(this))
+    this.clearDisplayBtn.addEventListener('click', this.clearAllClicked.bind(this))
   }
 
   render() {
-    //render the list of tags from this.data into this.tagList
+    this.displayTagList()
+  }
+
+  toggleActive(event, collection) {
+    Array.from(collection.children).forEach((listElement)=>{
+      let currentTag = listElement.querySelectorAll('span')[0]
+      if(event.target.id === currentTag.id) {
+        this.clearDisplayBtn.classList.remove('disabled')
+        if (!currentTag.classList.contains('active')) currentTag.classList.add('active');
+      } else {
+        if (currentTag.classList.contains('active')) currentTag.classList.remove('active');
+      }
+    })
   }
 
   tagListClicked(event) {
     console.log('tag list (or child) clicked', event);
-    //check to see if it was a tag that was clicked and render
-    //the list of series that have the matching tags
+    this.clearSelection()
+    this.toggleActive(event, this.tagList);
+    this.populateSeriesList(event);
   }
+
+  seriesListClicked(event) {
+    console.log('series list (or child) clicked', event);
+    this.toggleActive(event, this.seriesList)
+    this.displaySingleSeries(event)
+  }
+
+  clearAllClicked(event) {
+    if (!this.clearDisplayBtn.classList.contains('disabled')) {
+      this.clearAll()
+    }
+  }
+
+  populateSeriesList(event) {
+    const tagText = event.target.innerText;
+    this.seriesListSubtitle.innerText = tagText;
+    this.clearSeriesList(tagText);
+    this.displaySeriesList(tagText)
+  }
+
+  displayTagList() {
+    this.clearAll();
+    Array.from(this.data.keys()).forEach((tag) =>{
+      this.tagList.append(this.buildListItem(tag, true))
+    })
+  }
+
+  displaySeriesList(tagText) {
+    Array.from(this.data.get(tagText)).forEach((series) =>{
+      this.seriesList.setAttribute('data-parent', `${tagText}`)
+      this.seriesList.append(this.buildListItem(series.title, false, series.id))
+    })
+  }
+
+  displaySingleSeries(event) {
+      const seriesItem = this.getSeriesItem(event)
+      this.selectedItemSubtitle.innerText = seriesItem.title
+      this.selectedItemImage.src = seriesItem.thumbnail
+      this.selectedItemDesc.innerText = seriesItem.description
+      this.config.element.querySelectorAll('#rating')[0].innerText= seriesItem.rating
+      this.config.element.querySelectorAll('#native-language-title')[0].innerText = seriesItem.nativeLanguageTitle
+      this.config.element.querySelectorAll('#country')[0].innerText = seriesItem.sourceCountry
+      this.config.element.querySelectorAll('#type')[0].innerText = seriesItem.type
+      this.config.element.querySelectorAll('#episodes')[0].innerText = seriesItem.episodes
+  }
+
+  getSeriesItem(event) {
+    const parentTagElement = this.config.element.querySelectorAll('.matching-items-list')[0];
+    const parentTag = parentTagElement.dataset.parent;
+    const parentSeries = Array.from(this.data.get(parentTag));
+    for(let i = 0; i < parentSeries.length; i++ ){
+      if (parentSeries[i].id == event.target.id) {
+        return parentSeries[i];
+      }
+    }
+  }
+
+  buildListItem(text, isTag, id) {
+    const tagE = document.createElement('li')
+    let content = isTag ? `<span id="${text}" class="tag is-link">${text}</span>` : `<span id=${id}>${text}</span>`
+    tagE.innerHTML = content
+    return tagE
+  }
+
   mapTagsToSeries(data) {
     let mapping = new Map();
     data.forEach((series) => {
@@ -64,4 +141,42 @@ export default class TagBrowserWidget {
     })
     return mapping = new Map([...mapping.entries()].sort());
   }
+
+  clearAll() {
+    this.clearSeriesList();
+    this.clearSeriesList();
+    this.clearSeriesSubtitle();
+    this.clearSelection();
+    this.removeActiveTag();
+    this.clearDisplayBtn.classList.add('disabled')
+  }
+
+  removeActiveTag(){
+    Array.from(this.tagList.children).forEach((listElement)=>{
+      let currentTag = listElement.querySelectorAll('span')[0]
+      if (currentTag.classList.contains('active')) currentTag.classList.remove('active');
+    })
+  }
+
+  clearSeriesList() {
+    this.seriesList.innerHTML = ''
+  }
+
+  clearSeriesSubtitle() {
+    this.seriesListSubtitle.innerText = 'No Tag Selected'
+  }
+
+  clearSelection() {
+    this.selectedItemSubtitle.innerText = 'No Series Selected';
+    this.selectedItemImage.src = "http://via.placeholder.com/350x350";
+    this.selectedItemDesc.innerText = '';
+    this.clearSelectionMeta();
+  }
+
+  clearSelectionMeta() {
+    Array.from(this.selectedItemMeta).forEach((element) => {
+      element.querySelectorAll('span')[0].innerText = ''
+    })
+  }
+
 }
