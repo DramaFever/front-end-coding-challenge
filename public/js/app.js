@@ -20,19 +20,17 @@ export default class TagBrowserWidget {
   }
 
   setData(data) {
-    this.data = data;
+    this.data = this.mapTagsToSeries(data)
     console.log('Data fetched', this.data);
   }
 
   getElements() {
     this.tagList = this.config.element.querySelectorAll('.tag-list')[0];
-
     //find and store other elements you need
   }
 
   bindEventListeners() {
     this.tagList.addEventListener('click', this.tagListClicked.bind(this));
-
     //bind the additional event listener for clicking on a series title
   }
 
@@ -44,5 +42,18 @@ export default class TagBrowserWidget {
     console.log('tag list (or child) clicked', event);
     //check to see if it was a tag that was clicked and render
     //the list of series that have the matching tags
+  }
+  mapTagsToSeries(data) {
+    let mapping = new Map();
+    data.forEach((series) => {
+      series.tags.forEach((tag)=> {
+        if (mapping.has(tag)) {
+          mapping.set(tag, [...mapping.get(tag), series])
+        } else {
+          mapping.set(tag, [series])
+        }
+      })
+    })
+    return mapping = new Map([...mapping.entries()].sort());
   }
 }
