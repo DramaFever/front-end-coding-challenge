@@ -1,18 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto|Suez+One');
+
 #tag-browser {
-  width: 75%;
+  width: 80%;
   padding: 1em;
   margin: 1em auto;
-  border: 1px solid black;
   position: relative;
+  font-family: 'Roboto', sans-serif;
 }
 
 #tag-browser .clear-button {
   position: absolute;
-  top: 1em;;
+  top: 1.5em;
   right: 1em;
 }
 
-#tag-browser .active {
-  background: purple;
+.logo {
+  font-family: 'Suez One', serif;
+  font-size: 3rem;
+  color: #4a4a4a;
+  letter-spacing: -.13rem;
+  text-shadow: 2px 2px rgba(54, 54, 54, 0.2);
+}
+.logo sup {
+  font-size: 0.8rem;
+  font-weight: 100;
+  text-shadow: none;
+  padding-left: 3px;
+  vertical-align: top;
+  letter-spacing: 0;
+  line-height: 1.8;
+}
+
+.tag-title, .film-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5rem;
+}
+
+.tag, .film-title {
+  cursor: pointer;
+}
+
+.tags {
+  list-style: none;
+  margin: 0;
+  overflow: hidden; 
+  padding: 0;
+}
+
+.tag-list {
+  margin-bottom: 1rem;
+}
+
+.tag-list li {
+  display: inline;
+}
+
+.tags li {
+  float: left; 
+}
+
+.tag:not(body).is-link {
+  position: relative;
+  background: #eee;
+  border-radius: 3px 0 0 3px;
+  color: #888;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;  
+  margin: 0 0.5rem 1rem 0;
+  -webkit-transition: color 0.1s;
+}
+
+.tag:not(body).is-link::before {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 6px;
+  width: 6px;
+}
+
+.tag:not(body).is-link::after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #fff;
+  border-bottom: 13px solid transparent;
+  border-left: 10px solid #eee;
+  border-top: 13px solid transparent;
+  content: '';
+}
+
+.tag:not(body).is-link:hover, .tag:not(body).is-link.active {
+  background-color: #df0f39;
   color: white;
+
+}
+
+.tag:not(body).is-link:hover::after, #tag-browser .active::after   {
+   border-left-color: #df0f39; 
+}
+
+ul.matching-items-list {
+  margin: 0;  
+}
+
+.film-title {
+  list-style-type: none;
+  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+  padding: 1.5em 0 1em 1em;
+  margin: 0;
+  border-bottom: 1px solid #fff;
+}
+
+.film-title:hover, .film-title.active {
+  background: #f9f9f9;
+  box-shadow: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.film-img {
+  margin-bottom: 1.5em;
 }
