@@ -27,6 +27,14 @@ export default class TagBrowserWidget {
   getElements() {
     this.tagList = this.config.element.querySelectorAll('.tag-list')[0];
     //find and store other elements you need
+    this.seriesList = this.config.element.querySelectorAll('.matching-items-list')[0]
+    this.seriesListSubtitle = this.seriesList.previousElementSibling
+    this.selectedItem = this.config.element.querySelectorAll('.selected-item')[0]
+    this.selectedItemSubtitle = this.selectedItem.querySelectorAll('.subtitle')[0]
+    this.selectedItemImage = this.selectedItem.querySelectorAll('img')[0]
+    this.selectedItemDesc = this.selectedItem.querySelectorAll('p')[0]
+    this.selectedItemMeta = this.selectedItem.querySelectorAll('ul')[0].children
+    this.clearDisplayBtn = this.config.element.querySelectorAll('.clear-button')[0]
   }
 
   bindEventListeners() {
