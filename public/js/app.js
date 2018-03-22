@@ -59,21 +59,27 @@ export default class TagBrowserWidget {
   }
 
   tagListClicked(event) {
-    console.log('tag list (or child) clicked', event);
-    this.clearSelection()
-    this.toggleActive(event, this.tagList);
-    this.populateSeriesList(event);
+    $(this.seriesList).fadeOut(250).delay().fadeIn(200)
+    setTimeout(()=>{
+      this.clearSelection()
+      this.toggleActive(event, this.tagList);
+      this.populateSeriesList(event);
+    },250)
+
   }
 
   seriesListClicked(event) {
-    console.log('series list (or child) clicked', event);
     this.toggleActive(event, this.seriesList)
     this.displaySingleSeries(event)
   }
 
   clearAllClicked(event) {
     if (!this.clearDisplayBtn.classList.contains('disabled')) {
-      this.clearAll()
+      $(this.config.element).fadeOut(400)
+      setTimeout(()=>{
+        this.clearAll()
+      },400)
+      $(this.config.element).fadeIn(400)
     }
   }
 
@@ -87,27 +93,35 @@ export default class TagBrowserWidget {
   displayTagList() {
     this.clearAll();
     Array.from(this.data.keys()).forEach((tag) =>{
-      this.tagList.append(this.buildListItem(tag, true))
+      $(this.buildListItem(tag, true)).hide()
+        .appendTo(this.tagList)
+        .animate({width:'toggle'},400)
     })
   }
 
   displaySeriesList(tagText) {
     Array.from(this.data.get(tagText)).forEach((series) =>{
       this.seriesList.setAttribute('data-parent', `${tagText}`)
-      this.seriesList.append(this.buildListItem(series.title, false, series.id))
+      $(this.buildListItem(series.title, false, series.id)).hide()
+        .appendTo(this.seriesList)
+        .animate({width:'toggle'},400)
     })
   }
 
   displaySingleSeries(event) {
-      const seriesItem = this.getSeriesItem(event)
-      this.selectedItemSubtitle.innerText = seriesItem.title
-      this.selectedItemImage.src = seriesItem.thumbnail
-      this.selectedItemDesc.innerText = seriesItem.description
-      this.config.element.querySelectorAll('#rating')[0].innerText= seriesItem.rating
-      this.config.element.querySelectorAll('#native-language-title')[0].innerText = seriesItem.nativeLanguageTitle
-      this.config.element.querySelectorAll('#country')[0].innerText = seriesItem.sourceCountry
-      this.config.element.querySelectorAll('#type')[0].innerText = seriesItem.type
-      this.config.element.querySelectorAll('#episodes')[0].innerText = seriesItem.episodes
+    $(this.selectedItem).slideUp( 300 ).delay( 300 ).fadeIn( 400 )
+    setTimeout(() => {
+      const seriesItem = this.getSeriesItem(event);
+      this.selectedItemSubtitle.innerText = seriesItem.title;
+      this.selectedItemImage.src = seriesItem.thumbnail;
+      this.selectedItemDesc.innerText = seriesItem.description;
+      this.config.element.querySelectorAll('#rating')[0].innerText= seriesItem.rating;
+      this.config.element.querySelectorAll('#native-language-title')[0].innerText = seriesItem.nativeLanguageTitle;
+      this.config.element.querySelectorAll('#country')[0].innerText = seriesItem.sourceCountry;
+      this.config.element.querySelectorAll('#type')[0].innerText = seriesItem.type;
+      this.config.element.querySelectorAll('#episodes')[0].innerText = seriesItem.episodes;
+    }, 600);
+
   }
 
   getSeriesItem(event) {
@@ -123,7 +137,7 @@ export default class TagBrowserWidget {
 
   buildListItem(text, isTag, id) {
     const tagE = document.createElement('li')
-    let content = isTag ? `<span id="${text}" class="tag is-link">${text}</span>` : `<span id=${id}>${text}</span>`
+    let content = isTag ? `<span id="${text}" class="tag is-link">${text}</span>` : `<span id="${id}">${text}</span>`
     tagE.innerHTML = content
     return tagE
   }
@@ -143,7 +157,6 @@ export default class TagBrowserWidget {
   }
 
   clearAll() {
-    this.clearSeriesList();
     this.clearSeriesList();
     this.clearSeriesSubtitle();
     this.clearSelection();
