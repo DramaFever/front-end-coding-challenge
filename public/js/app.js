@@ -1,4 +1,4 @@
-import templating from '/js/templating.js'
+import TemplateHandler from '/js/TemplateHandler.js'
 import DataHandler from '/js/DataHandler.js'
 
 export default class TagBrowserWidget {
