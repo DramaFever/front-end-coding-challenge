@@ -95,7 +95,7 @@ export default class TagBrowserWidget {
 
     const $matchingItems = $('.matching-items-list a')
     this.toggleActive($matchingItems, $target)
-    this.titleListWasClicked(event)
+    this.titleListWasClicked($target.data('id'))
   }
 
   // Templating after click events.
@@ -106,9 +106,8 @@ export default class TagBrowserWidget {
     this.setBrowserActive(true)
   }
 
-  titleListWasClicked(event) {
-    const $target = $(event.target)
-    const seriesData = dataHandler.findById(this.data, $target.data('id'))
+  titleListWasClicked(titleId) {
+    const seriesData = dataHandler.findById(this.data, titleId)
     this.selectedSeriesContainer.innerHTML = templating.generateSeriesMarkup(seriesData)
   }
 
