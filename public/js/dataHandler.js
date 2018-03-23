@@ -1,26 +1,29 @@
 'use strict'
 
-/**
- * Remove tags
- * @param {Object} array of items.
- * @return {Object} array of sorted, unique tags pulled from items.
- */
-const extractTags = items => {
-  let tags = []
-  items.forEach(item => {
-    tags = tags.concat(item.tags)
-  })
-  return tags.unique().sort(sortCaseInsensitive.bind(this, null))
-}
+export default class DataHandler {
+  constructor(data) {
+    this.data = data || {}
+  }
 
-// Filter by matching tags and sort by the title field.
-const findByTag = (items, tag) => {
-  return items.filter(item => item.tags.indexOf(tag) !== -1)
-              .sort(sortCaseInsensitive.bind(this, 'title'))
-}
+  // Retrieve sorted unique tags.
+  extractTags() {
+    let tags = []
+    this.data.forEach(item => {
+      tags = tags.concat(item.tags)
+    })
+    return tags.filter(arrayUniques).sort(sortCaseInsensitive.bind(this, null))
+  }
 
-const findById = (items, id) => {
-  return items.filter(item => item.id === id)[0] || {}
+  // Filter by matching tags and sort by the title field.  
+  findByTag(tag) {
+    return this.data.filter(item => item.tags.indexOf(tag) !== -1)
+                    .sort(sortCaseInsensitive.bind(this, 'title'))
+  }
+
+  // Filter by series ID.
+  findById(id) {
+    return this.data.filter(item => item.id === id)[0] || {}
+  }
 }
 
 // Sorting/filter functions.
@@ -35,8 +38,6 @@ const sortCaseInsensitive = (key, item1, item2) => {
   return a.toLowerCase() > b.toLowerCase() ? 1 : -1
 }
 
-export default {
-  extractTags,
-  findByTag,
-  findById
+const arrayUniques = (val, i, self) => {
+    return self.indexOf(val) === i
 }

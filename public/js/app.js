@@ -1,11 +1,9 @@
 import templating from '/js/templating.js'
-import dataHandler from '/js/dataHandler.js'
+import DataHandler from '/js/DataHandler.js'
 
 export default class TagBrowserWidget {
   constructor(config) {
     this.config = config;
-
-    this.attachPrototypes()
 
     this.fetchData()
       //use .bind because native promises change the "this" context
@@ -18,14 +16,6 @@ export default class TagBrowserWidget {
     console.log('Widget Instance Created');
   }
 
-  attachPrototypes() {
-    Array.prototype.unique = function() {
-      return this.filter((val, i, self) => {
-        return self.indexOf(val) === i
-      })
-    }
-  }
-
   fetchData() {
     return new Promise((resolve, reject) => {
       //ajax the data and resolve the promise when it comes back
@@ -34,8 +24,7 @@ export default class TagBrowserWidget {
   }
 
   setData(data) {
-    this.data = data;
-    console.log('Data fetched', this.data);
+    this.dataHandler = new DataHandler(data)
   }
 
   getElements() {
@@ -69,7 +58,7 @@ export default class TagBrowserWidget {
 
   render() {
     //render the list of tags from this.data into this.tagList
-    this.tags = dataHandler.extractTags(this.data)
+    this.tags = this.dataHandler.extractTags()
     this.tagList.innerHTML = templating.generateTagsMarkup(this.tags, false)
   }
 
@@ -100,14 +89,14 @@ export default class TagBrowserWidget {
 
   // Templating after click events.
   tagWasClicked(tag) {
-    const matchedSeries = dataHandler.findByTag(this.data, tag)
+    const matchedSeries = this.dataHandler.findByTag(tag)
     this.selectedTagTitle.innerText = `"${tag}"`
     this.titlesList.innerHTML = templating.generateTitlesMarkup(matchedSeries, false)
     this.setBrowserActive(true)
   }
 
   titleListWasClicked(titleId) {
-    const seriesData = dataHandler.findById(this.data, titleId)
+    const seriesData = this.dataHandler.findById(titleId)
     this.selectedSeriesContainer.innerHTML = templating.generateSeriesMarkup(seriesData)
   }
 
