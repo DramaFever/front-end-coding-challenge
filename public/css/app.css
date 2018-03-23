@@ -8,11 +8,54 @@
 
 #tag-browser .clear-button {
   position: absolute;
-  top: 1em;;
+  top: 1em;
   right: 1em;
+  display: none;
 }
 
+#tag-browser.tag-browser-active .clear-button {
+  display: block;
+}
+
+#tag-browser .tag {
+  text-decoration: none;
+}
+  #tag-browser .tag:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
 #tag-browser .active {
-  background: purple;
-  color: white;
+  background: #32aadc;
+}
+
+ul.matching-items-list {
+  list-style: none;
+  margin-left: 0;
+}
+.matching-items-list li {
+  list-style: none;
+}
+  .matching-items-list li a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 12rem;
+    padding-top: 3px;
+  }
+
+.tag:hover {
+  background: linear-gradient(90deg, #32aadc, #3273dc);
+  background-size: 200% 200%;
+  animation-name: fade-gradient;
+  animation-duration: .4s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-gradient {
+  0% { background-position: 100% 0%; }
+  100% { background-position: 0% 0%; }
 }
