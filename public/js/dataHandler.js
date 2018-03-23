@@ -10,7 +10,7 @@ const extractTags = items => {
   items.forEach(item => {
     tags = tags.concat(item.tags)
   })
-  return tags.unique().sort()
+  return tags.unique().sort((a, b) => { return a.toLowerCase() > b.toLowerCase() })
 }
 
 // Filter by matching tags and sort by the title field.
