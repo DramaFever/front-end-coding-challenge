@@ -103,7 +103,9 @@ export default class TagBrowserWidget {
   }
 
   pushState(id) {
-    window.history.pushState(null, null, `#${id}`)
+    if (document.location.hash.replace('#', '') !== id) {
+      window.history.pushState(null, null, `#${id}`)
+    }
   }
 
   // Kicked off during any dom load and on pop states. Checks for a hash, if it's valid, 
@@ -148,6 +150,9 @@ export default class TagBrowserWidget {
   }
   
   clearButtonClicked() {
+    // Make sure hash is out of URL.
+    window.history.replaceState(null, null, '/')
+
     // Re-render the list
     this.render()
     this.reloadElements()
