@@ -45,7 +45,7 @@ export default class TagBrowserWidget {
     this.titlesList.innerHTML = ''
     this.selectedTagTitle.innerText = 'No Tag Selected'
     this.selectedSeriesTitle.innerText = 'No Series Selected'
-    this.selectedSeriesContainer.innerHTML = templating.generateSeriesMarkup()
+    this.selectedSeriesContainer.innerHTML = TemplateHandler.generateSeriesMarkup()
     // grab the first `active` and pretend it was clicked on
     // this.tagWasClicked(this.tags[0])
   }
@@ -59,7 +59,7 @@ export default class TagBrowserWidget {
   render() {
     //render the list of tags from this.data into this.tagList
     this.tags = this.dataHandler.extractTags()
-    this.tagList.innerHTML = templating.generateTagsMarkup(this.tags, false)
+    this.tagList.innerHTML = TemplateHandler.generateTagsMarkup(this.tags, false)
   }
 
   // Handlers for click events.
@@ -87,17 +87,17 @@ export default class TagBrowserWidget {
     this.titleListWasClicked($target.data('id'))
   }
 
-  // Templating after click events.
+  // TemplateHandler after click events.
   tagWasClicked(tag) {
     const matchedSeries = this.dataHandler.findByTag(tag)
     this.selectedTagTitle.innerText = `"${tag}"`
-    this.titlesList.innerHTML = templating.generateTitlesMarkup(matchedSeries, false)
+    this.titlesList.innerHTML = TemplateHandler.generateTitlesMarkup(matchedSeries, false)
     this.setBrowserActive(true)
   }
 
   titleListWasClicked(titleId) {
     const seriesData = this.dataHandler.findById(titleId)
-    this.selectedSeriesContainer.innerHTML = templating.generateSeriesMarkup(seriesData)
+    this.selectedSeriesContainer.innerHTML = TemplateHandler.generateSeriesMarkup(seriesData)
   }
 
   toggleActive(deactivateItems, target) {
@@ -118,7 +118,7 @@ export default class TagBrowserWidget {
     // Re-render the list
     this.render()
     this.reloadElements()
-    this.selectedSeriesContainer.innerHTML = templating.generateSeriesMarkup()
+    this.selectedSeriesContainer.innerHTML = TemplateHandler.generateSeriesMarkup()
     this.setBrowserActive(false)
   }
 }
