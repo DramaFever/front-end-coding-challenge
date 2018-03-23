@@ -1,4 +1,4 @@
-import TemplateHandler from '/js/TemplateHandler.js'
+import Templating from '/js/Templating.js'
 import DataHandler from '/js/DataHandler.js'
 
 export default class TagBrowserWidget {
@@ -12,8 +12,6 @@ export default class TagBrowserWidget {
       .then(this.bindEventListeners.bind(this))
       .then(this.render.bind(this))
       .then(this.reloadElements.bind(this));
-
-    console.log('Widget Instance Created');
   }
 
   fetchData() {
@@ -45,7 +43,7 @@ export default class TagBrowserWidget {
     this.titlesList.innerHTML = ''
     this.selectedTagTitle.innerText = 'No Tag Selected'
     this.selectedSeriesTitle.innerText = 'No Series Selected'
-    this.selectedSeriesContainer.innerHTML = TemplateHandler.generateSeriesMarkup()
+    this.selectedSeriesContainer.innerHTML = Templating.generateSeriesMarkup()
     // grab the first `active` and pretend it was clicked on
     // this.tagWasClicked(this.tags[0])
   }
@@ -59,7 +57,7 @@ export default class TagBrowserWidget {
   render() {
     //render the list of tags from this.data into this.tagList
     this.tags = this.dataHandler.extractTags()
-    this.tagList.innerHTML = TemplateHandler.generateTagsMarkup(this.tags, false)
+    this.tagList.innerHTML = Templating.generateTagsMarkup(this.tags, false)
   }
 
   // Handlers for click events.
@@ -87,17 +85,17 @@ export default class TagBrowserWidget {
     this.titleListWasClicked($target.data('id'))
   }
 
-  // TemplateHandler after click events.
+  // Templating after click events.
   tagWasClicked(tag) {
     const matchedSeries = this.dataHandler.findByTag(tag)
     this.selectedTagTitle.innerText = `"${tag}"`
-    this.titlesList.innerHTML = TemplateHandler.generateTitlesMarkup(matchedSeries, false)
+    this.titlesList.innerHTML = Templating.generateTitlesMarkup(matchedSeries, false)
     this.setBrowserActive(true)
   }
 
   titleListWasClicked(titleId) {
     const seriesData = this.dataHandler.findById(titleId)
-    this.selectedSeriesContainer.innerHTML = TemplateHandler.generateSeriesMarkup(seriesData)
+    this.selectedSeriesContainer.innerHTML = Templating.generateSeriesMarkup(seriesData)
   }
 
   toggleActive(deactivateItems, target) {
@@ -118,7 +116,7 @@ export default class TagBrowserWidget {
     // Re-render the list
     this.render()
     this.reloadElements()
-    this.selectedSeriesContainer.innerHTML = TemplateHandler.generateSeriesMarkup()
+    this.selectedSeriesContainer.innerHTML = Templating.generateSeriesMarkup()
     this.setBrowserActive(false)
   }
 }
