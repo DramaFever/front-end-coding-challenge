@@ -49,7 +49,10 @@ export default class TagBrowserWidget {
   }
 
   bindEventListeners() {
-    this.tagList.addEventListener('click', this.tagListClicked.bind(this));
+    window.addEventListener('load', this.checkHashStatus.bind(this))
+    window.addEventListener('popstate', this.checkHashStatus.bind(this))
+
+    this.tagList.addEventListener('click', this.tagListClicked.bind(this))
     this.titlesList.addEventListener('click', this.titleListClicked.bind(this))
     this.clearButton.addEventListener('click', this.clearButtonClicked.bind(this))
   }
@@ -82,6 +85,7 @@ export default class TagBrowserWidget {
 
     const $matchingItems = $('.matching-items-list a')
     this.toggleActive($matchingItems, $target)
+    this.pushState($target.data('id'))
     this.titleListWasClicked($target.data('id'))
   }
 
@@ -98,6 +102,38 @@ export default class TagBrowserWidget {
     this.selectedSeriesContainer.innerHTML = Templating.generateSeriesMarkup(seriesData)
   }
 
+  pushState(id) {
+    window.history.pushState(null, null, `#${id}`)
+  }
+
+  // Kicked off during any dom load and on pop states. Checks for a hash, if it's valid, 
+  // show the active series. Otherwise kick back to the homepage.
+  checkHashStatus(event) {
+    const seriesId = document.location.hash.replace('#', '')
+    if (seriesId === '') {
+      this.clearButtonClicked()
+      this.setBrowserActive(false)
+      return false
+    }
+
+    // Find the series with the ID.
+    // If the series doesn't exist (like if some prankster were to change the ID # in the url...), 
+    // kick them back to the homepage.
+    const series = this.dataHandler.findById(parseInt(seriesId))
+    if (Object.keys(series).length === 0) {
+      document.location = '/'
+      return false
+    }
+
+    // Render out an series title object for just the series in question, since it's a little 
+    // out of scope to maintain the tag selection history along with the series selection.
+    this.titlesList.innerHTML = Templating.generateSelectedSeries(series, false)
+    this.titleListWasClicked(parseInt(seriesId))
+
+    // Toggle the Clear button visibility.
+    this.setBrowserActive(true)
+  }
+
   toggleActive(deactivateItems, target) {
     deactivateItems.toggleClass('active', false)
     target.toggleClass('active', true)
@@ -111,7 +147,6 @@ export default class TagBrowserWidget {
     }
   }
   
-  // TODO : uhh make this work ?
   clearButtonClicked() {
     // Re-render the list
     this.render()

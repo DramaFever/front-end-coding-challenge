@@ -31,8 +31,12 @@ const generateTagsMarkup = tags => {
   return elementRepeater(tags, tagMarkup)
 }
 
-const generateTitlesMarkup = titles => {
-  return elementRepeater(titles, titleMarkup)
+const generateTitlesMarkup = series => {
+  return elementRepeater(series, titleMarkup)
+}
+
+const generateSelectedSeries = series => {
+  return titleMarkup(series, true)
 }
 
 // Generators.
@@ -40,13 +44,13 @@ const generateTitlesMarkup = titles => {
 const elementRepeater = (items, renderMethod) => {
   let html = ''
   items.forEach((item, index) => {
-    html += renderMethod(item, index)
+    html += renderMethod(item)
   })
   return html
 }
 
 // Individual elements for tags and series lists.
-const tagMarkup = (tag, index) => {
+const tagMarkup = tag => {
   return `
     <li>
       <span class="tag is-link">
@@ -55,10 +59,11 @@ const tagMarkup = (tag, index) => {
     </li>
   `
 }
-const titleMarkup = (item, index) => {
+const titleMarkup = (item, active) => {
+  const activeClass = active ? ' active' : ''
   return `
-    <li class="${item.index === 0 ? 'active': ''}">
-        <a data-title="${item.title}" data-id="${item.id}" class="tag is-link">${item.title}</a>
+    <li>
+        <a data-title="${item.title}" data-id="${item.id}" class="tag is-link ${activeClass}">${item.title}</a>
     </li>
   `
 }
@@ -66,5 +71,6 @@ const titleMarkup = (item, index) => {
 export default {
   generateSeriesMarkup,
   generateTagsMarkup,
-  generateTitlesMarkup
+  generateTitlesMarkup,
+  generateSelectedSeries
 }
