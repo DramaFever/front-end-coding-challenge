@@ -47,14 +47,20 @@ const elementRepeater = (items, renderMethod) => {
 
 // Individual elements for tags and series lists.
 const tagMarkup = (tag, index) => {
-  return `<li>
-    <span class="tag is-link">
-      ${tag}
-    </span>
-  </li>`
+  return `
+    <li>
+      <span class="tag is-link">
+        ${tag}
+      </span>
+    </li>
+  `
 }
 const titleMarkup = (item, index) => {
-  return `<li class="${item.index === 0 ? 'active': ''}"><a data-id="${item.id}" class="tag is-link">${item.title}</span></li>`
+  return `
+    <li class="${item.index === 0 ? 'active': ''}">
+        <a data-title="${item.title}" data-id="${item.id}" class="tag is-link">${item.title}</a>
+    </li>
+  `
 }
 
 export default {

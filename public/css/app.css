@@ -29,18 +29,18 @@
   background: purple;
 }
 
-.matching-items-list li {
-  cursor: pointer;
-  color: steelblue;
-  font-size: 0.75rem;
+ul.matching-items-list {
+  list-style: none;
+  margin-left: 0;
 }
-  .matching-items-list li:hover {
-    color: darkblue;
-  }
+.matching-items-list li {
+  list-style: none;
+}
   .matching-items-list li a {
+    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: block;
     white-space: nowrap;
     max-width: 12rem;
+    padding-top: 3px;
   }
