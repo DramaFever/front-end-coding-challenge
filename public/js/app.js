@@ -26,23 +26,84 @@ export default class TagBrowserWidget {
 
   getElements() {
     this.tagList = this.config.element.querySelectorAll('.tag-list')[0];
-
-    //find and store other elements you need
+    this.titleList = this.config.element.querySelectorAll('.matching-items-list')[0];
+    this.clearButton = this.config.element.querySelectorAll('.clear-button')[0];
   }
 
   bindEventListeners() {
     this.tagList.addEventListener('click', this.tagListClicked.bind(this));
-
-    //bind the additional event listener for clicking on a series title
+    this.titleList.addEventListener('click', this.tagListClicked.bind(this));
+    this.clearButton.addEventListener('click', this.clearSelectedValues.bind(this));
   }
 
   render() {
     //render the list of tags from this.data into this.tagList
+    var tagsList = [];
+    var liData = '';
+    this.data.forEach(function(item) {
+      item.tags.forEach(function(tag) {
+        if(tagsList.indexOf(tag) === -1) {
+          tagsList.push(tag);
+        }
+      });
+    });
+    tagsList.sort();
+    tagsList.forEach(function(item) {
+      liData += "<li><span class='tag is-link'>"+item+"</li>";
+    });
+    $(this.tagList).append(liData);
+    console.log('tagList is '+tagsList);
   }
 
-  tagListClicked(event) {
-    console.log('tag list (or child) clicked', event);
-    //check to see if it was a tag that was clicked and render
-    //the list of series that have the matching tags
+  tagListClicked(event) {    
+    var clickedTag;
+    var matchedList = [];
+    var matchedItems = '';
+    var selectedSeries = '';
+    var currentElement = {};
+    if(event.srcElement.className === 'tag is-link') {
+      clickedTag = event.srcElement.innerText;
+      this.data.forEach(function(item) {
+        item.tags.forEach(function(tag) {
+          if(clickedTag === tag) {
+            matchedList.push(item);
+            matchedItems += "<li class='title'>"+item.title+"</li>";
+          }
+        });
+      });
+      $('.matching-items-list').empty();
+      $('.matching-items-list').append(matchedItems);
+      $('.selected-tag').text(clickedTag);
+    }
+    else if(event.srcElement.className === 'title') {
+      selectedSeries = event.srcElement.innerText;
+      this.data.forEach(function (item) {
+        if(item.title === selectedSeries) {
+          currentElement = item;
+        }
+      });
+      $('.selected-series').text(selectedSeries);
+      $('.series-img').attr('src',currentElement.thumbnail);
+      $('.series-desc').text(currentElement.description);
+      $('.series-rating').text(currentElement.rating);
+      $('.series-language').text(currentElement.nativeLanguageTitle);
+      $('.series-country').text(currentElement.sourceCountry);
+      $('.series-type').text(currentElement.type);
+      $('.series-episodes').text(currentElement.episodes);
+    }
   }
+
+  clearSelectedValues(event) {
+    $('.matching-items-list').empty();
+    $('.selected-tag').text('');
+    $('.selected-series').text('');
+    $('.series-img').attr('src','http://via.placeholder.com/350x350');
+    $('.series-desc').text('');
+    $('.series-rating').text('');
+    $('.series-language').text('');
+    $('.series-country').text('');
+    $('.series-type').text('');
+    $('.series-episodes').text('');
+  }
+
 }
