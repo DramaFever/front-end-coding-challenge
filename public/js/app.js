@@ -50,6 +50,8 @@ export default class TagBrowserWidget {
 
     let movieTagsArr = [];
 
+        this.currentTag= '';
+
       // Loop thru the series for tags
       $.each(this.data, walker);
 
@@ -83,7 +85,7 @@ export default class TagBrowserWidget {
     var tagTitle = $('#selected-tag.subtitle');
 
     $('li[data-hook]').click(function() {
-  // e.preventDefault();
+      //e.preventDefault();
 
     var currentTag = $(this).data('hook');
 
@@ -91,11 +93,27 @@ export default class TagBrowserWidget {
 
       console.log('tag name clicked', currentTag );
 
+      this.currentTag =  currentTag;
 
       $(tagTitle).html( currentTag );
 
   });
 
+  // find selected titles -- not working
+
+    console.log('currentTag--', this.currentTag );
+
+    var fullList = this.data
+
+    var results = $(fullList).filter(this.currentTag );
+
+    var filteredArray = fullList.filter(function(itm){
+  return this.currentTag.indexOf(itm.this.currentTag) > -1;
+});
+
+filteredArray = { records : filteredArray };
+
+console.log('curentTag--', results);
   }//end render
 
 
@@ -108,6 +126,8 @@ export default class TagBrowserWidget {
     //the list of series that have the matching tags
 
     // still need to filter thru obj and return titles that contain currentTag
+
+
 
   }
 
