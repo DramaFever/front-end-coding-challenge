@@ -16,3 +16,18 @@
   background: purple;
   color: white;
 }
+
+a.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
+ul>li>span{
+  cursor: pointer;
+}
+
+.tag-list>li:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
+}
