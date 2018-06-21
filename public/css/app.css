@@ -8,11 +8,20 @@
 
 #tag-browser .clear-button {
   position: absolute;
-  top: 1em;;
+  top: 1em;
+  ;
   right: 1em;
 }
 
 #tag-browser .active {
   background: purple;
   color: white;
+}
+
+.is-link {
+  cursor: pointer;
+}
+
+.matching-items-list li {
+  cursor: pointer;
 }
