@@ -2,8 +2,6 @@ export default class TagBrowserWidget {
   constructor(config) {
     this.config = config;
 
-
-
     this.fetchData()
       //use .bind because native promises change the "this" context
       .then(this.setData.bind(this))
@@ -120,48 +118,55 @@ export default class TagBrowserWidget {
 
   } //end hasTag
 
-  var matches = fullList.filter(hasTag);
 
-console.log('Matching IDs \n', matchingTitles);
+var matches = fullList.filter(hasTag);
 
-  //the list of series that have the matching tags
+//console.log(matches);
 
- $.each(fullList, hasID)
+//the list of series that have the matching tags
 
-function hasID(obj){
+ function hasID(obj){
 
-    return obj !== undefined && typeof(obj) === 'number' && !isNaN(obj);
+    //console.log( 'Matching IDs \n',  matchingTitles);
+
+    if( matchingTitles.includes(obj.id) ) {
+
+        return obj
+    }
+  //  return obj.id.indexOf(matchingTitles) > -1 ;
 }
 
-//  $('.matching-items-list').html(  );
+var matchingObjs = fullList.filter( hasID );
+console.log( 'Matching Objs \n', matchingObjs);
 
-  function filterByID(item) {
-    if (hasID(item.id) && item.id == matchingTitles ) {
+//clear list first
+$('.matching-items-list').html('');
 
-      return true;
+function populateMatchList( i, item){
 
-      console.log('item title \n', item.title);
-    }
-    //invalidEntries++;
-    return false;
-  }
+  console.log( item , 'Matched items \n');
 
-  var arrByID = fullList.filter(filterByID);
+  $('.matching-items-list').append( '<li class="matched-title" data-id" '+item.id+ ' ">'+item.title+'</li>' )
+}
 
-  console.log('Filtered Array\n', arrByID);
+
+  $.each(matchingObjs, populateMatchList )
+
+
+//
+
 
       }); //end click event
-
 
   }//end render
 
 
   tagListClicked(event) {
   //  console.log('tag list (or child) clicked', event);
+
     //check to see if it was a tag that was clicked and render ?
 
 //cannot seem to get the eventbinding, so moved it to render :(
-
 
   }
 
