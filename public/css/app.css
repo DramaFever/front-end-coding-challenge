@@ -1,5 +1,8 @@
+.column.is-one-fifth{
+  width: 25%;
+}
 #tag-browser {
-  width: 75%;
+  width: 95%;
   padding: 1em;
   margin: 1em auto;
   border: 1px solid black;

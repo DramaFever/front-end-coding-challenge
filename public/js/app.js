@@ -32,8 +32,6 @@ export default class TagBrowserWidget {
     //find and store other elements you need
 
 
-
-
   }
 
   bindEventListeners() {
@@ -50,7 +48,7 @@ export default class TagBrowserWidget {
 
     let movieTagsArr = [];
 
-        this.currentTag= '';
+        selectedTag= '';
 
       // Loop thru the series for tags
       $.each(this.data, walker);
@@ -82,51 +80,87 @@ export default class TagBrowserWidget {
       .appendTo( '.tag-list' );
     });
 
-    var tagTitle = $('#selected-tag.subtitle');
+    var tagTitle = $('#selected-tag.subtitle'),
+        selectedTag = this.currentTag,
+        fullList = this.data
+
 
     $('li[data-hook]').click(function() {
       //e.preventDefault();
 
-    var currentTag = $(this).data('hook');
+        var currentTag = $(this).data('hook');
 
-    //currentTag =  ( this.selectedTag );
+        selectedTag =  currentTag;
 
-      console.log('tag name clicked', currentTag );
+        $(tagTitle).html( currentTag );
 
-      this.currentTag =  currentTag;
 
-      $(tagTitle).html( currentTag );
+// find selected titles --
 
-  });
+  $.each(fullList, hasTag)
 
-  // find selected titles -- not working
+  var invalidEntries = 0,
 
-    console.log('currentTag--', this.currentTag );
+      matchingTitles = []
 
-    var fullList = this.data
 
-    var results = $(fullList).filter(this.currentTag );
+  function hasTag(obj){
 
-    var filteredArray = fullList.filter(function(itm){
-  return this.currentTag.indexOf(itm.this.currentTag) > -1;
-});
+    var itemsTags = obj.tags,
+        itemID = obj.id;
 
-filteredArray = { records : filteredArray };
+    if(jQuery.inArray( currentTag , itemsTags) !== -1){
 
-console.log('curentTag--', results);
+            matchingTitles.push( itemID )
+            //console.log( 'current item is good-- ', );
+    }
+    else{
+      //  console.log(  'current item does not match -- ');
+    }
+
+  } //end hasTag
+
+  var matches = fullList.filter(hasTag);
+
+console.log('Matching IDs \n', matchingTitles);
+
+  //the list of series that have the matching tags
+
+ $.each(fullList, hasID)
+
+function hasID(obj){
+
+    return obj !== undefined && typeof(obj) === 'number' && !isNaN(obj);
+}
+
+//  $('.matching-items-list').html(  );
+
+  function filterByID(item) {
+    if (hasID(item.id) && item.id == matchingTitles ) {
+
+      return true;
+
+      console.log('item title \n', item.title);
+    }
+    //invalidEntries++;
+    return false;
+  }
+
+  var arrByID = fullList.filter(filterByID);
+
+  console.log('Filtered Array\n', arrByID);
+
+      }); //end click event
+
+
   }//end render
 
 
   tagListClicked(event) {
   //  console.log('tag list (or child) clicked', event);
-    //check to see if it was a tag that was clicked and render
+    //check to see if it was a tag that was clicked and render ?
 
-//cannot seem to get binding, have to click 2xs to get the attribute, so moved it to render :(
-
-    //the list of series that have the matching tags
-
-    // still need to filter thru obj and return titles that contain currentTag
-
+//cannot seem to get the eventbinding, so moved it to render :(
 
 
   }
