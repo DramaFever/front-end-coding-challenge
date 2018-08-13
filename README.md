@@ -23,3 +23,25 @@ Submit
 - Push your changes to a branch in your forked project
 - Submit a Pull Request back to this repository with your completed challenge code.
 - Please complete ASAP.
+
+  
+time travel 
+melodrama 
+historical  
+war  
+period drama 
+based on a novel 
+mystery 
+thriller 
+action 
+crime 
+comedy 
+feature film         
+drama   
+medical   
+family relationships 
+Staff Favorites 
+romantic comedy  
+fantasy 
+based on a manga 
+romance

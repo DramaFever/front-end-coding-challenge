@@ -16,3 +16,15 @@
   background: purple;
   color: white;
 }
+
+a.button {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border-radius: 30px !important;
+  transition: font-size .5s;
+}
+
+a.button:hover {
+  font-size: 15px;
+  text-decoration: none;
+}
