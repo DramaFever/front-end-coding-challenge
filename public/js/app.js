@@ -2,7 +2,7 @@ export default class TagBrowserWidget {
   constructor(config) {
     this.config = config;
 
-    this.fetchData()
+    this.fetchData('/js/app.js')
       //use .bind because native promises change the "this" context
       .then(this.setData.bind(this))
       .then(this.getElements.bind(this))
