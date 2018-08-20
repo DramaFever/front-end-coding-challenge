@@ -2,7 +2,7 @@ export default class TagBrowserWidget {
   constructor(config) {
     this.config = config;
 
-    this.fetchData('/js/app.js')
+    this.fetchData()
       //use .bind because native promises change the "this" context
       .then(this.setData.bind(this))
       .then(this.getElements.bind(this))
@@ -21,6 +21,7 @@ export default class TagBrowserWidget {
 
   setData(data) {
     this.data = data;
+    this.tags = this._unique(this._combineFromObjectProp(data, 'tags'));
     console.log('Data fetched', this.data);
   }
 
@@ -38,11 +39,27 @@ export default class TagBrowserWidget {
 
   render() {
     //render the list of tags from this.data into this.tagList
+    this.tags.forEach(tag => {
+      const li = document.createElement('li');
+      const span = document.createElement('span');
+      li.appendChild(span);
+      span.setAttribute('class', 'tag is-link');
+      span.innerHTML = tag;
+      this.tagList.appendChild(li);
+    });
   }
 
   tagListClicked(event) {
     console.log('tag list (or child) clicked', event);
     //check to see if it was a tag that was clicked and render
     //the list of series that have the matching tags
+  }
+
+  _unique(array) {
+    return Array.from(new Set(array));
+  }
+
+  _combineFromObjectProp(array, prop) {
+    return array.reduce((vals, item) => vals.concat(item[prop]), []);
   }
 }
