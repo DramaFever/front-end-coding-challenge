@@ -44,7 +44,7 @@ export default class TagBrowserWidget {
       const span = document.createElement('span');
       li.appendChild(span);
       span.setAttribute('class', 'tag is-link');
-      span.innerHTML = tag;
+      span.innerHTML = tag.toLowerCase();
       this.tagList.appendChild(li);
     });
   }
@@ -52,6 +52,7 @@ export default class TagBrowserWidget {
   tagListClicked(event) {
     console.log('tag list (or child) clicked', event);
     //check to see if it was a tag that was clicked and render
+
     //the list of series that have the matching tags
   }
 
