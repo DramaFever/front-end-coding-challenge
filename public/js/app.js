@@ -7,7 +7,8 @@ export default class TagBrowserWidget {
       .then(this.setData.bind(this))
       .then(this.getElements.bind(this))
       .then(this.bindEventListeners.bind(this))
-      .then(this.render.bind(this));
+      .then(this.render.bind(this))
+      .then(this.setDefault.bind(this));
 
     console.log('Widget Instance Created');
   }
@@ -29,31 +30,139 @@ export default class TagBrowserWidget {
     this.tagList = this.config.element.querySelectorAll('.tag-list')[0];
 
     //find and store other elements you need
+    this.seriesList = this.config.element.querySelectorAll('.matching-items-list')[0];
   }
 
   bindEventListeners() {
     this.tagList.addEventListener('click', this.tagListClicked.bind(this));
 
     //bind the additional event listener for clicking on a series title
+    this.seriesList.addEventListener('click', this.seriesListClicked.bind(this));
   }
 
   render() {
     //render the list of tags from this.data into this.tagList
-    this.tags.forEach(tag => {
-      const li = document.createElement('li');
-      const span = document.createElement('span');
-      li.appendChild(span);
-      span.setAttribute('class', 'tag is-link');
-      span.innerHTML = tag.toLowerCase();
-      this.tagList.appendChild(li);
-    });
+    this._renderTags.call(this);
   }
 
   tagListClicked(event) {
     console.log('tag list (or child) clicked', event);
     //check to see if it was a tag that was clicked and render
-
+    if (event.toElement.className !== 'tag is-link') return;
     //the list of series that have the matching tags
+    this._setSelectedTag.call(this, event.path[0].dataset.tagName);
+  }
+
+  seriesListClicked(event) {
+    console.log('series list (or child) clicked', event);
+    //check to see if it was a series that was clicked and render
+    if (event.toElement.className !== 'series is-link') return;
+    //the list of series that have the matching tags
+    this._setSelectedSeries.call(this, event.path[0].dataset.seriesId);
+  }
+
+  setDefault() {
+    this._setSelectedTag.call(this, this.tags[0].toLowerCase());
+    this._setSelectedSeries.call(this, this.seriesForTag[0].id);
+  }
+
+  _clearSelectedTag() {
+    const selectedTags = document.getElementsByClassName('tag is-link selected');
+    [].forEach.call(selectedTags, tag => {
+      tag.classList.remove('selected');
+    });
+  }
+
+  _clearSelectedSeries() {
+    const selectedSeries = document.getElementsByClassName('series is-link selected');
+    [].forEach.call(selectedSeries, series => {
+      series.classList.remove('selected');
+    });
+  }
+
+  _createSeriesListItem(series) {
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    li.appendChild(span);
+    span.setAttribute('class', 'series is-link');
+    span.setAttribute('data-series-id', series.id);
+    span.innerHTML = series.title;
+    return li;
+  }
+
+
+  _createTagListItem(tag) {
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    li.appendChild(span);
+    span.setAttribute('class', 'tag is-link');
+    span.setAttribute('data-tag-name', tag.toLowerCase());
+    span.innerHTML = tag.toLowerCase();
+    return li;
+  }
+
+  _renderTags() {
+    this.tags.forEach(tag => {
+      const listItem = this._createTagListItem.call(this, tag);
+      this.tagList.appendChild(listItem);
+    });
+  }
+
+  _renderSeries() {
+    const image = document.getElementById('series-image');
+    image.setAttribute('src',this.selectedSeries.thumbnail);
+    const update = {
+      description: 'series-description',
+      rating: 'series-rating',
+      nativeLanguageTitle: 'series-native-title',
+      sourceCountry: 'series-source-country',
+      type: 'series-type',
+      episodes: 'series-episodes'
+    };
+    let fieldNode;
+    for (const field in update) {
+      fieldNode = document.getElementById(update[field]);
+      fieldNode.innerHTML = this.selectedSeries[field];
+    }
+  }
+
+  _renderSeriesForTag() {
+    while (this.seriesList.firstChild) {
+      this.seriesList.removeChild(this.seriesList.firstChild);
+    }
+    this.seriesForTag.forEach(series => {
+      const listItem = this._createSeriesListItem.call(this, series);
+      this.seriesList.appendChild(listItem);
+    });
+  }
+
+  _setSelectedTag(tagName) {
+    this._clearSelectedTag.call(this);
+    this.selectedTag = tagName;
+    const selectedTag = document.getElementsByClassName('selected-tag')[0];
+    selectedTag.innerHTML = tagName;
+    const tag = document.querySelectorAll('[data-tag-name="'+tagName+'"]')[0];
+    tag.classList.add('selected');
+    this._setSeriesForTag.call(this);
+    this._setSelectedSeries.call(this, this.seriesForTag[0].id);
+  }
+
+  _setSelectedSeries(seriesId) {
+    this._clearSelectedSeries.call(this);
+    this.selectedSeries = this.data.find(series => +series.id === +seriesId);
+    const selectedTag = document.getElementsByClassName('selected-series')[0];
+    selectedTag.innerHTML = this.selectedSeries.title;
+    const series = document.querySelectorAll('[data-series-id="'+seriesId+'"]')[0];
+    series.classList.add('selected');
+
+    this._renderSeries.call(this);
+  }
+
+  _setSeriesForTag() {
+    this.seriesForTag = this.data.filter(series => {
+      return series.tags.map(tag=>tag.toLowerCase()).includes(this.selectedTag)
+    });
+    this._renderSeriesForTag.call(this);
   }
 
   _unique(array) {

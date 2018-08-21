@@ -17,12 +17,33 @@
   color: white;
 }
 
-.tag {
 
-}
 .is-link {
   cursor: pointer;
 }
-.is-link:hover {
-  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+
+.tag:hover, .tag.selected {
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.2);
+}
+
+.matching-items-list {
+  list-style: none !important;
+  margin-left: 0 !important;
+}
+
+.series {
+  display: block;
+}
+
+.series:hover, .series.selected {
+  color: #03a9f4;
+  text-decoration: underline;
+}
+
+.subtitle {
+  text-transform: capitalize;
+}
+
+.tag {
+
 }
