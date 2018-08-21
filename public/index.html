@@ -13,7 +13,7 @@
       </h1>
 
       <div id="tag-browser">
-        <h2 class="title">tag browser</h2>
+        <h2 class="title">Tag Browser</h2>
         <a class="button clear-button">
           Clear
         </a>
@@ -27,14 +27,20 @@
           <div class="column content">
             <h3 class="subtitle selected-tag"></h3>
             <ul class="matching-items-list"></ul>
+            <p id="no-tag-selected" class="hide">No tag selected. Select one from the tag list to the left</p>
           </div>
           <div class="column is-half selected-item">
             <div class="content">
               <h3 class="subtitle selected-series"></h3>
-              <img id="series-image" src="" />
-              <p id="series-description"></p>
+
+              <p id="no-series-selected" class="hide">No series selected. Select a tag to see the available series for that tag.</p>
+
+              <div class="selected-series-content">
+                <img id="series-image" src="" />
+                <p id="series-description"></p>
+              </div>
             </div>
-            <ul>
+            <ul class="selected-series-content">
               <li><strong>Rating:</strong> <span id="series-rating"></span></li>
               <li><strong>Native Language Title:</strong> <span id="series-native-title">/span></li>
               <li><strong>Source Country:</strong> <span id="series-source-country"></span></li>

@@ -52,8 +52,6 @@ Approach
 3. Then, create event handlers for when a series is selected & show selected data
 4. Then, add null-case handling and selective disabling
 5. Spruce up styling
-6. Add some animations
-7. Create multiple subcomponents (challenge accepted)
 
 Notes from implementing solution:
 

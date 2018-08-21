@@ -31,6 +31,7 @@ export default class TagBrowserWidget {
 
     //find and store other elements you need
     this.seriesList = this.config.element.querySelectorAll('.matching-items-list')[0];
+    this.clearButton = this.config.element.querySelectorAll('.clear-button')[0];
   }
 
   bindEventListeners() {
@@ -38,6 +39,7 @@ export default class TagBrowserWidget {
 
     //bind the additional event listener for clicking on a series title
     this.seriesList.addEventListener('click', this.seriesListClicked.bind(this));
+    this.clearButton.addEventListener('click', this.clearAll.bind(this));
   }
 
   render() {
@@ -66,18 +68,48 @@ export default class TagBrowserWidget {
     this._setSelectedSeries.call(this, this.seriesForTag[0].id);
   }
 
+  clearAll() {
+    this._clearSelectedTag();
+    this._clearSelectedSeries();
+    this._clearSeriesForTag();
+  }
+
   _clearSelectedTag() {
+    delete this.selectedTag;
+
     const selectedTags = document.getElementsByClassName('tag is-link selected');
     [].forEach.call(selectedTags, tag => {
       tag.classList.remove('selected');
     });
+
+    const selectedTag = document.getElementsByClassName('selected-tag')[0];
+    selectedTag.innerHTML = 'Series';
   }
 
   _clearSelectedSeries() {
+    // delete this.selectedSeries;
     const selectedSeries = document.getElementsByClassName('series is-link selected');
     [].forEach.call(selectedSeries, series => {
       series.classList.remove('selected');
     });
+
+    const selectedSeriesTitle = document.getElementsByClassName('selected-series')[0];
+    selectedSeriesTitle.innerHTML = 'Selected Series';
+
+    const selectedSeriesContent = document.getElementsByClassName('selected-series-content');
+    [].forEach.call(selectedSeriesContent, contentBlock => {
+      contentBlock.classList.add('hide');
+    });
+
+    document.getElementById('no-series-selected').classList.remove('hide');
+  }
+
+  _clearSeriesForTag() {
+    while (this.seriesList.firstChild) {
+      this.seriesList.removeChild(this.seriesList.firstChild);
+    }
+    // 'no series selected'
+    document.getElementById('no-tag-selected').classList.remove('hide');
   }
 
   _createSeriesListItem(series) {
@@ -89,7 +121,6 @@ export default class TagBrowserWidget {
     span.innerHTML = series.title;
     return li;
   }
-
 
   _createTagListItem(tag) {
     const li = document.createElement('li');
@@ -109,6 +140,14 @@ export default class TagBrowserWidget {
   }
 
   _renderSeries() {
+
+    document.getElementById('no-series-selected').classList.add('hide');
+
+    const selectedSeriesContent = document.getElementsByClassName('selected-series-content');
+    [].forEach.call(selectedSeriesContent, contentBlock => {
+      contentBlock.classList.remove('hide');
+    });
+
     const image = document.getElementById('series-image');
     image.setAttribute('src',this.selectedSeries.thumbnail);
     const update = {
@@ -127,9 +166,8 @@ export default class TagBrowserWidget {
   }
 
   _renderSeriesForTag() {
-    while (this.seriesList.firstChild) {
-      this.seriesList.removeChild(this.seriesList.firstChild);
-    }
+    this._clearSeriesForTag();
+    document.getElementById('no-tag-selected').classList.add('hide');
     this.seriesForTag.forEach(series => {
       const listItem = this._createSeriesListItem.call(this, series);
       this.seriesList.appendChild(listItem);
@@ -154,7 +192,6 @@ export default class TagBrowserWidget {
     selectedTag.innerHTML = this.selectedSeries.title;
     const series = document.querySelectorAll('[data-series-id="'+seriesId+'"]')[0];
     series.classList.add('selected');
-
     this._renderSeries.call(this);
   }
 
