@@ -53,11 +53,3 @@ Approach
 4. Then, add null-case handling and selective disabling
 5. Spruce up styling
 
-Notes from implementing solution:
-
-* better than displaying 'none selected', or something to that effect, I select
-a tag by default, which solves the same problem, but has the added utility of 
-enticing the user with some content
-
-
-
