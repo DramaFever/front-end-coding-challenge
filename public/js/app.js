@@ -9,7 +9,6 @@ export default class TagBrowserWidget {
       .then(this.bindEventListeners.bind(this))
       .then(this.render.bind(this));
 
-    console.log('Widget Instance Created!!');
   }
 
   fetchData() {
@@ -58,7 +57,6 @@ export default class TagBrowserWidget {
   }
 
   tagListClicked(event) {
-    console.log('tag list (or child) clicked', event);
     $('.column.content').addClass('selected')
     $('.clear-button').addClass('selected')
     $('.active').removeClass('active')
@@ -87,7 +85,6 @@ export default class TagBrowserWidget {
     let selectedMedia = this.data.find( (media) => {
       return media.id == selectedMediaId
     })
-    console.log(selectedMedia.title)
     $('.selected-item .subtitle').html(selectedMedia.title.trim())
     $('.selected-item img').attr("src", selectedMedia.thumbnail)
     $('.selected-item p').html(selectedMedia.description.trim())
