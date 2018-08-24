@@ -40,7 +40,7 @@ export default class TagBrowserWidget {
   clearFilters() {
     $('.column.content').removeClass('selected')
     $('.column.selected-item').removeClass('selected')
-    $('.clear-button').removeClass('selected')
+    $('.clear-button').addClass('is-disabled')
   }
 
   render() {
@@ -52,13 +52,13 @@ export default class TagBrowserWidget {
     })
     let tagsArray = Array.from(tags).sort()
     tagsArray.forEach( (tag) => {
-      $('.tag-list').append(`<li><span class="tag is-link">${tag}</span></li>`);
+      $('.tag-list').append(`<li><span class="button tag is-link is-outlined">${tag}</span></li>`);
     })
   }
 
   tagListClicked(event) {
     $('.column.content').addClass('selected')
-    $('.clear-button').addClass('selected')
+    $('.clear-button').removeClass('is-disabled')
     $('.active').removeClass('active')
     $('.matching-items-list').empty()
     $('.column.selected-item').removeClass('selected')
@@ -73,15 +73,22 @@ export default class TagBrowserWidget {
     })
     // render series
     selectedMedia.forEach( (media) => {
-      $('.matching-items-list').append(`<li class="media-title" data-id="${media.id}">${media.title}</li>`)
+      $('.matching-items-list').append(`
+        <li>
+        <figure  class="image is-350x350">
+          <img data-id=${media.id} class="is-rounded" src="${media.thumbnail}" />
+        </figure>
+      </li>
+      `)
     })
   }
 
   itemClicked(event) {
     $('.matching-items-list .active').removeClass('active')
     $('.column.selected-item').addClass('selected')
-    $(event.srcElement).addClass('active')
-    let selectedMediaId = event.srcElement.attributes['data-id'].value
+    let button = ( $(event.target).is('img') ? $(event.target)[0] :  $(event.target).find('img')[0])
+    $(button).addClass('active')
+    let selectedMediaId = button.attributes['data-id'].value
     let selectedMedia = this.data.find( (media) => {
       return media.id == selectedMediaId
     })
