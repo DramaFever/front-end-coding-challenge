@@ -40,7 +40,7 @@ export default class TagBrowserWidget {
   clearFilters() {
     $('.column.content').removeClass('selected')
     $('.column.selected-item').removeClass('selected')
-    $('.clear-button').addClass('is-disabled')
+    $('.clear-button').attr('disabled', true)
   }
 
   render() {
@@ -58,7 +58,7 @@ export default class TagBrowserWidget {
 
   tagListClicked(event) {
     $('.column.content').addClass('selected')
-    $('.clear-button').removeClass('is-disabled')
+    $('.clear-button').removeAttr('disabled')
     $('.active').removeClass('active')
     $('.matching-items-list').empty()
     $('.column.selected-item').removeClass('selected')
