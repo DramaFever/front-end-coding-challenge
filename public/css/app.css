@@ -4,6 +4,7 @@
   margin: 1em auto;
   border: 1px solid black;
   position: relative;
+  transition: background 2s ease;
 }
 
 #tag-browser .clear-button {
@@ -15,4 +16,28 @@
 #tag-browser .active {
   background: purple;
   color: white;
+}
+
+.tag.is-link:hover, .media-title:hover {
+  color: purple;
+  cursor: pointer;
+}
+
+.subtitle {
+  text-transform:capitalize;
+}
+
+.column.content,
+.column.selected-item,
+.clear-button {
+  opacity: 0;
+}
+
+.column.content.selected,
+.column.selected-item.selected,
+.clear-button.selected {
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+  opacity: 1;
 }
