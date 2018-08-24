@@ -13,7 +13,7 @@
   right: 1em;
 }
 
-.tag-list .active {
+#tag-browser .active {
   background: purple;
   color: white;
 }
