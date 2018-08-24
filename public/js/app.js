@@ -60,7 +60,7 @@ export default class TagBrowserWidget {
     $('.column.content').addClass('selected')
     $('.clear-button').addClass('selected')
     $('.active').removeClass('active')
-    $('.matching-items-list').empty
+    $('.matching-items-list').empty()
     $('.column.selected-item').removeClass('selected')
     //check to see if it was a tag that was clicked and render
     //the list of series that have the matching tags
