@@ -16,3 +16,19 @@
   background: purple;
   color: white;
 }
+
+#tag-browser .tag {
+  cursor: pointer;
+}
+
+#tag-browser .tag:hover {
+  background: white;
+  color: #3273dc;
+  border: solid 1px black;
+}
+
+.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none;
+}

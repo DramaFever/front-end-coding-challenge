@@ -7,7 +7,7 @@ export default class TagBrowserWidget {
       .then(this.setData.bind(this))
       .then(this.getElements.bind(this))
       .then(this.bindEventListeners.bind(this))
-      .then(this.render.bind(this));
+      .then(this.setUniqueTagList.bind(this));
 
     console.log('Widget Instance Created');
   }
@@ -26,23 +26,76 @@ export default class TagBrowserWidget {
 
   getElements() {
     this.tagList = this.config.element.querySelectorAll('.tag-list')[0];
-
     //find and store other elements you need
+    this.matchingItemList = this.config.element.querySelectorAll('.matching-items-list')[0];
   }
 
   bindEventListeners() {
-    this.tagList.addEventListener('click', this.tagListClicked.bind(this));
+//    this.tagList.addEventListener('click', this.tagListClicked.bind(this));
+//bind the additional event listener for clicking on a series title
+    this.tagList.addEventListener('click', function(e) {
+      let spanTag = getParentSpan(e.target);
+      if(spanTag !== null) {
+        $('.subtitle:eq(1)').text('"' + spanTag.textContent + '"');
+        removeActiveTags();
+        spanTag.classList.add('active');
+        setMatchingItemsList(spanTag.textContent);
+      }
+    }, false);
 
-    //bind the additional event listener for clicking on a series title
+    var setMatchingItemsList = (selectedTag) => {
+      let matchingItemsTags = [];
+      this.data.forEach(dataElement => {
+        if(dataElement.tags.includes(selectedTag)) {
+          let tagObject = {};
+          tagObject.id = dataElement.id;
+          tagObject.title = dataElement.title;
+          matchingItemsTags.push(tagObject);
+        }
+      });
+      $( ".matching-items-list" ).empty();
+      matchingItemsTags.forEach(matchingItemTag => {
+        $( ".matching-items-list" ).append( "<li><a id='" + matchingItemTag.id + "' href='#' onClick='setMatchingItemActive(this)'>" + matchingItemTag.title + "</a></li>" );
+      })
+    }
+  
+    this.matchingItemList.addEventListener('click', function(e) {
+      let listItemTag = getParentListItem(e.target);
+      if(listItemTag !== null) {
+        $('.subtitle:eq(2)').text(listItemTag.textContent);
+        setMatchingSeriesData(e.target.id);
+        document.querySelector('.clear-button').classList.remove('is-disabled');
+      }
+    }, false);
+
+    var setMatchingSeriesData = (selectedSeriesId) => {
+      this.data.forEach(dataElement => {
+        if(dataElement.id == selectedSeriesId) {
+          $('.selected-item > div > img').attr("src", dataElement.thumbnail);
+          $('.selected-item > div > p').text(dataElement.description);
+          $('.selected-item > ul').empty();
+          $('.selected-item > ul').append("<li><strong>Rating:</strong> <span>" + dataElement.rating + "</span></li>");
+          $('.selected-item > ul').append("<li><strong>Native Language Title:</strong> <span>" + dataElement.nativeLanguageTitle + "</span></li>");
+          $('.selected-item > ul').append("<li><strong>Source Country:</strong> <span>" + dataElement.sourceCountry + "</span></li>");
+          $('.selected-item > ul').append("<li><strong>Type:</strong> <span>" + dataElement.type + "</span></li>");
+          $('.selected-item > ul').append("<li><strong>Episodes:</strong> <span>" + dataElement.episodes + "</span></li>");
+        }
+      });
+    }
+    
   }
 
-  render() {
-    //render the list of tags from this.data into this.tagList
-  }
 
-  tagListClicked(event) {
-    console.log('tag list (or child) clicked', event);
-    //check to see if it was a tag that was clicked and render
-    //the list of series that have the matching tags
+  setUniqueTagList() {
+    let uniqueTags = [];
+    this.data.forEach(dataElement => {
+      uniqueTags = [...new Set([...uniqueTags, ...dataElement.tags])];
+    });
+    uniqueTags.sort();
+    $( ".tag-list" ).empty();
+    uniqueTags.forEach(tag => {
+      $( ".tag-list" ).append( "<li><span class='tag is-link'>" + tag + "</span></li>" );
+    })
   }
+  
 }
