@@ -16,3 +16,7 @@
   background: purple;
   color: white;
 }
+
+.is-link {
+  cursor: pointer;
+}
