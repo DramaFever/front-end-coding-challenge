@@ -16,4 +16,4 @@ Submit
 ---
 
 - Submit a Pull Request back to this repository with your completed challenge code.
-- Please complete within 24 hours.
+- Please complete within 48 hours.
