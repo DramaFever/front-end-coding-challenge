@@ -7,7 +7,7 @@ export default class TagBrowserWidget {
       .then(this.setData.bind(this))
       .then(this.getElements.bind(this))
       .then(this.bindEventListeners.bind(this))
-      .then(this.render.bind(this));
+      .then(this.renderTagList.bind(this));
 
     console.log('Widget Instance Created');
   }
@@ -36,7 +36,7 @@ export default class TagBrowserWidget {
     //bind the additional event listener for clicking on a series title
   }
 
-  render() {
+  renderTagList() {
     //render the list of tags from this.data into this.tagList
   }
 

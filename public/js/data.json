@@ -1,162 +1,140 @@
 [
   {
-    "type": "series",
-    "rating": "TV-14",
-    "episodes": 10,
-    "id": 5140,
-    "tags": ["melodrama", "romance", "time travel"],
-    "sourceCountry": "Korea",
-    "description":
-      "Kang Shin Woo (Lee Jung Shin, My Sassy Girl) is a math teacher who never forgot how he didn't buck up the courage to confess his feelings for the girl of his dreams back in high school. Now an eerie twist of fate will pull him back into the past and finds himself face-to-face with a familiar face.His first love is none other than Han Ji Soo (Lee Yeol Eum, Monster). A kind and attractive student, she harbors a painful secret. Since Shin Woo didn't end up with her the first time, he knows that this is his second shot at love. Unfortunately for him, he's got stiff competition: his younger self, Kang Shin woo (Seo Ji Hoon, Solomon's Perjury). Will Shin Woo fight for his teenage heart or for his own? It's a battle between two men from two different times, yet only one can win out.Based on the webtoon “Aeganjang” by Kim Hee Ran and Kim Byung Gwan, Longing Heart is directed by Min Yeon Hong and adapted by Park Ga Yeon.",
-    "title": "Longing Heart",
-    "nativeLanguageTitle": "애간장",
-    "thumbnail":
-      "https://imgix-media.dramafever.com/asset/series/5140/5a53d48d/box.jpg?w=350"
+    "id": "e95b37b0-de17-425b-9d56-f15be13f6ff8",
+    "description": "The search is on for Santa! Will they find him in time for the holiday season?",
+    "pages": 38,
+    "release_date": "1946-02-06",
+    "authors": ["Bill Finger", "Henry Boltinoff", "Blair Bolton"],
+    "issue_number": "33",
+    "title": "Batman (1940-) #33",
+    "age_rating": "12+",
+    "series_title": "Batman (1940-2011)",
+    "tags": ["Batman", "Golden Age"],
+    "image": "https://imgix-media.wbdndc.net/ingest/book/preview/62fe87f5-72f8-480d-8b1a-9116dbe87506/8eb27c33-e519-4382-a3fc-1cf96ed10d8f/0.jpg"
   },
   {
-    "type": "series",
-    "rating": "TV-14",
-    "episodes": 75,
-    "id": 4922,
-    "tags": [
-      "melodrama",
-      "historical",
-      "romance",
-      "war",
-      "fantasy",
-      "period drama",
-      "based on a novel"
+    "id": "1d73fdc2-5eca-402c-a591-da0911be5d01",
+    "description": "The debut of the world's most recognizable superhero! Learn the original origin of the Man of Steel in his very first appearance! This issue also features the first appearance of Superman's Lois Lane and the superhero magician Zatara!",
+    "pages": 14,
+    "release_date": "1938-06-01",
+    "authors": [
+      "Jerry Siegel",
+      "Homer Fleming",
+      "Fred Guardineer",
+      "Frank Thomas",
+      "Russell Cole",
+      "Gardner Fox",
+      "Ken Fitch"
     ],
-    "sourceCountry": "China",
-    "description":
-      "Prince Sheng Muyun (Huang Xuan, Imperial Doctress, Les Interprètes) is hated in the palace. The child of the human king and a spirit mother, he is considered unfit to lead the Duan dynasty because prophecy says his leadership will destroy the world. When his father and brothers die, he is pushed to lead. But Sheng Muyun doesn’t care about the throne. His only interest is the mysterious woman (Janice Man) he sees inside a magical gem.Upon learning of a horrible truth, Sheng Muyun escapes the palace, leaving the throne to his uncle. But the prophecy has something else in mind.Heye Shuo Feng (Zhou Yi Wei) is the leader of the nomadic tribes. Brave and insightful, he is a worthy opponent, even for an empire. When he sees the prince has left the castle, he launches an all-out attack. His goal is to give the nomadic people their own land, and he is willing to see the Duan fall to make that happen.Han Jiang Muru (Shawn Dou, Princess Agents) is the son of an exiled general. Because of a prophecy that declared him a future monarch, he was abandoned by his own father, who was loyal to no one but the royal family. Han Jiang Muru knows neither his destiny nor Yu Ning Su (Xu Lu, Singles Villa), the woman destined to become Empress.When Muru Han Jiang reluctantly joins forces with the returning Prince Sheng Muyun to regain his throne, the prophecies start coming true. But this prophecy is a storm, and storms end in disaster.Tribes and Empires: The Storm of Prophecy is directed by Cao Dun. The drama is based on the hit novel of the same name by Jin Hezai. It first aired in 2017.",
-    "title": "Tribes and Empires: The Storm of Prophecy - 九州·海上牧云记",
-    "nativeLanguageTitle": "九州·海上牧雲記",
-    "thumbnail":
-      "https://imgix-media.dramafever.com/asset/series/4922/5a270d40/box.jpg?w=350"
+    "issue_number": "1",
+    "title": "Action Comics (1938-) #1",
+    "age_rating": "12+",
+    "series_title": "Action Comics (1938-2011)",
+    "tags": ["Superman", "Golden Age"],
+    "image": "https://imgix-media.wbdndc.net/ingest/book/preview/f5f6ab2b-0746-4a95-bf79-039a529bbb50/698c4096-ce84-4b78-aa5d-08f0e30549da/0.jpg"
   },
   {
-    "type": "movie",
-    "rating": "TV-14",
-    "episodes": 1,
-    "id": 5133,
-    "tags": [
-      "mystery",
-      "thriller",
-      "action",
-      "crime",
-      "comedy",
-      "feature film"
-    ],
-    "sourceCountry": "Korea",
-    "description":
-      "College student Min Jae (Im Si Wan, Incomplete Life: Misaeng) is a small-time swindler. He meets forger Suk Goo (Jin Goo, Descendants of the Sun), who is a higher-end thief. Min Jae robs some of Suk Goo’s money and soon finds himself at the mercy of Ji Won (Park Byung Eun, Queen of Mystery), Suk Goo’s vicious enforcer. Suk Goo has an eye for talent. Instead of punishing the young crook, he decides to enlist Min Jae into his fraud syndicate. They work well together, but rifts soon develop between Suk Goo and Ji Won. Min Jae gets caught in the middle. With the law on their tail and distrust between them, the three men soon learn that the difference between friend and enemy is just one, thin line.One-Line is directed by Yang Kyung Mo. It released in 2017.",
-    "title": "One-Line",
-    "nativeLanguageTitle": "원라인",
-    "thumbnail":
-      "https://imgix-media.dramafever.com/asset/series/5133/5a251634/box.jpg?w=350"
+    "id": "19398df4-1d54-4c92-bdd9-f6d30a4542f8",
+    "description": "Jesse Custer is a small-town preacher losing his faith—until he merges with a divine being called Genesis. Now he has firsthand knowledge of both Heaven and Hell and a voice that's automatically obeyed by anyone. Joined by an Irish vampire and an ex-lover, Jesse sets out on a mission to find God.",
+    "pages": 42,
+    "release_date": "1995-02-28",
+    "authors": ["Garth Ennis"],
+    "issue_number": "1",
+    "title": "Preacher #1",
+    "age_rating": "17+",
+    "series_title": "Preacher",
+    "tags": ["Modern Age", "Vertigo"],
+    "image": "https://imgix-media.wbdndc.net/ingest/book/preview/9a4bdf29-2999-46da-9030-e78ca63d4ca5/b107151f-6c5e-4f43-a608-0175aa3f31df/0.jpg"
   },
   {
-    "type": "series",
-    "rating": "TV-14",
-    "episodes": 10,
-    "id": 4062,
-    "tags": ["romantic comedy", "romance", "fantasy"],
-    "sourceCountry": "Korea",
-    "description":
-      "This is the original version of The Bride of the Water God that the 2017 remake is based on.",
-    "title": "The Bride of the Water God (Habaek)",
-    "nativeLanguageTitle": "하백의 신부 2000",
-    "thumbnail":
-      "https://imgix-media.dramafever.com/asset/series/5060/5a53e295/box.jpg?w=350"
+    "id": "35f5de8d-5259-4ed1-a012-76c33a605326",
+    "description": "Alternate Cover!  Jesse Custer is a small-town preacher losing his faith—until he merges with a divine being called Genesis. Now he has firsthand knowledge of both Heaven and Hell and a voice that's automatically obeyed by anyone. Joined by an Irish vampire and an ex-lover, Jesse sets out on a mission to find God.",
+    "pages": 42,
+    "release_date": "1995-02-28",
+    "authors": ["Garth Ennis"],
+    "issue_number": "1.1",
+    "title": "Preacher #1",
+    "age_rating": "17+",
+    "series_title": "Preacher",
+    "tags": ["Modern Age", "Vertigo"],
+    "image": "https://imgix-media.wbdndc.net/ingest/book/preview/39b32357-1667-4d10-985a-1485ca300622/5421407b-38e8-460b-9431-dd517f65e6ae/0.jpg"
   },
   {
-    "type": "series",
-    "rating": "TV-14",
-    "episodes": 16,
-    "id": 5116,
-    "tags": ["romantic comedy", "romance", "comedy"],
-    "sourceCountry": "Korea",
-    "description":
-      "Attention drama fans! The first 5 episodes of Revolutionary Love are now free to watch! Sign up for Premium to enjoy full access to all of your favorite dramas!In this comedic tale of riches to rags, Byun Hyuk (Choi Si Won, She Was Pretty) is the narcissistic and carefree heir to Gangsu Group, but also a die-hard romantic who chooses the ordinary life after meeting the girl of his dreams.His lofty ideas of romance and the belief that people are inherently good adds to his naïveté, which spurs him to leave his opulent living quarters and move into a cramped studio apartment and actually work to make a living. His zero life experience pales in comparison to the girl he hopes to woo, Baek Joon (Kang So Ra, Jeju Island Gatsby). A college grad unable to land a full-time position, Baek Joon has to work numerous part-time jobs in order to make ends meet. Her strong-willed, optimistic outlook on life keeps her afloat, but no amount of positivity can prepare her for the seemingly incompetent Byun Hyuk.If there's anyone who can keep Byun Hyuk in line, it's his secretary, Kwon Jae Hoon (Gong Myung, The Bride of the Water God). Handsome and mature, Jae Hoon dreams of rising above his humble roots and someday living the life of luxury Byun Hyuk has left behind. Too bad that caring for an immature heir is a 24/7 gig.Revolutionary Love (alternatively known as Byun Hyuk's Love) is directed by Song Hyun Wook (My Shy Boss, Another Oh Hae Young) and written by Joo Hyun (Ms. Temper and Nam Jung Gi).",
-    "title": "Revolutionary Love",
-    "nativeLanguageTitle": "변혁의 사랑",
-    "thumbnail":
-      "https://imgix-media.dramafever.com/asset/series/5116/59d29387/box.jpg?w=350"
+    "id": "b125d2e9-4e27-42d9-96cc-bfbb3f1b2a3f",
+    "description": "At the end of SANDMAN PRESENTS: LUCIFER, Lucifer was left in possession of a \"letter of passage\" from God, a passport to any realm the bearer desires. Is the letter what it seems...or just the latest move in a subtle game designed to remove him from the face of Creation?",
+    "pages": 22,
+    "release_date": "2000-04-05",
+    "authors": ["Mike Carey"],
+    "issue_number": "1",
+    "title": "Lucifer #1",
+    "age_rating": "17+",
+    "series_title": "Lucifer",
+    "tags": ["Sandman", "Modern Age", "Vertigo"],
+    "image": "https://imgix-media.wbdndc.net/ingest/book/preview/588c483e-9650-49f6-843c-7e305c7800c6/d604ca9b-80b2-4717-9502-ba7b1be39c6a/0.jpg"
   },
   {
-    "type": "series",
-    "rating": "TV-14",
-    "episodes": 40,
-    "id": 5104,
-    "tags": ["romance", "comedy", "drama", "romantic comedy"],
-    "sourceCountry": "Korea",
-    "description":
-      "Attention drama fans! The first 10 episodes of Temperature of Love are now free to watch! Sign up for Premium to enjoy full access to all of your favorite dramas!Seo Hyun Jin (Doctor Romantic, Another Oh Hae Young) and Yang Se Jong (Duel, Saimdang: Light’s Diary) star in a romantic-comedy about the perils of finding love in a digital world. But when the young writer and aspiring cook finally meet in real life after getting acquainted online, they quickly find out how little they actually know about one another.Lee Hyun Soo (Seo Hyun Jin) is confident, honest and the graduate of a prestigious university. After 10 years as an assistant writer, she is finally getting some well-earned recognition as a screenwriter, and unlike the theatrics in dramas, the pragmatic writer doesn't believe in concepts such as \"love at first sight.\"French food chef Jung Sun (Yang Se Jong) is the owner of the highly-regarded restaurant Good Soup. He is competitive, charming and immensely talented. Having attended culinary school in Paris, Jung Sun is also very confident in his own intuition and doesn’t believe in the traditional hierarchy typically found in the kitchen. Past his exterior confidence, though, is a man scarred by his relationship with his mother, who lives her life with cold practicality, whereas he lives on passion and instinct.Hyun Soo and Jung Sun meet in an online forum under the usernames “Jane” and “Good Soup,\" respectively. In spite of their opposing personalities, they begin chatting and falling for each other. But online forums can only tell you so much about a person.Ji Hong Ah (Jo Bo Ah from Sweet Stranger and Me) is the daughter of a successful CEO, and is also an aspiring drama writer. Unlike her friend, she has little need for money and lives life with the knowledge that everything will be handed to her. Whenever she is with Hyun Soo, she gets all the attention--until she meets and falls in love with respected chef Jung Sun, that is.Park Jung Woo (Kim Jae Wookfrom Voice) is the CEO of a successful entertainment agency. A huge fan of Jung Sun’s cooking, Park Jung Woo was actually the primary investor in Good Soup. He shares a good relationship with Jung Soo, until he falls for Hyun Soo and starts seeing the chef as a rival.Together, these four wildly different friends and budding lovers try to navigate life, butting heads with each other along the way. But even in the digital age, Google can’t provide all the answers. As they soon learn, online-only acquaintances can’t handle the temperature of love.Temperature of Love is directed by Nam Gun (Daebak). The series is based on the 2013 novel “Nice Soup Does Not Answer the Phone” by screenwriter Ha Myung Hee (Doctor Crush, Can We Get Married). The series reunites Seo Hyun JIn and Yang Se Jong, who last worked together on Doctor Romantic.",
-    "title": "Temperature of Love",
-    "nativeLanguageTitle": "사랑의 온도",
-    "thumbnail":
-      "https://imgix-media.dramafever.com/asset/series/5104/59c9102d/box.jpg?w=350"
+    "id": "72415acf-4568-4ede-9302-fa83a98a34e9",
+    "description": "Torn between a mysterious mummy and a dashing young monster hunter, the zombie gravedigger/detective Gwen is set for adventures beyond imagination—alongside her friends the were-terrier Spot and a swinging '60s ghost!",
+    "pages": 24,
+    "release_date": "2010-05-05",
+    "authors": ["Chris Roberson"],
+    "issue_number": "1",
+    "title": "iZOMBIE #1",
+    "age_rating": "17+",
+    "series_title": "iZombie",
+    "tags": ["Modern Age", "Vertigo"],
+    "image": "https://imgix-media.wbdndc.net/ingest/book/preview/f9977642-64eb-4d13-9772-d49de44c2925/be27a723-3ff4-41db-8657-1f54cd628de9/0.jpg"
   },
   {
-    "type": "series",
-    "rating": "TV-14",
-    "episodes": 40,
-    "id": 5101,
-    "tags": ["romance", "medical"],
-    "sourceCountry": "Korea",
-    "description":
-      " Attention drama fans! The first 10 episodes of  Hospital Ship  are now free to watch! Sign up for Premium to enjoy full access to all of your favorite dramas!Ha Ji Won (The Time That I Loved You, 7000 Days, Secret Garden), Kang Min Hyuk (The Entertainer, Heirs) and Lee Seo Won (Lovely Love Lie, Uncontrollably Fond) star in a medical drama about a group of doctors who go above and beyond to fulfill their duties. When three very different doctors join forces aboard a traveling hospital ship, they learn the only challenge more daunting than medicine is getting along with your colleagues.Too many live without quality healthcare. In order to change that, a caring humanitarian starts a hospital ship, a traveling medical center for dedicated doctors to reach their patients. These excellent doctors quickly discover that the seas aren't the only challenge in the workplace.Song Eun Jae (Ha Ji Won) is an immensely talented surgeon. There was a time when the hospital ship was just used for standard checkups and administering medicine. With Song Eun Jae on board, it can provide complicated surgery. She has seen a lot of success as a surgeon, but also a lot of struggles in her family life. When an unfortunate incident leads her to a ship instead of a prestigious hospital, she has little compassion for the stubborn elderly patients.Kwak Hyun (Kang Min Hyuk) is the emotional opposite of his senior doctor, Song Eun Jae. Growing up with a father who is a lauded humanitarian, Kwak Hyun strives to be a warm and caring person. He heals not just with medicine but a smile. It seems natural that he work at his father’s ship, but Kwak Hyun also has some emotional scars. He cannot match Song Eun Jae’s medical skills, but he is infinitely better at connecting with patients.Kim Jae Geol (Lee Seo Won) has Hallyu looks and an extensive lineage in medicine. His father is a respected doctor. Growing up, his dad always preferred his brilliant brother, which led Jae Geol to become a loner at heart. His father was obsessed with western medicine. As a form of rebellion, Kim Jae Gol studied oriental medicine, much to his father’s disapproval. His goal in boarding the ship was to escape his father’s shadow. At the ship, however, he must work under Song Eun Jae, who is just as strict, emotionless and disdainful of oriental medicine.Now these three doctors have to put aside their polar opposite personalities in order to treat their patients. As they all soon learn, working for your fellow humans has its own way of bringing people together. Hospital Ship is directed by Park Jae Bum (A New Leaf, I Miss You) and written by Yoon Sun Joo (Secret Door).New episodes added every Wednesday and Thursday for Premium users only. Available to all users one week later.",
-    "title": "Hospital Ship",
-    "nativeLanguageTitle": "병원선",
-    "thumbnail":
-      "https://imgix-media.dramafever.com/asset/series/5101/59c90bc4/box.jpg?w=350"
+    "id": "4ccc8d31-54c3-4dab-8bf7-f010157249e7",
+    "description": "In a post-nuclear world, Great Britain has emerged as a Fascist state. When young Evey Hammond is saved by a mysterious masked stranger, she is pulled into his quest to fight back and overthrow the government.",
+    "pages": 29,
+    "release_date": "1988-09-07",
+    "authors": ["Alan Moore"],
+    "issue_number": "1",
+    "title": "V for Vendetta #1",
+    "age_rating": "17+",
+    "series_title": "V for Vendetta",
+    "tags": ["Modern Age", "Vertigo"],
+    "image": "https://imgix-media.wbdndc.net/ingest/book/preview/d68a4e86-cf88-451e-97a7-6ea80990cf82/e5b24aba-06d3-407d-a9f0-1f4973480bba/0.jpg"
   },
   {
-    "type": "series",
-    "rating": "TV-Y",
-    "episodes": 20,
-    "id": 4274,
-    "tags": [
-      "romantic comedy",
-      "comedy",
-      "family relationships",
-      "Staff Favorites"
-    ],
-    "sourceCountry": "Korea",
-    "description":
-      "A worthy successor to the international hit Boys Over Flowers, Heirs follows a group of privileged, elite high school students as they are groomed to take over their families' business empires. These wealthy students seem to have everything under control–except their love lives. Kim Tan (Lee Min Ho) is heir to the Empire Group sent to study abroad in the U.S. In reality it's a form of exile, as his elder half-brother back home (Choi Jin Hyuk) schemes to take over the family business. While in the States, Kim Tan bumps into Cha Eun Sang (Park Shin Hye), who's arrived from Korea in search of her older sister. He feels himself falling for her, never realizing that she's the daughter of his family's housekeeper. When his fiancée Rachel Yoo (Kim Ji Won) arrives to bring him back to Korea, his heart is torn between love and duty. Meanwhile, Rachel's half-brother Choi Young Do (Kim Woo Bin) develops his own crush on Eun Sang. Who said being a rich, beautiful high school student was easy?",
-    "title": "Heirs",
-    "nativeLanguageTitle": "왕관을 쓰려는자, 그무게를 견뎌라-상속자들",
-    "thumbnail":
-      "https://imgix-media.dramafever.com/asset/series/4274/59c90be3/box.jpg?w=350"
+    "id": "7bd990ea-38a0-459b-bf6b-a8180c166987",
+    "description": "The series that inspired the high-octane Warner Bros. Pictures movie The Losers! Formerly an elite U.S. Special Forces unit, The Losers stumbled upon a dirty CIA secret they couldn't ignore. The CIA tried to kill them—but that only set the team on a course for bloody vengeance.",
+    "pages": 32,
+    "release_date": "2010-06-23",
+    "authors": ["Andy Diggle"],
+    "issue_number": "1",
+    "title": "Losers #1",
+    "age_rating": "17+",
+    "series_title": "The Losers",
+    "tags": ["Modern Age", "Vertigo"],
+    "image": "https://imgix-media.wbdndc.net/ingest/book/preview/3928632e-741c-4959-a162-085e27c5ab9e/c3fd63aa-91a3-41a0-b963-091469adf454/0.jpg"
   },
   {
-    "type": "series",
-    "rating": "TV-14",
-    "episodes": 16,
-    "id": 5060,
-    "tags": ["romantic comedy", "romance", "fantasy", "based on a manga"],
-    "sourceCountry": "Korea",
-    "description":
-      " Attention drama fans! The first 5 episodes of The Bride of the Water God (Habaek) are now free to watch! Sign up for Premium to enjoy full access to all of your favorite dramas!Nam Joo Hyuk (Weightlifting Fairy Kim Bok Joo, Scarlet Heart: Ryeo) and Shin Se Kyung  (Six Flying Dragons) star in a modern retelling of a supernatural romance. When the god of water descends upon Earth and seeks the help of his destined bride, he first has to convince her that he isn’t a delusional maniac.Habaek (Nam Joo Hyuk) is a water god. Don’t let the legends fool you, though. Gone are the days of gods being old men in robes. Habaek is a chic youth with impeccable fashion and flawless hair. He is also narcissistic and wants his heavenly throne at all costs. Habaek comes to Earth to find a magical stone that will grant him the power he wants. And he expects his destined bride and servant to help him. Just one problem, though: His bride does not believe he even exists.So Ah (Shin Se Kyung) is a psychiatrist. She has her own practice, but she is also buried in debt. Her family is allegedly cursed to serve the gods forever. However, So Ah is a realist with no time for superstition. So when the doctor meets a man who claims to be the legendary water god and who expects her to serve him as his bride, her diagnosis is that he is simply delusional.And before Habaek can convince his wife of who he is and what he needs, some of his “friends” join him on Earth.Hoo Ye (Im Ju Hwan from Uncontrollably Fond) is a demigod. A CEO of a resort, Hoo Ye also happens to fall in love with So Ah and therefore becomes Habaek’s main rival. Moo Ra (f(x) and Heirs’ Krystal Jung) is a water goddess. A beautiful and famous actress, Moo Ra has a one-sided love with Habaek and understandably dislikes his wife. Bi Ryeom (Gong Myung of 5urprise and Drinking Solo) is a wind god who secretly loves Moo Ra and holds a grudge against the man that she loves.With all these people gunning for them, it is now up to Habaek and So Ah to find the magical stone and restore a balance of power in the heavens. If they can stop bickering first, that is.Directed by Kim Byung Soo (Nine, Queen In Hyun’s Man) and written by Jung Yoon Jung (Incomplete Life (Misaeng), Arang and the Magistrate), The Bride of the Water God is a modern take on the popular historical fantasy manhwa Bride of the Water God. The drama’s original broadcast period is from July 03, 2017 to August 22, 2017 on tvN.",
-    "title": "The Bride of the Water God (Habaek)",
-    "nativeLanguageTitle": "하백의 신부 2017",
-    "thumbnail":
-      "https://imgix-media.dramafever.com/asset/series/5060/5a53e295/box.jpg?w=350"
+    "id": "ea7090db-ee73-4897-89f0-eac0a8957bd8",
+    "description": "The Irish gangs of Hell’s Kitchen rule the neighborhood, doing the dirty work for the Italian Mafia. Jimmy Brennan and his crew were the hardest bastards in the Kitchen, but after they’re all put in prison, their wives decide to keep running their rackets.",
+    "pages": 23,
+    "release_date": "2014-11-12",
+    "authors": ["Ollie Masters"],
+    "issue_number": "1",
+    "title": "The Kitchen #1",
+    "age_rating": "17+",
+    "series_title": "The Kitchen",
+    "tags": ["New 52", "Vertigo"],
+    "image": "https://imgix-media.wbdndc.net/ingest/book/preview/9844ca5c-ae37-40c5-a617-7e8eabdd06ac/9995fc9c-9f84-4792-afad-1c8744db40d6/0.jpg"
   },
   {
-    "type": "series",
-    "rating": "TV-14",
-    "episodes": 16,
-    "id": 5059,
-    "tags": ["romance"],
-    "sourceCountry": "Korea",
-    "description":
-      "Attention drama fans! The first 5 episodes of Strongest Deliveryman are now free to watch! Sign up for Premium to enjoy full access to all of your favorite dramas!Go Kyung Pyo (Flower Boy Next Door, Jealousy Incarnate) and Chae Soo Bin(Moonlight Drawn by Clouds) star in a drama about two people who find both love and success, but only after lifting some heavy burdens. When two fearless and dedicated delivery workers are born without a silver spoon in their mouths, they are convinced to overcome their obstacles and make it to the top.Choi Kang Soo (Go Kyung Pyo) is a deliveryman. In spite of his humble beginnings, Choi Kang Soo is fearless and gives it all in everything he does. He dreams of becoming a CEO of a delivery app company someday, but life just throws more than a few roadblocks in his way. Lee Dan Ah (Chae Soo Bin) is another delivery worker. She hates her current socioeconomic status so much that she, like many young people, calls her country “Hell Joseon.” Lee Dan Ah is so focused on making money and changing her life that she has no time for men. But when she comes across the charming Choi Kang Soo, her attitude is due to be moved.Together, Choi Kang Soo and Lee Dan Ah have a budding competition and romance in their quest for glory. And, for them, glory means being like rich folk Lee Jin Yoon (Go Won Heefrom Tabloid Truth) and Oh Jin Gyoo (Kim Sun Ho from Chief Kim). They compete to conquer life but, as our two delivery workers soon learn, being the strongest does not guarantee sucess.Also known as “Best Deliveryman,” Strongest Deliveryman is written by Lee Jung Woo (Joseon Gunman) and directed by Jun Woo Sung. ",
-    "title": "Strongest Deliveryman",
-    "nativeLanguageTitle": "최강 배달꾼",
-    "thumbnail":
-      "https://imgix-media.dramafever.com/asset/series/5059/59c90ecd/box.jpg?w=350"
+    "id": "c96f1763-e499-4afb-b924-101db546bf72",
+    "description": "In this 'Crawling from the Wreckage' finale, the new Doom Patrol takes the battle with the Scissormen to their home dimension—and the sinister City of Bone.",
+    "pages": 26,
+    "release_date": "1989-03-28",
+    "authors": ["Grant Morrison"],
+    "issue_number": "22",
+    "title": "Doom Patrol (1987-) #22",
+    "age_rating": "17+",
+    "series_title": "Doom Patrol (1987-1995)",
+    "tags": ["Modern Age"],
+    "image": "https://imgix-media.wbdndc.net/ingest/book/preview/7d398e8c-9bf6-4dbe-9504-2dfe7eee53a5/a7a02b68-55aa-4a0f-82e2-3b4380e8a17e/0.jpg"
   }
 ]
