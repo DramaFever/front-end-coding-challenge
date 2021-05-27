@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/node-static/bin/cli.js ./public"
+    "start": "node ./node_modules/node-static/bin/cli.js -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}' ./public"
   },
   "author": "",
   "license": "ISC",
