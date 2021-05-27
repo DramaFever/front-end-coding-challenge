@@ -22,4 +22,4 @@ Submit
 
 - Push your changes to a branch in your forked project
 - Submit a Pull Request back to this repository with your completed challenge code.
-- Please complete within ASAP.
+- Please complete ASAP.
