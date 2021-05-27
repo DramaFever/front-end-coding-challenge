@@ -1,8 +1,13 @@
 Setup
 ---
 
-- Fork this repository
-- Clone this repository to your local environment
+- Ensure you have node.js installed at version >= 6.2.0
+- Fork this project
+- Clone your forked project to your local environment
+
+Install
+---
+
 - Run `npm install` to install dependencies
 - Run `npm start` to start the static server
 - Open `http://localhost:8080`
@@ -15,5 +20,6 @@ Instructions
 Submit
 ---
 
+- Push your changes to a branch in your forked project
 - Submit a Pull Request back to this repository with your completed challenge code.
-- Please complete within 48 hours.
+- Please complete within ASAP.

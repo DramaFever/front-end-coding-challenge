@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "node-static": "^0.7.10"
+  },
+  "engines": {
+    "node": ">= 6.2.0"
   }
 }
