@@ -11,17 +11,19 @@
 
 #tag-browser .tag {
   cursor: pointer;
-  margin-bottom: 0.3em;
-}
-#tag-browser .tag.active {
-  background-color: #ff2e4d;
-}
-#tag-browser .tag.active.series {
-  background-color: #ff2e4d;
+  margin-bottom: .3em;
+
+  &.active {
+    background-color: #ff2e4d;
+
+    &.series {
+      background-color: #ff2e4d;
+    }
+  }
 }
 
 .book-info {
-  font-size: 0.8em;
+  font-size: .8em;
 }
 
 .hide {
